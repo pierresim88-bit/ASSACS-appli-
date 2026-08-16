@@ -354,6 +354,25 @@ input::placeholder,textarea::placeholder{color:#77879b}
 @media(max-width:1000px){.session-control-bar{grid-template-columns:1fr}.activity-live-grid{grid-template-columns:1fr}.filter-grid{grid-template-columns:1fr 1fr}.activity-form-grid{grid-template-columns:1fr}.activity-form-grid .span2{grid-column:auto}}
 @media(max-width:650px){.filter-grid{grid-template-columns:1fr}}
 
+
+/* Stabilisation UI — Effectif, calendriers, progression joueur */
+.player-chip,.player-chip strong,.roster-table-card,.roster-table-card table,.roster-table-card td,.roster-table-card th{color:#14202d!important}
+.player-chip .small{color:#526174!important}
+.roster-table-card,.radar-card-light,.match-calendar-white,#trainingCalendarPanel .card.s8{background:#fff!important;color:#14202d!important;border-color:#d8e0e8!important}
+.roster-table-card h3,.radar-card-light h3,.match-calendar-white h3,#trainingCalendarPanel .card.s8 h3{color:#14202d!important}
+.roster-table th{background:#f3f6f9!important;color:#243346!important;white-space:nowrap}.roster-table td{background:#fff!important}.roster-table tr{cursor:pointer}.roster-table tr.selected td{background:#fff7db!important}.table-scroll{overflow:auto}.compare-check{width:18px;height:18px;accent-color:#ff9800}
+.radar-svg{width:100%;height:auto;min-height:300px;background:#fff;border-radius:14px}.radar-legend{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}.radar-key{font-size:11px;color:#263648;background:#eef2f6;padding:5px 8px;border-radius:999px}
+#trainingCalendarPanel .calendar-head,#matchCalendarPanel .calendar-head{color:#5f6f82!important}.calendar-cell,.match-calendar-cell{background:#fff!important;border-color:#d9e1e8!important;color:#14202d!important}.calendar-cell.off,.match-calendar-cell.off{background:#f7f8fa!important}.calendar-daynum{color:#14202d!important}.calendar-chip{color:#1b2a39!important;background:#edf2f7!important}.calendar-chip.prepared{background:#ddf8e8!important;color:#17603b!important}.calendar-chip.published{background:#fff0cc!important;color:#784500!important}.calendar-chip.open{background:#edf2f7!important;color:#405269!important}
+.session-hover-wrap{position:relative}.session-hover-card{display:none;position:absolute;left:6px;top:calc(100% + 4px);z-index:30;min-width:230px;max-width:300px;background:#101820;color:#f3f7fb;border:1px solid #334354;border-radius:12px;padding:10px;box-shadow:0 14px 30px rgba(0,0,0,.28);white-space:normal;font-size:11px}.session-hover-wrap:hover .session-hover-card,.session-hover-wrap:focus-within .session-hover-card{display:block}
+.match-subpanel{display:none}.match-subpanel.active{display:block}.match-calendar-cell{min-height:115px;border:1px solid #d9e1e8;border-radius:14px;padding:8px;position:relative}.match-chip{display:block;margin-top:7px;background:#fff1cf;color:#6a4300;border-radius:10px;padding:7px;font-size:10px;font-weight:800;position:relative}.match-chip:hover .session-hover-card{display:block}
+.warmup-zone{margin-top:14px;border:1px dashed #57697d;border-radius:14px;padding:12px;background:#101821}.warmup-zone.disabled{opacity:.5}.switch-line{display:flex;gap:8px;align-items:center;margin:0;color:var(--ink)!important}.switch-line input{width:auto}.activity-warmup-card{border-left:4px solid #ffd54d!important}
+.equipment-picker{display:flex;gap:7px;align-items:center}.equipment-picker select,.equipment-picker input{flex:1}.equipment-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:7px}.equipment-tag{background:#263544;color:#f4f7fb;border-radius:999px;padding:6px 8px;font-size:11px}.equipment-tag button{border:0;background:transparent;color:#ffcd75;margin-left:5px}
+.share-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.share-grid .btn{min-height:54px}
+.player-demo-switch{margin-top:12px}.player-progress-visual-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:14px}.player-figure-card{overflow:hidden}.basket-player-stage{position:relative;min-height:430px;background:linear-gradient(180deg,#101923,#1a2938);border-radius:18px;margin:12px 0;display:grid;place-items:center;overflow:hidden}.basket-player-stage:after{content:"";position:absolute;left:8%;right:8%;bottom:12%;height:2px;background:#ffffff33}.basket-player-figure{height:390px;max-width:80%;position:relative;z-index:2}.skill-pin{position:absolute;z-index:3;background:#fff;color:#162231;border-radius:999px;padding:7px 10px;font-size:11px;font-weight:900;box-shadow:0 6px 15px rgba(0,0,0,.22)}.pin-pass{left:7%;top:22%}.pin-dribble{right:5%;top:37%}.pin-shoot{right:8%;top:12%}.pin-def{left:8%;top:55%}
+.player-calendar .day{background:#fff!important;color:#14202d!important;border-color:#d9e1e8!important}.player-calendar .day-head{color:#5f6f82!important}.player-calendar .date{color:#14202d!important}.player-event.session{background:#fff0cc!important;color:#704600!important}.player-event.match{background:#dff5eb!important;color:#14563d!important}
+.notification-item strong{color:#f4f7fb}.notification-item .small{color:#aab7c5!important}
+@media(max-width:900px){.player-progress-visual-grid{grid-template-columns:1fr}.share-grid{grid-template-columns:1fr}.roster-table{min-width:950px}}
+
 </style>
 </head>
 <body>
@@ -485,7 +504,7 @@ input::placeholder,textarea::placeholder{color:#77879b}
     <div class="title"><div class="eyebrow">Équipe sélectionnée</div><h1 id="coachTeamTitle">U13</h1><p id="coachTeamSub">Suivi de l’équipe.</p></div>
 
     <div class="kpis">
-      <div class="kpi"><strong id="coachKpiPlayers">13</strong><span>joueurs</span></div>
+      <div class="kpi"><strong id="coachKpiPlayers">8</strong><span>joueurs</span></div>
       <div class="kpi"><strong id="coachKpiParticipation">91%</strong><span>participation</span></div>
       <div class="kpi"><strong id="coachKpiWins">8</strong><span>victoires</span></div>
       <div class="kpi"><strong id="coachKpiStreak">🔥 4</strong><span>série en cours</span></div>
@@ -524,91 +543,75 @@ input::placeholder,textarea::placeholder{color:#77879b}
 
 
     <section id="coachRoster" class="coach-panel">
+      <div class="title">
+        <div class="eyebrow">Effectif</div>
+        <h1 style="font-size:28px">Vue équipe · comparaison · évaluation individuelle</h1>
+        <p>Le collectif est évalué comme une équipe. Les joueurs sont suivis sur les fondamentaux individuels, l’assiduité, le savoir-être, les feedbacks et les objectifs.</p>
+      </div>
+
       <div class="grid">
-        <div class="card s4">
-          <div class="eyebrow">Effectif</div>
-          <h3 style="margin-top:4px">Mes joueurs</h3>
-          <p class="muted">Vue rapide des joueurs, de leur assiduité et de leur progression individuelle.</p>
-          <div id="rosterPlayerPicker"></div>
-
-          <div style="height:1px;background:var(--line);margin:16px 0"></div>
-
-          <h3>Créer un joueur</h3>
-          <label>Nom</label><input id="newPlayerLast">
-          <label>Prénom</label><input id="newPlayerFirst">
-          <label>Date de naissance</label><input id="newPlayerBirth" type="date">
-          <label>Commune</label><input id="newPlayerTown">
-          <label>Mail responsable</label><input id="newPlayerEmail">
-          <button class="btn btn-primary" style="width:100%;margin-top:12px" onclick="coachAddPlayer()">Créer le profil</button>
+        <div class="card s8 roster-table-card">
+          <div class="row">
+            <div><h3>Effectif U13</h3><div class="small">8 comptes joueurs de démonstration · coche jusqu’à 3 joueurs pour comparer leur profil.</div></div>
+            <span class="pill pill-blue" id="rosterDemoCount">8 joueurs</span>
+          </div>
+          <div class="table-scroll" style="margin-top:12px">
+            <table class="roster-table">
+              <thead><tr><th>Comparer</th><th>Joueur</th><th>Présence</th><th>Fondamentaux individuels</th><th>Savoir-être</th><th>Objectif actif</th></tr></thead>
+              <tbody id="rosterTableBody"></tbody>
+            </table>
+          </div>
         </div>
 
-        <div class="card s8">
+        <div class="card s4 radar-card-light">
+          <div class="eyebrow">Comparaison</div>
+          <h3 style="margin-top:4px">Diagramme radar</h3>
+          <p class="muted">Sélectionne 1 à 3 joueurs dans le tableau.</p>
+          <div id="rosterCompareLegend" class="radar-legend"></div>
+          <svg id="rosterCompareRadar" class="radar-svg" viewBox="0 0 420 360" aria-label="Comparaison des fondamentaux individuels"></svg>
+        </div>
+
+        <div class="card s12" id="rosterIndividualDetail">
           <div class="row">
-            <div>
-              <div class="eyebrow">Progression individuelle</div>
-              <h3 id="rosterPlayerName" style="margin-top:4px">Joueur</h3>
-            </div>
-            <div class="actions">
-              <span class="pill pill-blue" id="rosterPlayerCategory">U13</span>
-              <span class="pill pill-green" id="rosterPlayerAttendance">🔥 91%</span>
-            </div>
+            <div><div class="eyebrow">Évaluation individuelle</div><h3 id="rosterPlayerName" style="margin-top:4px">Joueur</h3></div>
+            <div class="actions"><span class="pill pill-blue" id="rosterPlayerCategory">U13</span><span class="pill pill-green" id="rosterPlayerAttendance">🔥 91%</span></div>
           </div>
 
           <div class="pedagogy-switch">
             <button class="pedagogy-btn active" data-roster-view="skills">Fondamentaux individuels</button>
+            <button class="pedagogy-btn" data-roster-view="behaviour">Savoir-être</button>
             <button class="pedagogy-btn" data-roster-view="feedback">Feedback</button>
             <button class="pedagogy-btn" data-roster-view="objectives">Objectifs</button>
           </div>
 
-          <div id="roster-skills" class="pedagogy-panel active">
-            <div class="info" style="margin-bottom:12px">Les fondamentaux individuels restent séparés du collectif : passe, dribble, démarquage, appuis, tir, défense individuelle et motricité.</div>
-            <div id="rosterIndividualSkillGrid" class="skill-grid"></div>
-          </div>
-
+          <div id="roster-skills" class="pedagogy-panel active"><div id="rosterIndividualSkillGrid" class="skill-grid"></div></div>
+          <div id="roster-behaviour" class="pedagogy-panel"><div id="rosterBehaviourGrid" class="skill-grid"></div></div>
           <div id="roster-feedback" class="pedagogy-panel">
             <label>Observation / feedback du coach</label>
-            <textarea id="rosterFeedbackInput" rows="4" placeholder="Ex. Il lève davantage la tête mais garde encore le ballon trop longtemps..."></textarea>
-            <button class="btn btn-primary" style="margin-top:10px" onclick="saveRosterFeedback()">Enregistrer</button>
+            <textarea id="rosterFeedbackInput" rows="4" placeholder="Observation du coach…"></textarea>
+            <button class="btn btn-primary" style="margin-top:10px" onclick="saveRosterFeedback()">Enregistrer le feedback</button>
             <div id="rosterFeedbackHistory" style="margin-top:12px"></div>
-            <div class="notice" style="margin-top:12px">Plus tard, l’IA pourra transformer ce feedback en message adapté à l’âge du joueur, toujours validé par le coach avant envoi.</div>
           </div>
-
           <div id="roster-objectives" class="pedagogy-panel">
-            <label>Nouvel objectif individuel</label>
-            <input id="rosterObjectiveInput" placeholder="Ex. finir main gauche avec confiance">
+            <label>Nouvel objectif individuel</label><input id="rosterObjectiveInput" placeholder="Ex. finir main gauche avec confiance">
             <button class="btn btn-primary" style="margin-top:10px" onclick="saveRosterObjective()">Ajouter</button>
             <div id="rosterObjectiveList" style="margin-top:12px"></div>
           </div>
-
-          <button class="btn btn-secondary" style="margin-top:14px" onclick="exportRosterPlayerSheet()">Exporter / imprimer la fiche joueur</button>
         </div>
 
-        <div class="card s12">
-          <div class="row">
-            <div>
-              <div class="eyebrow">Progression collective</div>
-              <h3 style="margin-top:4px">Fondamentaux collectifs de l’équipe</h3>
-            </div>
-            <span class="pill pill-blue">Équipe entière</span>
-          </div>
-          <p class="muted">Ces compétences ne sont pas attachées à un joueur : elles décrivent ce que l’équipe doit savoir faire ensemble et nourrissent les suggestions de séance.</p>
+        <div class="card s12 team-eval-card">
+          <div class="row"><div><div class="eyebrow">Équipe</div><h3 style="margin-top:4px">Évaluation et objectifs collectifs</h3></div><span class="pill pill-blue">Équipe entière</span></div>
+          <p class="muted">Les fondamentaux collectifs ne sont pas notés joueur par joueur : ils décrivent ce que l’équipe sait faire ensemble.</p>
           <div id="rosterCollectiveSkillGrid" class="skill-grid"></div>
+          <div class="grid" style="margin-top:14px">
+            <div class="s7"><h3>Objectifs collectifs actifs</h3><div id="rosterCollectiveObjectiveList"></div></div>
+            <div class="s5"><h3>Ajouter un objectif collectif</h3><input id="rosterCollectiveObjectiveInput" placeholder="Ex. occuper les 3 couloirs en jeu rapide"><button class="btn btn-navy" style="width:100%;margin-top:10px" onclick="saveRosterCollectiveObjective()">Ajouter</button><div class="collective-box" style="margin-top:12px" id="rosterCollectiveSummary"></div></div>
+          </div>
         </div>
 
-        <div class="card s7">
-          <h3>Objectifs collectifs actifs</h3>
-          <div id="rosterCollectiveObjectiveList"></div>
-        </div>
-
-        <div class="card s5">
-          <h3>Ajouter un objectif collectif</h3>
-          <input id="rosterCollectiveObjectiveInput" placeholder="Ex. occuper les 3 couloirs en jeu rapide">
-          <button class="btn btn-navy" style="width:100%;margin-top:10px" onclick="saveRosterCollectiveObjective()">Ajouter</button>
-          <div class="collective-box" style="margin-top:12px" id="rosterCollectiveSummary"></div>
-        </div>
+        <details class="card s12"><summary style="cursor:pointer;font-weight:850">Créer un joueur</summary><div class="grid" style="margin-top:12px"><div class="s4"><label>Nom</label><input id="newPlayerLast"></div><div class="s4"><label>Prénom</label><input id="newPlayerFirst"></div><div class="s4"><label>Date de naissance</label><input id="newPlayerBirth" type="date"></div><div class="s4"><label>Commune</label><input id="newPlayerTown"></div><div class="s4"><label>Mail responsable</label><input id="newPlayerEmail"></div><div class="s4" style="align-self:end"><button class="btn btn-primary" style="width:100%" onclick="coachAddPlayer()">Créer le profil</button></div></div></details>
       </div>
     </section>
-
 
     <section id="coachSessions" class="coach-panel">
       <div class="title">
@@ -682,13 +685,13 @@ input::placeholder,textarea::placeholder{color:#77879b}
               <div class="actions" style="margin-top:12px">
                 <button class="btn btn-primary" onclick="saveTrainingSession()">Enregistrer</button>
                 <button class="btn btn-green" onclick="publishTrainingSession()">Publier</button>
-                <button class="btn btn-light" onclick="exportTrainingSheet()">Exporter / imprimer</button>
+                <button class="btn btn-light" onclick="openTrainingShareMenu()">Partager</button>
               </div>
               <div id="trainingSaveState" class="small" style="margin-top:10px"></div>
               <div style="height:1px;background:var(--line);margin:16px 0"></div>
               <div class="row"><h3>Coach IA · simulation</h3><span class="pill pill-orange">Suggestions</span></div>
-              <div id="trainingAIBubble" class="ia-bubble">Le Coach IA peut proposer des activités à partir du thème, de la progression et de la bibliothèque du coach.</div>
-              <div class="actions" style="margin-top:12px"><button class="btn btn-navy" onclick="generateFakeTrainingAI()">Proposer des activités</button><button class="btn btn-light" onclick="applyFakeTrainingAI()">Ajouter la proposition</button></div>
+              <div id="trainingAIBubble" class="ia-bubble">Le Coach IA peut proposer une séance complète à partir du thème donné par le coach, des objectifs en cours, de la progression et des activités déjà présentes dans la bibliothèque.</div>
+              <div class="actions" style="margin-top:12px"><button class="btn btn-navy" onclick="generateFakeTrainingAI()">Proposer une séance complète</button><button class="btn btn-light" onclick="applyFakeTrainingAI()">Utiliser cette séance</button></div>
             </div>
 
             <div class="card s8">
@@ -696,14 +699,19 @@ input::placeholder,textarea::placeholder{color:#77879b}
                 <div><div class="eyebrow">Fiche séance en direct</div><h3 style="margin:4px 0 0" id="trainingLiveTitle">Séance</h3><div class="small" id="trainingLiveMeta"></div></div>
                 <div style="text-align:right"><div class="session-live-total" id="trainingLiveTotal">0 min</div><div class="small" id="trainingLiveCount">0 activité</div></div>
               </div>
-              <div class="actions" style="margin-top:12px"><button class="btn btn-primary" onclick="toggleConstructionLibrary()">+ Ajouter une activité</button></div>
+              <div class="warmup-zone" id="trainingWarmupZone">
+                <div class="row"><div><div class="eyebrow">Échauffement</div><strong>Prévu automatiquement dans la fiche séance</strong></div><label class="switch-line"><input id="trainingWarmupToggle" type="checkbox" checked onchange="toggleTrainingWarmup()"> Utiliser l’échauffement</label></div>
+                <div id="trainingWarmupActivities"></div>
+                <button class="btn btn-light" style="margin-top:8px" onclick="toggleConstructionLibrary(true,'warmup')">+ Ajouter une activité d’échauffement</button>
+              </div>
+              <div class="actions" style="margin-top:12px"><button class="btn btn-primary" onclick="toggleConstructionLibrary(true,'main')">+ Ajouter une activité</button></div>
 
               <div id="constructionLibraryDrawer" class="activity-library-drawer">
                 <div class="row"><div><div class="eyebrow">Bibliothèque</div><h3 style="margin:3px 0">Choisir une activité</h3></div><button class="btn btn-light" onclick="toggleConstructionLibrary(false)">Fermer</button></div>
                 <div class="filter-grid">
                   <input id="constructionActivitySearch" placeholder="Rechercher : défense, dribble…" oninput="renderConstructionLibrary()">
                   <select id="constructionActivityType" onchange="renderConstructionLibrary()"><option value="">Individuel + collectif</option><option>Individuelle</option><option>Collective</option></select>
-                  <select id="constructionActivityPhase" onchange="renderConstructionLibrary()"><option value="">Attaque + défense</option><option>Attaque</option><option>Défense</option><option>Mixte</option></select>
+                  <select id="constructionActivityPhase" onchange="renderConstructionLibrary()"><option value="">Toutes phases</option><option>Échauffement</option><option>Attaque</option><option>Défense</option><option>Mixte</option></select>
                   <select id="constructionActivityTheme" onchange="renderConstructionLibrary()"><option value="">Tous les fondamentaux</option></select>
                 </div>
                 <div id="constructionLibraryList" class="library-pick-list"></div>
@@ -728,14 +736,14 @@ input::placeholder,textarea::placeholder{color:#77879b}
                 <div class="activity-form-grid">
                   <div class="span2"><label>Nom</label><input id="activityNameInput" placeholder="Ex. 3 couloirs + finition"></div>
                   <div><label>Type</label><select id="activityTypeInput"><option>Collective</option><option>Individuelle</option></select></div>
-                  <div><label>Phase</label><select id="activityPhaseInput"><option>Attaque</option><option>Défense</option><option>Mixte</option></select></div>
+                  <div><label>Phase</label><select id="activityPhaseInput"><option>Échauffement</option><option>Attaque</option><option>Défense</option><option>Mixte</option></select></div>
                   <div class="span2"><label>Fondamental / thème</label><select id="activityThemeSelect"></select></div>
                   <div class="span2"><label>Objectif</label><input id="activityObjectiveInput" placeholder="Ce que l’activité fait progresser"></div>
                   <div class="span2"><label>Critère de réalisation</label><input id="activityRealisationInput" placeholder="Ce que le joueur doit faire"></div>
                   <div class="span2"><label>Critère de réussite</label><input id="activitySuccessInput" placeholder="Comment savoir si c’est réussi"></div>
                   <div><label>Temps estimé (min)</label><input id="activityDurationInput" type="number" min="1" value="10"></div>
                   <div><label>Nombre de joueurs</label><input id="activityPlayersInput" type="number" min="1" value="8"></div>
-                  <div class="span2"><label>Matériel</label><input id="activityEquipmentInput" placeholder="Ex. 6 ballons, 8 plots"></div>
+                  <div class="span2"><label>Matériel</label><div class="equipment-picker"><select id="activityEquipmentSelect"></select><button type="button" class="btn btn-light" onclick="addEquipmentToDraft()">Ajouter</button></div><div id="activityEquipmentTags" class="equipment-tags"></div><div class="equipment-picker" style="margin-top:7px"><input id="activityNewEquipmentInput" placeholder="Nouveau matériel…"><button type="button" class="btn btn-light" onclick="addNewEquipmentOption()">+ au menu</button></div></div>
                   <div><label>Intensité</label><select id="activityIntensityInput"><option>Faible</option><option selected>Moyenne</option><option>Élevée</option></select></div>
                   <div><label>Tags complémentaires</label><input id="activityTagsInput" placeholder="lecture, transition…"></div>
                 </div>
@@ -744,10 +752,10 @@ input::placeholder,textarea::placeholder{color:#77879b}
               </div>
 
               <div class="card s7">
-                <div class="row"><div><div class="eyebrow">Schéma de l’activité</div><h3 style="margin-top:4px">Construire directement sur le terrain</h3></div><button class="btn btn-navy" onclick="generateAIDiagram()">IA : créer le schéma</button></div>
+                <div class="row"><div><div class="eyebrow">Schémas de l’activité</div><h3 style="margin-top:4px">2 schémas maximum</h3></div><div class="actions"><button class="btn btn-light" id="diagram1Tab" onclick="selectActivityDiagram(0)">Schéma 1</button><button class="btn btn-light" id="diagram2Tab" onclick="selectActivityDiagram(1)" style="display:none">Schéma 2</button><button class="btn btn-secondary" id="addSecondDiagramBtn" onclick="addSecondActivityDiagram()">+ Ajouter schéma 2</button><button class="btn btn-navy" onclick="generateAIDiagram()">IA : créer le schéma</button></div></div>
                 <div class="diagram-shell">
                   <div class="diagram-toolbar" id="diagramToolbar">
-                    <button class="diagram-tool active" data-tool="attacker" onclick="setDiagramTool('attacker')">① Attaquant</button>
+                    <button class="diagram-tool active" data-tool="attacker" onclick="setDiagramTool('attacker')">① Attaquant</button><button class="diagram-tool" onclick="duplicateLastDiagramPlayer()">⧉ Dupliquer joueur</button>
                     <button class="diagram-tool" data-tool="defender" onclick="setDiagramTool('defender')">△ Défenseur</button>
                     <button class="diagram-tool" data-tool="coach" onclick="setDiagramTool('coach')">E Éducateur</button>
                     <button class="diagram-tool" data-tool="ball" onclick="setDiagramTool('ball')">● Ballon</button>
@@ -758,8 +766,8 @@ input::placeholder,textarea::placeholder{color:#77879b}
                     <button class="diagram-tool" data-tool="delete" onclick="setDiagramTool('delete')">⌫ Supprimer</button>
                     <button class="diagram-tool" onclick="clearActivityDiagram()">Effacer tout</button>
                   </div>
-                  <svg id="activityDiagramCourt" class="diagram-court" viewBox="0 0 500 700" onclick="handleDiagramCourtClick(event)"></svg>
-                  <div class="diagram-legend">Course : trait + flèche · Dribble : ligne ondulée · Passe : pointillés · Les joueurs, ballons et plots se posent librement sur le terrain.</div>
+                  <svg id="activityDiagramCourt" class="diagram-court" viewBox="0 0 500 700" onclick="handleDiagramCourtClick(event)" onmousemove="previewDiagramPath(event)" onmouseleave="clearDiagramPreview()"></svg>
+                  <div class="diagram-legend">Course : trait + flèche · Dribble : ligne ondulée · Passe : pointillés · Les joueurs, ballons et plots se posent librement. Pour une flèche : premier clic = départ, second clic = arrivée. L’aperçu suit la souris entre les deux clics.</div>
                 </div>
                 <div id="activityDraftBubble" class="ia-bubble" style="margin-top:12px">Le Coach IA simulé peut remplir la fiche et proposer un premier schéma. Le coach garde la main et peut tout modifier.</div>
               </div>
@@ -771,10 +779,10 @@ input::placeholder,textarea::placeholder{color:#77879b}
             <div class="filter-grid">
               <input id="libraryActivitySearch" placeholder="Rechercher une activité" oninput="renderActivityLibrary()">
               <select id="libraryActivityType" onchange="renderActivityLibrary()"><option value="">Tous types</option><option>Individuelle</option><option>Collective</option></select>
-              <select id="libraryActivityPhase" onchange="renderActivityLibrary()"><option value="">Toutes phases</option><option>Attaque</option><option>Défense</option><option>Mixte</option></select>
+              <select id="libraryActivityPhase" onchange="renderActivityLibrary()"><option value="">Toutes phases</option><option>Échauffement</option><option>Attaque</option><option>Défense</option><option>Mixte</option></select>
               <select id="libraryActivityTheme" onchange="renderActivityLibrary()"><option value="">Tous fondamentaux</option></select>
             </div>
-            <div id="activityLibraryList"></div>
+            <div id="activityLibraryList"></div><div style="height:1px;background:var(--line);margin:18px 0"></div><div class="row"><div><div class="eyebrow">Bibliothèque des séances</div><h3 style="margin-top:4px">Séances sauvegardées</h3></div><span class="pill pill-blue" id="savedSessionLibraryCount">0 séance</span></div><p class="muted">Les fiches séance sauvegardées restent disponibles pour être copiées et recevoir un feedback après réalisation.</p><div id="savedSessionLibraryList"></div>
           </div>
 
           <div id="activityKnowledgePanel" class="activity-subpanel">
@@ -788,92 +796,23 @@ input::placeholder,textarea::placeholder{color:#77879b}
     </section>
 
     <section id="coachMatches" class="coach-panel">
-      <div class="title">
-        <div class="eyebrow">Mon match</div>
-        <h1 style="font-size:26px">Disponibilités → covoiturage → objectifs → plan de jeu</h1>
-        <p>À J-15, les joueurs/familles reçoivent automatiquement la demande de disponibilité.</p>
-      </div>
-
-      <div class="timeline">
-        <div class="step blue"><strong>1 · Disponibilités</strong><span class="small">réponses joueurs/familles</span></div>
-        <div class="step orange"><strong>2 · Covoiturage</strong><span class="small">besoins + places disponibles</span></div>
-        <div class="step red"><strong>3 · Objectifs</strong><span class="small">collectif + individuel</span></div>
-        <div class="step green"><strong>4 · Plan de jeu</strong><span class="small">staff uniquement</span></div>
-      </div>
-
-      <div class="grid">
-        <div class="card s5">
-          <div class="eyebrow">Prochain match</div>
-          <h3 id="matchTitle" style="margin-top:4px">ASSACS vs Gérardmer</h3>
-          <div class="small" id="matchDate">Samedi · 15h30</div>
-          <div class="small" id="matchLocation" style="margin-top:5px">Extérieur</div>
-          <div class="notice" style="margin-top:12px">Notification automatique prévue à <strong>J-15</strong>.</div>
-          <button class="btn btn-primary" style="width:100%;margin-top:12px" onclick="simulateMatchNotification()">Envoyer / relancer les disponibilités</button>
-        </div>
-
-        <div class="card s7">
-          <div class="row">
-            <div><h3>Disponibilités joueurs</h3><div class="small">Cette donnée nourrit l’assiduité match, distincte de l’assiduité entraînement.</div></div>
-            <span class="pill pill-blue" id="matchAvailabilitySummary">0 réponse</span>
-          </div>
-          <div id="matchAvailabilityList"></div>
-        </div>
-
-        <div class="card s6">
-          <h3>Covoiturage</h3>
-          <div class="kpis" style="grid-template-columns:repeat(3,1fr);margin-bottom:10px">
-            <div class="kpi"><strong id="carSeats">0</strong><span>places proposées</span></div>
-            <div class="kpi"><strong id="carNeeds">0</strong><span>joueurs à transporter</span></div>
-            <div class="kpi"><strong id="carDrivers">0</strong><span>voitures</span></div>
-          </div>
-          <div id="carpoolList"></div>
-        </div>
-
-        <div class="card s6">
-          <h3>Convocation</h3>
-          <p class="muted">Le coach garde la main sur la liste finale, même si le joueur s’est déclaré disponible.</p>
-          <div id="matchConvocationList"></div>
-        </div>
-
-        <div class="card s6">
-          <h3>Objectif collectif du match</h3>
-          <textarea id="matchCollectiveGoal" rows="3">Jouer vite vers l’avant et occuper les espaces après la passe.</textarea>
-          <button class="btn btn-navy" style="margin-top:10px" onclick="saveMatchGoal()">Enregistrer</button>
-          <div id="matchGoalState" class="small" style="margin-top:8px"></div>
-        </div>
-
-        <div class="card s6">
-          <h3>Objectifs individuels liés au match</h3>
-          <div id="matchIndividualGoals"></div>
-        </div>
-
-        <div class="card s12">
-          <div class="row">
-            <div><h3>Plan de jeu</h3><div class="small">Systèmes, rotations, match-ups et notes adversaire.</div></div>
-            <span class="private-badge">COACH / STAFF UNIQUEMENT</span>
-          </div>
-          <div class="grid" style="margin-top:10px">
-            <div class="card s4" style="box-shadow:none"><label>Système offensif</label><textarea id="matchOffense" rows="4" placeholder="Ex. triangle poste haut, passe-et-va..."></textarea></div>
-            <div class="card s4" style="box-shadow:none"><label>Plan défensif</label><textarea id="matchDefense" rows="4" placeholder="Ex. pression porteur, protection axe..."></textarea></div>
-            <div class="card s4" style="box-shadow:none"><label>Rotations / notes</label><textarea id="matchRotations" rows="4" placeholder="Ex. cinq de départ, rotations prévues..."></textarea></div>
-          </div>
-          <button class="btn btn-green" onclick="savePrivateGamePlan()">✓ Enregistrer le plan privé</button>
-          <div id="matchPlanState" class="small" style="margin-top:8px"></div>
-        </div>
-
-        <div class="card s6">
-          <h3>FFBB / résultat</h3>
-          <div id="coachMatchList"></div>
-        </div>
-
-        <div class="card s6">
-          <h3>e-Marque · à terme</h3>
-          <p class="muted">Le connecteur alimentera les statistiques individuelles du match et les comparera aux objectifs du joueur.</p>
-          <div class="info">Ces données pourront ensuite nourrir les feedbacks, la progression individuelle et les suggestions de séance suivantes.</div>
+      <div class="title"><div class="eyebrow">Match</div><h1 style="font-size:28px">Calendrier · Prochain match</h1><p>Le prochain match est déterminé automatiquement par le planning de l’équipe. Les disponibilités et besoins de covoiturage restent distincts des présences aux entraînements.</p></div>
+      <div class="training-tabs match-tabs"><button class="training-tab active" data-match-panel="matchCalendarPanel" onclick="setMatchPanel('matchCalendarPanel')">📅 Calendrier</button><button class="training-tab" data-match-panel="matchNextPanel" onclick="setMatchPanel('matchNextPanel')">🏆 Prochain match</button></div>
+      <div id="matchCalendarPanel" class="match-subpanel active"><div class="grid"><div class="card s8 match-calendar-white"><div class="calendar-toolbar"><div><div class="eyebrow">Planning équipe</div><h3 id="matchCalendarTitle" style="margin:4px 0 0">Calendrier matchs</h3></div><div class="actions"><button class="btn btn-light" onclick="changeMatchMonth(-1)">←</button><button class="btn btn-light" onclick="changeMatchMonth(1)">→</button></div></div><div id="matchCalendarGrid"></div></div><div class="card s4"><h3>Lecture rapide</h3><p class="muted">Survole un match pour voir les réponses et le covoiturage. Sur téléphone, touche le match.</p><div id="matchCalendarSummary" class="dark-inline"></div></div></div></div>
+      <div id="matchNextPanel" class="match-subpanel">
+        <div class="timeline"><div class="step blue"><strong>1 · Disponibilités</strong><span class="small">réponses joueurs/familles</span></div><div class="step orange"><strong>2 · Covoiturage</strong><span class="small">besoins + places disponibles</span></div><div class="step red"><strong>3 · Objectifs</strong><span class="small">collectif + individuel</span></div><div class="step green"><strong>4 · Plan de jeu</strong><span class="small">staff uniquement</span></div></div>
+        <div class="grid">
+          <div class="card s5"><div class="eyebrow">Prochain match · planning</div><h3 id="matchTitle" style="margin-top:4px">ASSACS vs Gérardmer</h3><div class="small" id="matchDate">Samedi · 15h30</div><div class="small" id="matchLocation" style="margin-top:5px">Extérieur</div><div class="notice" style="margin-top:12px">Notification automatique prévue à <strong>J-15</strong>.</div><button class="btn btn-primary" style="width:100%;margin-top:12px" onclick="simulateMatchNotification()">Envoyer / relancer les disponibilités</button></div>
+          <div class="card s7"><div class="row"><div><h3>Disponibilités joueurs</h3><div class="small">Présence match distincte de la présence entraînement.</div></div><span class="pill pill-blue" id="matchAvailabilitySummary">0 réponse</span></div><div id="matchAvailabilityList"></div></div>
+          <div class="card s6"><h3>Covoiturage</h3><div class="kpis" style="grid-template-columns:repeat(3,1fr);margin-bottom:10px"><div class="kpi"><strong id="carSeats">0</strong><span>places proposées</span></div><div class="kpi"><strong id="carNeeds">0</strong><span>joueurs à transporter</span></div><div class="kpi"><strong id="carDrivers">0</strong><span>voitures</span></div></div><div id="carpoolList"></div></div>
+          <div class="card s6"><h3>Convocation</h3><p class="muted">Le coach garde la main sur la liste finale.</p><div id="matchConvocationList"></div></div>
+          <div class="card s6"><h3>Objectif collectif du match</h3><textarea id="matchCollectiveGoal" rows="3">Jouer vite vers l’avant et occuper les espaces après la passe.</textarea><button class="btn btn-navy" style="margin-top:10px" onclick="saveMatchGoal()">Enregistrer</button><div id="matchGoalState" class="small" style="margin-top:8px"></div></div>
+          <div class="card s6"><h3>Objectifs individuels liés au match</h3><div id="matchIndividualGoals"></div></div>
+          <div class="card s12"><div class="row"><div><h3>Plan de jeu</h3><div class="small">Systèmes, rotations, match-ups et notes adversaire.</div></div><span class="private-badge">COACH / STAFF UNIQUEMENT</span></div><div class="grid" style="margin-top:10px"><div class="card s4" style="box-shadow:none"><label>Système offensif</label><textarea id="matchOffense" rows="4"></textarea></div><div class="card s4" style="box-shadow:none"><label>Plan défensif</label><textarea id="matchDefense" rows="4"></textarea></div><div class="card s4" style="box-shadow:none"><label>Rotations / notes</label><textarea id="matchRotations" rows="4"></textarea></div></div><button class="btn btn-green" onclick="savePrivateGamePlan()">✓ Enregistrer le plan privé</button><div id="matchPlanState" class="small" style="margin-top:8px"></div></div>
+          <div class="card s6"><h3>FFBB / résultat</h3><div id="coachMatchList"></div></div><div class="card s6"><h3>e-Marque · à terme</h3><p class="muted">Le connecteur alimentera les statistiques individuelles du match et les comparera aux objectifs du joueur.</p></div>
         </div>
       </div>
     </section>
-
 
     <section id="coachNotifications" class="coach-panel">
       <div class="title">
@@ -915,17 +854,17 @@ input::placeholder,textarea::placeholder{color:#77879b}
 <!-- PLAYER VIEW -->
 <section id="playerView" class="screen">
   <div class="topbar">
-    <div class="brand"><img class="club-brand-logo" src=""><div><strong>ASSACS BASKET</strong><small>Espace joueur · Démo Marcel</small></div></div>
+    <div class="brand"><img class="club-brand-logo" src=""><div><strong>ASSACS BASKET</strong><small id="playerTopDemoLabel">Espace joueur · 8 comptes U13 démo</small></div></div>
     <button class="ghost" onclick="logoutToLogin()">Déconnexion</button>
   </div>
 
   <main class="page">
     <div class="player-hero">
       <div class="row" style="justify-content:flex-start">
-        <div class="player-avatar">MD</div>
+        <div class="player-avatar" id="playerHeroAvatar">MD</div>
         <div>
-          <div class="small">U13 · ASSACS Basket</div>
-          <h1 style="margin:2px 0 4px">Marcel D.</h1>
+          <div class="small" id="playerHeroCategory">U13 · ASSACS Basket</div>
+          <h1 id="playerHeroName" style="margin:2px 0 4px">Marcel D.</h1>
           <div class="small">Ma saison · ma progression · mon accompagnement</div>
         </div>
       </div>
@@ -935,6 +874,7 @@ input::placeholder,textarea::placeholder{color:#77879b}
         <div class="small">Entraînement 91% · Matchs 86%</div>
       </div>
     </div>
+    <div class="card player-demo-switch"><div class="row"><div><div class="eyebrow">Comptes joueur démo</div><strong>U13 · 8 profils</strong></div><div style="min-width:240px"><select id="playerDemoAccountSelect" onchange="switchDemoPlayer()"></select></div></div></div>
 
     <div class="player-v26-nav">
       <button class="player-v26-btn active" data-player-v26-panel="playerV26Progress">📈 Mes progressions<span>Voir mon évolution et mes objectifs</span></button>
@@ -944,41 +884,20 @@ input::placeholder,textarea::placeholder{color:#77879b}
     </div>
 
     <section id="playerV26Progress" class="player-v26-panel active">
-      <div class="player-progress-hero">
-        <div class="card">
-          <div class="eyebrow">Mes progressions</div>
-          <h3 style="margin-top:4px">Ma saison en un coup d’œil</h3>
-          <div id="playerV26ProgressBars"></div>
-        </div>
-        <div class="card">
-          <div class="eyebrow">Objectif actuel</div>
-          <h3 style="margin-top:4px">Ce que je cherche maintenant</h3>
-          <div class="age-message" id="playerV26MainGoal">🎯 Lever la tête avant de changer de direction et trouver un partenaire après avoir fixé.</div>
-          <div style="height:1px;background:var(--line);margin:14px 0"></div>
-          <h3>Dernier retour du coach</h3>
-          <div class="feedback-box" id="playerV26Feedback">Tu progresses dans ta prise d’information. Cette semaine, cherche surtout à lever la tête plus tôt dans ton dribble.</div>
-        </div>
-      </div>
-
-      <div class="grid" style="margin-top:14px">
-        <div class="card s8">
-          <div class="row">
-            <div><div class="eyebrow">Fondamentaux individuels</div><h3 style="margin-top:4px">Mes compétences</h3></div>
-            <span class="pill pill-blue">Progression personnelle</span>
+      <div class="player-progress-visual-grid">
+        <div class="card player-figure-card">
+          <div class="row"><div><div class="eyebrow">Mon profil</div><h3 id="playerProgressVisualTitle" style="margin-top:4px">Ma progression U13</h3></div><span class="pill pill-green" id="playerProgressOverall">—</span></div>
+          <div class="basket-player-stage" id="basketPlayerStage">
+            <div class="skill-pin pin-pass" id="playerPinPass">Passe</div><div class="skill-pin pin-dribble" id="playerPinDribble">Dribble</div><div class="skill-pin pin-shoot" id="playerPinShoot">Tir</div><div class="skill-pin pin-def" id="playerPinDef">Défense</div>
+            <svg class="basket-player-figure" viewBox="0 0 280 390" aria-label="Basketteur de progression"><circle cx="140" cy="58" r="35" fill="#f1b48a"/><path d="M110 98 Q140 82 170 98 L185 215 Q140 242 95 215 Z" fill="#f2c300"/><path d="M110 112 L66 188" stroke="#f1b48a" stroke-width="22" stroke-linecap="round"/><path d="M170 112 L214 178" stroke="#f1b48a" stroke-width="22" stroke-linecap="round"/><path d="M116 214 L92 344" stroke="#d9e1ea" stroke-width="28" stroke-linecap="round"/><path d="M165 214 L190 344" stroke="#d9e1ea" stroke-width="28" stroke-linecap="round"/><circle cx="225" cy="185" r="30" fill="#e9812c" stroke="#111" stroke-width="4"/><path d="M199 185h52M225 157v56M205 164q20 20 40 42M245 164q-20 20-40 42" stroke="#111" stroke-width="3" fill="none"/><text x="140" y="165" text-anchor="middle" font-size="38" font-weight="900" fill="#121820">U13</text></svg>
           </div>
-          <div id="playerV26SkillGrid" class="skill-grid"></div>
+          <div class="age-message" id="playerV26MainGoal">🎯 Objectif</div><div class="feedback-box" id="playerV26Feedback" style="margin-top:10px">Feedback</div>
         </div>
-        <div class="card s4">
-          <h3>Mes objectifs actifs</h3>
-          <div id="playerV26Objectives"></div>
-          <button class="btn btn-secondary" style="width:100%;margin-top:12px" onclick="exportDemoPlayerSheet()">Exporter / imprimer ma fiche</button>
-        </div>
-        <div class="card s12">
-          <h3>Ce que l’équipe travaille ensemble</h3>
-          <p class="muted">Ici, ce n’est pas une note sur toi : c’est la progression collective de l’équipe.</p>
-          <div id="playerV26CollectiveGrid" class="skill-grid"></div>
-        </div>
+        <div class="card radar-card-light player-radar-card"><div class="eyebrow">Mes points clés</div><h3 style="margin-top:4px">Radar progression</h3><svg id="playerProgressRadar" class="radar-svg" viewBox="0 0 420 360"></svg><div id="playerProgressRadarLegend" class="small"></div></div>
       </div>
+      <div class="grid" style="margin-top:14px"><div class="card s7"><h3>Mes objectifs</h3><div id="playerV26Objectives"></div></div><div class="card s5"><h3>Savoir-être</h3><div id="playerBehaviourSummary"></div></div></div>
+      <details class="card" style="margin-top:14px"><summary style="cursor:pointer;font-weight:850">Voir le détail de mes fondamentaux individuels</summary><div id="playerV26SkillGrid" class="skill-grid" style="margin-top:12px"></div></details>
+      <div id="playerV26ProgressBars" style="display:none"></div><div id="playerV26CollectiveGrid" style="display:none"></div>
     </section>
 
     <section id="playerV26Calendar" class="player-v26-panel">
@@ -1071,6 +990,9 @@ input::placeholder,textarea::placeholder{color:#77879b}
     </section>
   </main>
 </section>
+
+
+<div id="trainingShareModal" class="modal-wrap"><div class="modal" style="max-width:620px"><div class="eyebrow">Fiche séance</div><h2 style="margin:5px 0 8px">Partager la séance</h2><p class="muted" id="trainingShareDateLabel"></p><div class="share-grid"><button class="btn btn-primary" onclick="shareTrainingByMail()">✉️ Via mail</button><button class="btn btn-light" onclick="downloadTrainingSheetFile()">📁 Enregistrer dans Fichiers</button><button class="btn btn-light" onclick="printTrainingSheet()">🖨️ Imprimer</button><button class="btn btn-light" onclick="saveTrainingSheetToPhotos()">📷 Enregistrer dans Photos</button></div><div id="trainingShareState" class="small" style="margin-top:12px"></div><button class="btn btn-secondary" style="margin-top:14px" onclick="closeTrainingShareMenu()">Fermer</button></div></div>
 
 <!-- BACK OFFICE -->
 <section id="bo" class="screen">
@@ -1431,7 +1353,7 @@ function saveClubIdentity(){
 const teams = [
   {id:"u9", name:"U9", category:"U9", championship:"Départemental U9 · Poule A", participation:88, wins:6, rank:"2e", nextEvent:"Plateau à Remiremont", nextDate:"Sam. 12 sept. · 10h00", streak:"🔥 3", streakText:"3 victoires de suite", players:12, validated:true, season:"N"},
   {id:"u11", name:"U11", category:"U11", championship:"Départemental U11 · Poule B", participation:82, wins:5, rank:"4e", nextEvent:"ASSACS vs Épinal", nextDate:"Sam. 12 sept. · 14h00", streak:"💪 2", streakText:"2 matchs sans défaite", players:14, validated:true, season:"N"},
-  {id:"u13", name:"U13", category:"U13", championship:"Départemental U13 · D1", participation:91, wins:8, rank:"1er", nextEvent:"ASSACS vs Gérardmer", nextDate:"Sam. 19 sept. · 15h30", streak:"🔥 4", streakText:"4 victoires de suite", players:13, validated:true, season:"N"},
+  {id:"u13", name:"U13", category:"U13", championship:"Départemental U13 · D1", participation:91, wins:8, rank:"1er", nextEvent:"ASSACS vs Gérardmer", nextDate:"Sam. 19 sept. · 15h30", streak:"🔥 4", streakText:"4 victoires de suite", players:8, validated:true, season:"N"},
   {id:"u15", name:"U15", category:"U15", championship:"Régional U15 · Poule Vosges", participation:76, wins:4, rank:"6e", nextEvent:"Déplacement à Saint-Dié", nextDate:"Dim. 20 sept. · 13h30", streak:"⚡ 1", streakText:"Victoire au dernier match", players:12, validated:true, season:"N"},
   {id:"u18", name:"U18", category:"U18", championship:"Départemental U18 · D1", participation:71, wins:3, rank:"7e", nextEvent:"ASSACS vs Golbey", nextDate:"Sam. 26 sept. · 18h00", streak:"🎯", streakText:"Objectif : relancer une série", players:11, validated:true, season:"N"},
   {id:"senior", name:"Seniors", category:"Seniors", championship:"Pré-Régionale Masculine", participation:86, wins:9, rank:"3e", nextEvent:"ASSACS vs Mirecourt", nextDate:"Sam. 26 sept. · 20h30", streak:"🔥 3", streakText:"3 victoires de suite", players:15, validated:true, season:"N"}
@@ -1460,11 +1382,11 @@ const reenrollments = [
 const teamData = {};
 teams.forEach((t,idx)=>{
   const names = [
-    ["Léo","Noah","Tom"],["Ethan","Lucas","Sacha"],["Marcel","Matt","Noah"],
+    ["Léo","Noah","Tom"],["Ethan","Lucas","Sacha"],["Marcel","Matt","Noah","Lucas","Léo","Sacha","Hugo","Enzo"],
     ["Hugo","Nolan","Arthur"],["Maxime","Enzo","Jules"],["Paul","Antoine","Mathis"]
   ][idx];
   teamData[t.id] = {
-    players:names.map((n,j)=>({id:idx*100+j+1, first:n, last:"Démo", role:["Meneur","Arrière","Ailier"][j], level:55+j*8, presence:j<2?"present":null})),
+    players:names.map((n,j)=>({id:idx*100+j+1, first:n, last:"Démo", role:["Meneur","Arrière","Ailier","Ailier","Intérieur","Meneur","Arrière","Intérieur"][j%8], level:55+(j%5)*7, presence:j<2?"present":null})),
     sessions:[{id:1,theme:"Finition + jeu sans ballon",objective:"Décider plus vite et jouer dans les espaces.",intensity:"Moyenne",date:new Date().toLocaleDateString("fr-FR")}],
     goals:[{id:1,playerId:idx*100+1,text:"Prendre une décision plus vite",progress:50}],
     matches:[
@@ -1588,7 +1510,7 @@ const coachNotificationsV26 = [
   {id:2,type:"match",icon:"🚗",title:"Covoiturage",text:"1 joueur a besoin d’une place pour le prochain déplacement.",time:"Il y a 35 min",unread:true},
   {id:3,type:"progress",icon:"📈",title:"Progression à revoir",text:"2 joueurs n’ont pas reçu de feedback depuis plusieurs semaines.",time:"Aujourd’hui",unread:true},
   {id:4,type:"session",icon:"🧩",title:"Séance ouverte",text:"La séance de vendredi est ouverte mais pas encore préparée.",time:"Aujourd’hui",unread:false},
-  {id:5,type:"match",icon:"🏆",title:"Disponibilités",text:"10/13 joueurs ont répondu pour le prochain match.",time:"Hier",unread:false}
+  {id:5,type:"match",icon:"🏆",title:"Disponibilités",text:"6/8 joueurs ont répondu pour le prochain match.",time:"Hier",unread:false}
 ];
 
 let playerCalendarCursorV26 = new Date(new Date().getFullYear(), new Date().getMonth(), 1);
@@ -2396,5 +2318,251 @@ renderPlatformAdmin();
 renderBO();
 renderCoachNotificationsV26();
 </script>
+
+<script>
+/* ===== Stabilisation fonctionnelle — version GitHub courante ===== */
+
+// 8 comptes U13 démo
+const U13_DEMO_NAMES = ["Marcel","Matt","Noah","Lucas","Léo","Sacha","Hugo","Enzo"];
+let selectedDemoPlayerId = null;
+let rosterCompareIds = [];
+const savoirEtreReference = [
+  {id:"engagement",label:"Engagement"},{id:"ecoute",label:"Écoute"},{id:"cooperation",label:"Coopération"},{id:"autonomie",label:"Autonomie"},{id:"respect",label:"Respect des consignes"}
+];
+
+// Complète proprement les données de savoir-être.
+Object.keys(teamData).forEach(teamId=>{
+  const d=teamData[teamId];
+  d.players.forEach((p,idx)=>{
+    const ped=d.playerPedagogy[p.id];
+    if(ped && !ped.behaviour) ped.behaviour=Object.fromEntries(savoirEtreReference.map((r,i)=>[r.id,1+((idx+i+1)%4)]));
+  });
+});
+
+function selectedDemoPlayer(){
+  const d=teamData.u13;
+  if(!selectedDemoPlayerId || !d.players.some(p=>p.id===selectedDemoPlayerId)) selectedDemoPlayerId=d.players[0].id;
+  return d.players.find(p=>p.id===selectedDemoPlayerId);
+}
+function getDemoPlayer(){
+  const d=teamData.u13,p=selectedDemoPlayer();
+  return {team:teams.find(t=>t.id==='u13'),data:d,player:p,ped:d.playerPedagogy[p.id]};
+}
+function populateDemoPlayerAccounts(){
+  const sel=document.getElementById('playerDemoAccountSelect'); if(!sel)return;
+  const d=teamData.u13;
+  sel.innerHTML=d.players.map(p=>`<option value="${p.id}" ${p.id===selectedDemoPlayerId?'selected':''}>${safeText(p.first)} ${safeText(p.last)} · U13</option>`).join('');
+}
+function switchDemoPlayer(){
+  const sel=document.getElementById('playerDemoAccountSelect'); if(sel) selectedDemoPlayerId=Number(sel.value);
+  renderPlayerV26();
+}
+
+function averageSkillPercent(ped){const vals=individualReference.map(r=>ped.skills[r.id]||1);return Math.round(vals.reduce((a,b)=>a+b,0)/vals.length/4*100)}
+function averageBehaviourPercent(ped){const vals=savoirEtreReference.map(r=>ped.behaviour?.[r.id]||1);return Math.round(vals.reduce((a,b)=>a+b,0)/vals.length/4*100)}
+
+function radarSvgForPlayers(svgId, players, axes, valueFn){
+  const svg=document.getElementById(svgId); if(!svg)return;
+  const cx=210,cy=175,R=125,n=axes.length;
+  const pt=(i,r)=>{const a=-Math.PI/2+i*2*Math.PI/n;return [cx+Math.cos(a)*r,cy+Math.sin(a)*r]};
+  let out='<rect width="420" height="360" rx="16" fill="#fff"/>';
+  [0.25,0.5,0.75,1].forEach(fr=>{const ps=axes.map((_,i)=>pt(i,R*fr).join(',')).join(' ');out+=`<polygon points="${ps}" fill="none" stroke="#d8e0e8" stroke-width="1"/>`;});
+  axes.forEach((a,i)=>{const [x,y]=pt(i,R);out+=`<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="#d8e0e8"/><text x="${x}" y="${y}" fill="#263648" font-size="10" font-weight="700" text-anchor="middle" dy="${y<cy?-8:16}">${safeText(a.short||a.label)}</text>`;});
+  const colors=['#f59e0b','#2563eb','#10b981'];
+  players.slice(0,3).forEach((p,pi)=>{const vals=axes.map(a=>Math.max(0,Math.min(4,valueFn(p,a))));const ps=vals.map((v,i)=>pt(i,R*(v/4)).join(',')).join(' ');out+=`<polygon points="${ps}" fill="${colors[pi]}22" stroke="${colors[pi]}" stroke-width="3"/>`;vals.forEach((v,i)=>{const [x,y]=pt(i,R*(v/4));out+=`<circle cx="${x}" cy="${y}" r="4" fill="${colors[pi]}"/>`;});});
+  svg.innerHTML=out;
+}
+
+function renderRosterComparison(){
+  const d=teamData[selectedTeamId]; if(!d)return;
+  if(!rosterCompareIds.length && d.players.length) rosterCompareIds=[d.players[0].id];
+  rosterCompareIds=rosterCompareIds.filter(id=>d.players.some(p=>p.id===id)).slice(0,3);
+  const axes=[{id:'pass',short:'Passe'},{id:'dribble',short:'Dribble'},{id:'demarquage',short:'Démarqu.'},{id:'appuis',short:'Appuis'},{id:'shoot',short:'Tir'},{id:'def1c1',short:'Défense'}];
+  const ps=rosterCompareIds.map(id=>d.players.find(p=>p.id===id)).filter(Boolean);
+  radarSvgForPlayers('rosterCompareRadar',ps,axes,(p,a)=>d.playerPedagogy[p.id]?.skills[a.id]||1);
+  const colors=['#f59e0b','#2563eb','#10b981'];
+  const legend=document.getElementById('rosterCompareLegend'); if(legend)legend.innerHTML=ps.map((p,i)=>`<span class="radar-key"><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${colors[i]};margin-right:5px"></span>${safeText(p.first)}</span>`).join('');
+}
+function toggleRosterCompare(id,checked){
+  id=Number(id);
+  if(checked){if(!rosterCompareIds.includes(id)){if(rosterCompareIds.length>=3){alert('3 joueurs maximum pour la comparaison.');renderRosterPedagogy();return;}rosterCompareIds.push(id)}} else rosterCompareIds=rosterCompareIds.filter(x=>x!==id);
+  renderRosterPedagogy();
+}
+
+function renderRosterPedagogy(){
+  const d=teamData[selectedTeamId]; if(!d||!d.players.length)return;
+  if(!selectedRosterPlayerId||!d.players.some(p=>p.id===selectedRosterPlayerId))selectedRosterPlayerId=d.players[0].id;
+  const tbody=document.getElementById('rosterTableBody');
+  if(tbody)tbody.innerHTML=d.players.map((pl,i)=>{const ped=d.playerPedagogy[pl.id],rate=playerAttendanceRate(i),avg=averageSkillPercent(ped),beh=averageBehaviourPercent(ped),goal=ped.objectives?.[0]||'—';return `<tr class="${pl.id===selectedRosterPlayerId?'selected':''}" onclick="selectRosterPlayer(${pl.id})"><td onclick="event.stopPropagation()"><input class="compare-check" type="checkbox" ${rosterCompareIds.includes(pl.id)?'checked':''} onchange="toggleRosterCompare(${pl.id},this.checked)"></td><td><strong>${safeText(pl.first)} ${safeText(pl.last)}</strong><div class="small">${safeText(pl.role||'Joueur')}</div></td><td><span class="attendance-emoji">${attendanceEmoji(rate)}</span> ${rate}%</td><td><strong>${avg}%</strong><div class="progress"><span style="width:${avg}%"></span></div></td><td>${beh}%</td><td>${safeText(goal)}</td></tr>`}).join('');
+  const p=d.players.find(x=>x.id===selectedRosterPlayerId),pIndex=d.players.findIndex(x=>x.id===selectedRosterPlayerId),ped=d.playerPedagogy[p.id],rate=playerAttendanceRate(pIndex);
+  document.getElementById('rosterPlayerName').textContent=p.first+' '+p.last;document.getElementById('rosterPlayerCategory').textContent=teams.find(t=>t.id===selectedTeamId).category;document.getElementById('rosterPlayerAttendance').textContent=`${attendanceEmoji(rate)} ${rate}%`;
+  document.getElementById('rosterIndividualSkillGrid').innerHTML=individualReference.map(s=>{const level=ped.skills[s.id]||1;return `<div class="skill-card"><div class="row"><h4>${s.label}</h4><span class="pill ${levelPill(level)}">${levelLabel(level)}</span></div><div class="small">${s.detail}</div>${renderDots(level)}<div class="actions" style="margin-top:8px"><button class="btn btn-light" onclick="changeRosterSkill('${s.id}',-1)">−</button><button class="btn btn-light" onclick="changeRosterSkill('${s.id}',1)">+</button></div></div>`}).join('');
+  const bg=document.getElementById('rosterBehaviourGrid');if(bg)bg.innerHTML=savoirEtreReference.map(s=>{const level=ped.behaviour?.[s.id]||1;return `<div class="skill-card"><div class="row"><h4>${s.label}</h4><span class="pill ${levelPill(level)}">${levelLabel(level)}</span></div>${renderDots(level)}<div class="actions" style="margin-top:8px"><button class="btn btn-light" onclick="changeRosterBehaviour('${s.id}',-1)">−</button><button class="btn btn-light" onclick="changeRosterBehaviour('${s.id}',1)">+</button></div></div>`}).join('');
+  document.getElementById('rosterFeedbackHistory').innerHTML=ped.feedbacks.length?ped.feedbacks.map(f=>`<div class="feedback-box" style="margin-top:8px"><strong>${safeText(f.date)}</strong><div>${safeText(f.text)}</div></div>`).join(''):'<div class="muted">Aucun feedback enregistré.</div>';
+  document.getElementById('rosterObjectiveList').innerHTML=ped.objectives.length?ped.objectives.map((o,i)=>`<div class="list-item"><div class="row"><strong>🎯 ${safeText(o)}</strong><button class="btn btn-light" onclick="removeRosterObjective(${i})">Terminé</button></div></div>`).join(''):'<div class="muted">Aucun objectif actif.</div>';
+  document.getElementById('rosterCollectiveSkillGrid').innerHTML=collectiveReference.map(s=>{const level=d.collectiveSkills[s.id]||1;return `<div class="skill-card"><div class="row"><h4>${s.label}</h4><span class="pill ${levelPill(level)}">${levelLabel(level)}</span></div><div class="small">${s.detail}</div>${renderDots(level)}<div class="actions" style="margin-top:8px"><button class="btn btn-light" onclick="changeRosterCollectiveSkill('${s.id}',-1)">−</button><button class="btn btn-light" onclick="changeRosterCollectiveSkill('${s.id}',1)">+</button></div></div>`}).join('');
+  document.getElementById('rosterCollectiveObjectiveList').innerHTML=d.collectiveObjectives.map((o,i)=>`<div class="list-item"><div class="row"><strong>🏀 ${safeText(o)}</strong><button class="btn btn-light" onclick="removeRosterCollectiveObjective(${i})">Terminé</button></div></div>`).join('');
+  const weakest=[...collectiveReference].sort((a,b)=>(d.collectiveSkills[a.id]||1)-(d.collectiveSkills[b.id]||1)).slice(0,2);document.getElementById('rosterCollectiveSummary').innerHTML=`<strong>Priorités collectives actuelles</strong><br>${weakest[0].label} · ${weakest[1].label}`;
+  renderRosterComparison();
+}
+function selectRosterPlayer(id){selectedRosterPlayerId=Number(id);renderRosterPedagogy();document.getElementById('rosterIndividualDetail')?.scrollIntoView({behavior:'smooth',block:'start'})}
+function changeRosterBehaviour(id,delta){const ped=teamData[selectedTeamId].playerPedagogy[selectedRosterPlayerId];ped.behaviour[id]=Math.max(1,Math.min(4,(ped.behaviour[id]||1)+delta));queuePlayerEvaluationNotification(selectedRosterPlayerId,'Ton savoir-être a été mis à jour.');renderRosterPedagogy()}
+
+// Notifications par joueur. Une réponse traitée disparaît des notifications en cours.
+const playerNotificationsById={};
+function getPlayerNotificationsFor(id){
+  if(!playerNotificationsById[id]) playerNotificationsById[id]=[
+    {id:Date.now()+id,type:'feedback',icon:'🎯',title:'Feedback du coach',text:'Consulte ton dernier retour et ton objectif.',time:'Cette semaine',unread:false}
+  ];
+  return playerNotificationsById[id];
+}
+function queuePlayerEvaluationNotification(playerId,text){
+  const arr=getPlayerNotificationsFor(playerId);arr.unshift({id:Date.now()+Math.random(),type:'progress',icon:'📈',title:'Évaluation mise à jour',text,time:'À l’instant',unread:true});
+}
+function changeRosterSkill(id,delta){const ped=teamData[selectedTeamId].playerPedagogy[selectedRosterPlayerId];ped.skills[id]=Math.max(1,Math.min(4,(ped.skills[id]||1)+delta));queuePlayerEvaluationNotification(selectedRosterPlayerId,`Ton évaluation « ${individualReference.find(x=>x.id===id)?.label||id} » a été mise à jour.`);renderRosterPedagogy()}
+function saveRosterFeedback(){const v=document.getElementById('rosterFeedbackInput').value.trim();if(!v)return;teamData[selectedTeamId].playerPedagogy[selectedRosterPlayerId].feedbacks.unshift({date:new Date().toLocaleDateString('fr-FR'),text:v});queuePlayerEvaluationNotification(selectedRosterPlayerId,'Ton coach a ajouté un nouveau feedback.');document.getElementById('rosterFeedbackInput').value='';renderRosterPedagogy()}
+function saveRosterObjective(){const v=document.getElementById('rosterObjectiveInput').value.trim();if(!v)return;teamData[selectedTeamId].playerPedagogy[selectedRosterPlayerId].objectives.push(v);queuePlayerEvaluationNotification(selectedRosterPlayerId,'Ton coach a ajouté un nouvel objectif.');document.getElementById('rosterObjectiveInput').value='';renderRosterPedagogy()}
+
+// Player visual progression
+function renderPlayerProgressRadar(player,ped){
+  const axes=[{id:'pass',short:'Passe'},{id:'dribble',short:'Dribble'},{id:'shoot',short:'Tir'},{id:'layup',short:'Tir course'},{id:'def1c1',short:'Défense'},{id:'motor',short:'Motricité'}];
+  radarSvgForPlayers('playerProgressRadar',[player],axes,(_,a)=>ped.skills[a.id]||1);
+}
+function renderPlayerV26(){
+  const {data,player,ped}=getDemoPlayer();populateDemoPlayerAccounts();
+  document.getElementById('playerHeroName').textContent=`${player.first} ${player.last}`;document.getElementById('playerHeroAvatar').textContent=(player.first[0]+player.last[0]).toUpperCase();document.getElementById('playerHeroCategory').textContent='U13 · ASSACS Basket';
+  const overall=averageSkillPercent(ped);document.getElementById('playerProgressOverall').textContent=`${overall}%`;
+  const objectives=ped.objectives||[],feedback=(ped.feedbacks||[])[0]?.text||'Aucun feedback pour le moment.';document.getElementById('playerV26MainGoal').textContent='🎯 '+(objectives[0]||'Continuer à progresser régulièrement.');document.getElementById('playerV26Feedback').textContent=feedback;
+  document.getElementById('playerPinPass').textContent=`Passe · ${levelLabel(ped.skills.pass||1)}`;document.getElementById('playerPinDribble').textContent=`Dribble · ${levelLabel(ped.skills.dribble||1)}`;document.getElementById('playerPinShoot').textContent=`Tir · ${levelLabel(ped.skills.shoot||1)}`;document.getElementById('playerPinDef').textContent=`Défense · ${levelLabel(ped.skills.def1c1||1)}`;
+  renderPlayerProgressRadar(player,ped);
+  document.getElementById('playerV26Objectives').innerHTML=objectives.length?objectives.map(o=>`<div class="list-item">🎯 ${safeText(o)}</div>`).join(''):'<div class="muted">Aucun objectif actif.</div>';
+  document.getElementById('playerBehaviourSummary').innerHTML=savoirEtreReference.map(r=>{const l=ped.behaviour?.[r.id]||1;return `<div class="row" style="margin-top:8px"><span>${r.label}</span><span class="pill ${levelPill(l)}">${levelLabel(l)}</span></div>`}).join('');
+  document.getElementById('playerV26SkillGrid').innerHTML=individualReference.map(s=>{const level=ped.skills[s.id]||1;return `<div class="skill-card"><div class="row"><h4>${s.label}</h4><span class="pill ${levelPill(level)}">${levelLabel(level)}</span></div>${renderDots(level)}<div class="small" style="margin-top:7px">${s.detail}</div></div>`}).join('');
+  renderPlayerCalendarV26();renderPlayerNotificationsV26();renderPlayerCoachResourcesV26();
+}
+function renderPlayerNotificationsV26(){
+  const list=document.getElementById('playerNotificationList');if(!list)return;const {player}=getDemoPlayer();let notifications=[...getPlayerNotificationsFor(player.id)];const nextSession=getNextPublishedPlayerSession('u13');const sstate=sessionAttendance.u13?.[player.id]||'pending';const mstate=matchAvailability.u13?.[player.id]||'pending';
+  if(nextSession&&sstate==='pending')notifications.unshift({id:'session-current',type:'session',icon:'🏀',title:'Présence à confirmer',text:`${formatLongDateFr(nextSession.date)} · ${nextSession.time} · ${nextSession.theme||'Entraînement'}`,time:'À répondre',unread:true});
+  if(mstate==='pending')notifications.unshift({id:'match-current',type:'match',icon:'🏆',title:'Disponibilité match',text:'Indique si tu seras disponible pour le prochain match.',time:'À répondre',unread:true});
+  list.innerHTML=notifications.length?notifications.map(n=>`<div class="notification-item ${n.unread?'unread':''}" onclick="readPlayerNotification('${n.id}')"><div class="notification-row"><div class="notification-icon">${n.icon}</div><div style="flex:1"><div class="row"><strong>${safeText(n.title)}${n.unread?'<span class="notification-dot"></span>':''}</strong><span class="small">${safeText(n.time)}</span></div><div class="small" style="margin-top:5px">${safeText(n.text)}</div></div></div></div>`).join(''):'<div class="muted">Aucune notification en cours.</div>';
+  const unread=notifications.filter(n=>n.unread).length;const nav=document.getElementById('playerNotifNavText');if(nav)nav.textContent=unread?`${unread} nouvelle${unread>1?'s':''}`:'Tout est traité';const quickLabel=document.getElementById('playerNextSessionQuickLabel');if(quickLabel)quickLabel.textContent=nextSession?`${formatLongDateFr(nextSession.date)} · ${nextSession.time} · ${nextSession.theme||'Entraînement'}`:'Aucune séance publiée';
+}
+function readPlayerNotification(id){const {player}=getDemoPlayer();const n=getPlayerNotificationsFor(player.id).find(x=>String(x.id)===String(id));if(n)n.unread=false;renderPlayerNotificationsV26()}
+function markAllPlayerNotificationsRead(){const {player}=getDemoPlayer();getPlayerNotificationsFor(player.id).forEach(n=>n.unread=false);renderPlayerNotificationsV26()}
+function playerSessionResponse(v){const {player}=getDemoPlayer();sessionAttendance.u13[player.id]=v==='Présent'?'yes':'no';document.getElementById('playerSessionResponseState').textContent='Réponse enregistrée : '+v;renderPlayerNotificationsV26();renderSessionWorkspace()}
+function playerMatchResponse(v){const {player}=getDemoPlayer();matchAvailability.u13[player.id]=v==='Non disponible'?'no':'yes';document.getElementById('playerMatchResponseState').textContent='Réponse enregistrée : '+v;renderPlayerNotificationsV26();renderMatchWorkspace()}
+
+// Activités démo + date de création
+const DEMO_ACTIVITY_DATE='16/08/2026';
+activityLibraryV25=[
+{id:1001,name:'Dribble miroir',objective:'Contrôler le ballon sans fixer le regard dessus',realisation:'Reproduire les changements de direction du partenaire',success:'30 secondes sans perdre le ballon',durationMinutes:8,type:'Individuelle',phase:'Échauffement',theme:'Dribble',players:8,equipment:'Ballons',intensity:'Faible',tags:['U11','U13','dribble','échauffement'],source:'Coach',usage:2,createdAt:DEMO_ACTIVITY_DATE,diagrams:[[]]},
+{id:1002,name:'Passe et va / continuité',objective:'Passer puis se déplacer immédiatement',realisation:'Passe précise puis coupe vers un espace libre',success:'8 enchaînements sans perte de balle',durationMinutes:12,type:'Collective',phase:'Attaque',theme:'Passe-et-va / continuité',players:8,equipment:'Ballons, plots',intensity:'Moyenne',tags:['U11','U13','passe','démarquage'],source:'Coach',usage:9,createdAt:DEMO_ACTIVITY_DATE,diagrams:[[]]},
+{id:1003,name:'Finition main forte / main faible',objective:'Finir près du cercle des deux côtés',realisation:'Respecter les appuis et protéger le ballon',success:'6 réussites sur 10 de chaque côté',durationMinutes:10,type:'Individuelle',phase:'Attaque',theme:'Tir en course',players:8,equipment:'Ballons, plots',intensity:'Moyenne',tags:['U11','U13','finition'],source:'Coach',usage:5,createdAt:DEMO_ACTIVITY_DATE,diagrams:[[]]},
+{id:1004,name:'1c1 couloir',objective:'Créer un avantage et défendre l’accès au cercle',realisation:'Attaquant agressif, défenseur orienté',success:'Décision rapide en moins de 4 secondes',durationMinutes:12,type:'Individuelle',phase:'Mixte',theme:'Défense individuelle',players:8,equipment:'Ballons, plots',intensity:'Élevée',tags:['U13','U15','1c1'],source:'Coach',usage:6,createdAt:DEMO_ACTIVITY_DATE,diagrams:[[]]},
+{id:1005,name:'2c1 lecture du défenseur',objective:'Créer et exploiter un surnombre',realisation:'Le porteur fixe avant de passer',success:'Obtenir un tir ouvert',durationMinutes:15,type:'Collective',phase:'Attaque',theme:'Surnombre / 2c1',players:8,equipment:'Ballons, chasubles',intensity:'Élevée',tags:['U13','U15','2c1','jeu rapide'],source:'Coach',usage:6,createdAt:DEMO_ACTIVITY_DATE,diagrams:[[]]},
+{id:1006,name:'Fixation – passe',objective:'Fixer un défenseur puis libérer un partenaire',realisation:'Attaquer franchement le cercle avant la passe',success:'Passe réalisée après fixation réelle',durationMinutes:15,type:'Collective',phase:'Attaque',theme:'Fixation-passe',players:8,equipment:'Ballons, plots',intensity:'Moyenne',tags:['U13','U15','lecture'],source:'Coach',usage:3,createdAt:DEMO_ACTIVITY_DATE,diagrams:[[]]},
+{id:1007,name:'Close-out + 1c1 défensif',objective:'Contrôler le porteur après une sortie défensive',realisation:'Freiner avant le contact et protéger l’axe',success:'Empêcher l’accès direct au cercle',durationMinutes:12,type:'Individuelle',phase:'Défense',theme:'Défense individuelle',players:8,equipment:'Ballons, plots',intensity:'Élevée',tags:['U13','U15','U18','défense'],source:'Coach',usage:4,createdAt:DEMO_ACTIVITY_DATE,diagrams:[[]]},
+{id:1008,name:'Repli défensif 3c2 → 2c1',objective:'Se replacer derrière le niveau de la balle',realisation:'Sprint axe, communication et protection du cercle',success:'Stopper la première vague puis relancer',durationMinutes:15,type:'Collective',phase:'Défense',theme:'Repli défensif',players:8,equipment:'Ballons, chasubles',intensity:'Élevée',tags:['U13','U15','U18','repli','jeu rapide'],source:'Coach',usage:5,createdAt:DEMO_ACTIVITY_DATE,diagrams:[[]]}
+].map(normalizeActivity);
+// les démos constituent la base propre du prototype ; les activités créées ensuite persistent.
+try{const saved=JSON.parse(localStorage.getItem('basketActivityLibraryV4')||'null');if(Array.isArray(saved)&&saved.length)activityLibraryV25=saved.map(normalizeActivity)}catch(e){}
+function saveActivityLibrary(){try{localStorage.setItem('basketActivityLibraryV4',JSON.stringify(activityLibraryV25))}catch(e){}}
+
+// Matériel dynamique
+let equipmentCatalog=['Ballons','Plots','Chasubles','Cerceaux','Échelle de rythme'];
+let activityEquipmentDraft=[];
+function renderEquipmentPicker(){const sel=document.getElementById('activityEquipmentSelect');if(sel)sel.innerHTML=equipmentCatalog.map(x=>`<option>${safeText(x)}</option>`).join('');const tags=document.getElementById('activityEquipmentTags');if(tags)tags.innerHTML=activityEquipmentDraft.map((x,i)=>`<span class="equipment-tag">${safeText(x)}<button onclick="removeEquipmentFromDraft(${i})">×</button></span>`).join('')||'<span class="small">Aucun matériel sélectionné</span>'}
+function addEquipmentToDraft(){const v=document.getElementById('activityEquipmentSelect')?.value;if(v&&!activityEquipmentDraft.includes(v))activityEquipmentDraft.push(v);renderEquipmentPicker()}
+function addNewEquipmentOption(){const inp=document.getElementById('activityNewEquipmentInput'),v=inp?.value.trim();if(!v)return;if(!equipmentCatalog.includes(v))equipmentCatalog.push(v);if(!activityEquipmentDraft.includes(v))activityEquipmentDraft.push(v);inp.value='';renderEquipmentPicker()}
+function removeEquipmentFromDraft(i){activityEquipmentDraft.splice(i,1);renderEquipmentPicker()}
+
+// 2 schémas maximum
+let activityDiagramsDraft=[[]],activeDiagramIndex=0,diagramPreviewPoint=null;
+function normalizeActivity(a){
+  const tags=(a.tags||[]).map(x=>String(x));const low=tags.join(' ').toLowerCase();if(!a.type)a.type=low.includes('individ')?'Individuelle':'Collective';if(!a.phase)a.phase=low.includes('échauff')?'Échauffement':(low.includes('déf')||low.includes('repli')?'Défense':'Attaque');if(!a.theme){const found=activityThemesV3.find(t=>low.includes(t.toLowerCase().split(' / ')[0]));a.theme=found||tags[0]||'Jeu rapide / contre-attaque'}a.durationMinutes=Number(a.durationMinutes)||parseMinutes(a.duration);a.duration=`${a.durationMinutes} min`;a.players=Number(a.players)||8;a.equipment=a.equipment||'Ballons, plots';a.intensity=a.intensity||'Moyenne';if(!Array.isArray(a.diagrams))a.diagrams=[Array.isArray(a.diagram)?a.diagram:[]];a.diagrams=a.diagrams.slice(0,2).map(x=>Array.isArray(x)?x:[]);if(!a.diagrams.length)a.diagrams=[[]];a.diagram=a.diagrams[0];a.source=a.source||'Coach';a.usage=Number(a.usage)||0;a.createdAt=a.createdAt||new Date().toLocaleDateString('fr-FR');a.tags=[...new Set([a.type,a.phase,a.theme,teams.find(t=>t.id===selectedTeamId)?.category||'',...tags].filter(Boolean))];return a
+}
+function currentDiagramDraft(){if(!activityDiagramsDraft[activeDiagramIndex])activityDiagramsDraft[activeDiagramIndex]=[];return activityDiagramsDraft[activeDiagramIndex]}
+function syncLegacyDiagramDraft(){activityDiagramDraft=currentDiagramDraft()}
+function selectActivityDiagram(i){if(i>=activityDiagramsDraft.length)return;activeDiagramIndex=i;syncLegacyDiagramDraft();renderActivityDiagramEditor()}
+function addSecondActivityDiagram(){if(activityDiagramsDraft.length<2)activityDiagramsDraft.push([]);activeDiagramIndex=1;syncLegacyDiagramDraft();renderActivityDiagramEditor()}
+function renderDiagramTabs(){const b1=document.getElementById('diagram1Tab'),b2=document.getElementById('diagram2Tab'),add=document.getElementById('addSecondDiagramBtn');if(b1)b1.classList.toggle('btn-primary',activeDiagramIndex===0);if(b2){b2.style.display=activityDiagramsDraft.length>1?'inline-block':'none';b2.classList.toggle('btn-primary',activeDiagramIndex===1)}if(add)add.style.display=activityDiagramsDraft.length>1?'none':'inline-block'}
+function renderActivityDiagramEditor(){syncLegacyDiagramDraft();const svg=document.getElementById('activityDiagramCourt');if(!svg)return;const preview=diagramPendingPoint&&diagramPreviewPoint&&['run','dribble','pass'].includes(diagramTool)?pathSvg({type:diagramTool,x:diagramPendingPoint.x,y:diagramPendingPoint.y,x2:diagramPreviewPoint.x,y2:diagramPreviewPoint.y,i:-1}).replaceAll('url(#arrow)','url(#arrowEditor)').replace('stroke-width="3"','stroke-width="2" opacity=".45"'):'';svg.innerHTML=`<defs><marker id="arrowEditor" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#111"/></marker></defs>${baseCourtSvg()}${currentDiagramDraft().map((e,i)=>elementSvg({...e},i).replaceAll('url(#arrow)','url(#arrowEditor)')).join('')}${preview}`;renderDiagramTabs()}
+function handleDiagramCourtClick(ev){const arr=currentDiagramDraft(),indexed=ev.target.closest?.('[data-diagram-index]');if(diagramTool==='delete'&&indexed){arr.splice(Number(indexed.getAttribute('data-diagram-index')),1);renderActivityDiagramEditor();return}const p=diagramCoords(ev);if(['run','dribble','pass'].includes(diagramTool)){if(!diagramPendingPoint){diagramPendingPoint=p;diagramPreviewPoint=p;renderActivityDiagramEditor();return}arr.push({type:diagramTool,x:diagramPendingPoint.x,y:diagramPendingPoint.y,x2:p.x,y2:p.y});diagramPendingPoint=null;diagramPreviewPoint=null}else if(diagramTool!=='delete'){const label=diagramTool==='attacker'?String(arr.filter(x=>x.type==='attacker').length+1):'';arr.push({type:diagramTool,x:p.x,y:p.y,label})}renderActivityDiagramEditor()}
+function previewDiagramPath(ev){if(!diagramPendingPoint||!['run','dribble','pass'].includes(diagramTool))return;diagramPreviewPoint=diagramCoords(ev);renderActivityDiagramEditor()}
+function clearDiagramPreview(){diagramPreviewPoint=null;if(diagramPendingPoint)renderActivityDiagramEditor()}
+function clearActivityDiagram(){activityDiagramsDraft[activeDiagramIndex]=[];diagramPendingPoint=null;diagramPreviewPoint=null;syncLegacyDiagramDraft();renderActivityDiagramEditor()}
+function duplicateLastDiagramPlayer(){const arr=currentDiagramDraft();const last=[...arr].reverse().find(e=>['attacker','defender'].includes(e.type));if(!last)return alert('Pose d’abord un joueur ou un défenseur.');const copy={...last,x:Math.min(470,last.x+35),y:Math.min(670,last.y+25)};if(copy.type==='attacker')copy.label=String(arr.filter(x=>x.type==='attacker').length+1);arr.push(copy);renderActivityDiagramEditor()}
+function generateAIDiagram(){const phase=document.getElementById('activityPhaseInput')?.value||'Attaque';activityDiagramsDraft[activeDiagramIndex]=[{type:'attacker',x:135,y:610,label:'1'},{type:'attacker',x:215,y:610,label:'2'},{type:'attacker',x:295,y:610,label:'3'},{type:'ball',x:112,y:590},{type:'run',x:135,y:585,x2:170,y2:170},{type:'dribble',x:112,y:570,x2:245,y2:180},{type:'pass',x:215,y:580,x2:330,y2:260}];if(phase==='Défense'||phase==='Mixte')activityDiagramsDraft[activeDiagramIndex].push({type:'defender',x:250,y:260},{type:'defender',x:330,y:330});syncLegacyDiagramDraft();renderActivityDiagramEditor()}
+
+function createTrainingActivity(){const name=document.getElementById('activityNameInput').value.trim();if(!name)return alert('Ajoute un nom.');const type=document.getElementById('activityTypeInput').value,phase=document.getElementById('activityPhaseInput').value,theme=document.getElementById('activityThemeSelect').value,durationMinutes=Math.max(1,Number(document.getElementById('activityDurationInput').value)||10),tagsFree=document.getElementById('activityTagsInput').value.split(',').map(s=>s.trim()).filter(Boolean),old=editingActivityId?activityLibraryV25.find(a=>a.id===editingActivityId):null,obj={id:editingActivityId||Date.now(),name,type,phase,theme,objective:document.getElementById('activityObjectiveInput').value.trim(),realisation:document.getElementById('activityRealisationInput').value.trim(),success:document.getElementById('activitySuccessInput').value.trim(),durationMinutes,duration:`${durationMinutes} min`,players:Math.max(1,Number(document.getElementById('activityPlayersInput').value)||1),equipment:activityEquipmentDraft.join(', '),intensity:document.getElementById('activityIntensityInput').value,tags:[...new Set([type,phase,theme,teams.find(t=>t.id===selectedTeamId)?.category||'',...tagsFree].filter(Boolean))],diagrams:JSON.parse(JSON.stringify(activityDiagramsDraft.slice(0,2))),source:'Coach',usage:old?.usage||0,createdAt:old?.createdAt||new Date().toLocaleDateString('fr-FR')};obj.diagram=obj.diagrams[0]||[];if(editingActivityId){const idx=activityLibraryV25.findIndex(a=>a.id===editingActivityId);if(idx>=0)activityLibraryV25[idx]=normalizeActivity(obj)}else activityLibraryV25.unshift(normalizeActivity(obj));saveActivityLibrary();document.getElementById('activityCreateState').textContent=editingActivityId?'✓ Activité modifiée.':'✓ Activité enregistrée dans la bibliothèque.';editingActivityId=null;activityDiagramsDraft=[[]];activeDiagramIndex=0;activityEquipmentDraft=[];renderEquipmentPicker();renderActivityLibrary();renderConstructionLibrary();renderActivityDiagramEditor()}
+function editActivityFromLibrary(id){const a=activityLibraryV25.find(x=>x.id===Number(id));if(!a)return;normalizeActivity(a);editingActivityId=a.id;setActivityPanel('activityCreatePanel');document.getElementById('activityNameInput').value=a.name;document.getElementById('activityTypeInput').value=a.type;document.getElementById('activityPhaseInput').value=a.phase;populateThemeSelects();document.getElementById('activityThemeSelect').value=a.theme;document.getElementById('activityObjectiveInput').value=a.objective||'';document.getElementById('activityRealisationInput').value=a.realisation||'';document.getElementById('activitySuccessInput').value=a.success||'';document.getElementById('activityDurationInput').value=a.durationMinutes;document.getElementById('activityPlayersInput').value=a.players;document.getElementById('activityIntensityInput').value=a.intensity;document.getElementById('activityTagsInput').value=(a.tags||[]).filter(t=>![a.type,a.phase,a.theme,teams.find(t=>t.id===selectedTeamId)?.category].includes(t)).join(', ');activityEquipmentDraft=String(a.equipment||'').split(',').map(x=>x.trim()).filter(Boolean);activityEquipmentDraft.forEach(x=>{if(!equipmentCatalog.includes(x))equipmentCatalog.push(x)});activityDiagramsDraft=JSON.parse(JSON.stringify(a.diagrams||[a.diagram||[]])).slice(0,2);if(!activityDiagramsDraft.length)activityDiagramsDraft=[[]];activeDiagramIndex=0;syncLegacyDiagramDraft();renderEquipmentPicker();renderActivityDiagramEditor();document.getElementById('activityCreateState').textContent='Modification de l’activité existante.'}
+function renderActivityLibrary(){populateThemeSelects();const list=document.getElementById('activityLibraryList');if(!list)return;document.getElementById('activityLibraryCount').textContent=`${activityLibraryV25.length} activité${activityLibraryV25.length>1?'s':''}`;const filtered=activityLibraryV25.filter(a=>activityMatchesFilters(a,'library'));list.innerHTML=filtered.map(a=>{normalizeActivity(a);return `<div class="library-item"><div class="row"><div><strong>${safeText(a.name)}</strong><div class="small">${safeText(a.objective||'Sans objectif')}</div></div><span class="pill pill-blue">${safeText(a.source)}</span></div><div class="library-meta"><span class="pill pill-amber">${safeText(a.type)}</span><span class="pill pill-blue">${safeText(a.phase)}</span><span class="pill pill-green">${safeText(a.theme)}</span><span class="pill pill-blue">${a.durationMinutes} min</span><span class="pill pill-blue">👥 ${a.players}</span><span class="pill pill-green">utilisée ${a.usage||0} fois</span></div><div class="small" style="margin-top:8px">Matériel : ${safeText(a.equipment||'—')} · Créée le ${safeText(a.createdAt)}</div><div class="actions" style="margin-top:9px"><button class="btn btn-primary" onclick="addLibraryActivityDirect(${a.id})">Ajouter à la séance</button><button class="btn btn-light" onclick="editActivityFromLibrary(${a.id})">Modifier</button></div></div>`}).join('')||'<div class="muted">Aucune activité avec ces filtres.</div>';renderSavedSessionLibrary()}
+
+// Filtre robuste (accents et recherche partielle)
+function normalizeSearch(s){return String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim()}
+function activityMatchesFilters(a,prefix){normalizeActivity(a);const q=normalizeSearch(document.getElementById(prefix+'ActivitySearch')?.value||''),type=document.getElementById(prefix+'ActivityType')?.value||'',phase=document.getElementById(prefix+'ActivityPhase')?.value||'',theme=document.getElementById(prefix+'ActivityTheme')?.value||'';const hay=normalizeSearch([a.name,a.objective,a.realisation,a.success,a.type,a.phase,a.theme,a.equipment,...(a.tags||[])].join(' '));return(!q||hay.includes(q))&&(!type||normalizeSearch(a.type)===normalizeSearch(type))&&(!phase||normalizeSearch(a.phase)===normalizeSearch(phase))&&(!theme||normalizeSearch(a.theme)===normalizeSearch(theme))}
+
+// Échauffement + construction directe
+let constructionTarget='main';
+function toggleConstructionLibrary(force=null,target='main'){const d=document.getElementById('constructionLibraryDrawer');if(!d)return;constructionTarget=target||'main';if(force===false){d.classList.remove('open');return}d.classList.add('open');if(constructionTarget==='warmup'){const p=document.getElementById('constructionActivityPhase');if(p)p.value='Échauffement'}renderConstructionLibrary()}
+function toggleTrainingWarmup(){const s=getSelectedTrainingSession();if(!s)return;s.warmupEnabled=document.getElementById('trainingWarmupToggle').checked;saveTrainingSessionsStore();renderSessionWorkspace()}
+function sessionTotalMinutes(s){return sessionActivities(s).reduce((sum,a)=>sum+((a.isWarmup&&s.warmupEnabled===false)?0:(Number(a.durationMinutes)||parseMinutes(a.duration))),0)}
+function addActivityToCurrentSession(id){const s=getSelectedTrainingSession(),a=activityLibraryV25.find(x=>x.id===Number(id));if(!s||!a)return;const c=cloneActivity(a);c.isWarmup=constructionTarget==='warmup';sessionActivities(s).push(c);a.usage=(a.usage||0)+1;if(s.warmupEnabled===undefined)s.warmupEnabled=true;saveActivityLibrary();if(!s.published)s.status='prepared';saveTrainingSessionsStore();renderSessionWorkspace()}
+function renderTrainingEditor(){
+  const session=getSelectedTrainingSession(),titleEl=document.getElementById('trainingEditorTitle');if(!titleEl)return;renderTrainingSessionSelectors();populateThemeSelects();if(!session){titleEl.textContent='Sélectionne une séance';return}if(session.warmupEnabled===undefined)session.warmupEnabled=true;
+  titleEl.textContent=`${formatLongDateFr(session.date)} · ${session.time}`;const stateEl=document.getElementById('trainingEditorState');stateEl.textContent=sessionStatusLabel(session);stateEl.className=`session-state ${sessionStatusClass(session)}`;document.getElementById('trainingThemeInput').value=session.theme||'';document.getElementById('trainingObjectiveInput').value=session.objective||'';document.getElementById('trainingPlayerMessageInput').value=session.playerMessage||'';document.getElementById('trainingDurationInput').value=session.duration||'';document.getElementById('trainingIntensityInput').value=session.intensity||'Moyenne';document.getElementById('trainingLiveTitle').textContent=session.theme||'Séance à construire';document.getElementById('trainingLiveMeta').textContent=`${formatLongDateFr(session.date)} · ${session.time} · ${sessionStatusLabel(session)}`;document.getElementById('trainingLiveTotal').textContent=`${sessionTotalMinutes(session)} min`;const activeActs=sessionActivities(session).filter(a=>!(a.isWarmup&&session.warmupEnabled===false));document.getElementById('trainingLiveCount').textContent=`${activeActs.length} activité${activeActs.length>1?'s':''}`;const tog=document.getElementById('trainingWarmupToggle');if(tog)tog.checked=session.warmupEnabled!==false;document.getElementById('trainingWarmupZone')?.classList.toggle('disabled',session.warmupEnabled===false);
+  const warm=sessionActivities(session).map((a,i)=>({a,i})).filter(x=>x.a.isWarmup),main=sessionActivities(session).map((a,i)=>({a,i})).filter(x=>!x.a.isWarmup);const renderCard=({a,i},warmup=false)=>{normalizeActivity(a);const schemes=(a.diagrams||[a.diagram||[]]).slice(0,2);return `<article class="activity-live-card ${warmup?'activity-warmup-card':''}"><div class="row"><div><span class="eyebrow">${warmup?'Échauffement':'Activité '+(main.findIndex(x=>x.i===i)+1)}</span><h4>${safeText(a.name)}</h4></div><span class="pill pill-blue">${a.durationMinutes} min</span></div><div class="activity-live-grid"><div><div class="activity-live-meta"><span class="pill pill-amber">${safeText(a.type)}</span><span class="pill pill-blue">${safeText(a.phase)}</span><span class="pill pill-green">${safeText(a.theme)}</span><span class="pill pill-blue">👥 ${a.players}</span></div><div class="small"><strong>Objectif :</strong> ${safeText(a.objective||'—')}</div><div class="small" style="margin-top:5px"><strong>Réalisation :</strong> ${safeText(a.realisation||'—')}</div><div class="small" style="margin-top:5px"><strong>Réussite :</strong> ${safeText(a.success||'—')}</div><div class="small" style="margin-top:5px"><strong>Matériel :</strong> ${safeText(a.equipment||'—')} · <strong>Intensité :</strong> ${safeText(a.intensity)}</div><div class="actions" style="margin-top:10px"><button class="btn btn-light" onclick="moveTrainingActivity(${i},-1)">↑</button><button class="btn btn-light" onclick="moveTrainingActivity(${i},1)">↓</button><button class="btn btn-danger" onclick="removeTrainingActivity(${i})">Retirer</button></div></div><div class="diagram-preview-pair">${schemes.map(d=>buildDiagramSvg(d,'diagram-preview')).join('')}</div></div></article>`};document.getElementById('trainingWarmupActivities').innerHTML=warm.length?warm.map(x=>renderCard(x,true)).join(''):'<div class="small" style="margin-top:8px">Aucune activité d’échauffement ajoutée.</div>';document.getElementById('trainingSessionActivities').innerHTML=main.length?main.map(x=>renderCard(x,false)).join(''):'<div class="dark-inline" style="margin-top:12px">Aucune activité principale. Clique sur <strong>Ajouter une activité</strong> : la fiche se construit ici en direct.</div>';
+}
+
+// Séance IA complète à partir des objectifs + bibliothèque
+function generateFakeTrainingAI(){const session=getSelectedTrainingSession();if(!session)return alert('Sélectionne une séance.');const theme=normalizeSearch(document.getElementById('trainingThemeInput').value.trim()||session.theme||'jeu rapide'),weak=getWeaknessSummary(selectedTeamId),searchWords=normalizeSearch([theme,...weak.weakestIndividual,...weak.weakestCollective].join(' ')).split(/\s+/).filter(x=>x.length>3);const ranked=activityLibraryV25.map(a=>({a,score:searchWords.reduce((s,w)=>s+(normalizeSearch([a.name,a.theme,a.objective,...a.tags].join(' ')).includes(w)?1:0),0)})).sort((x,y)=>y.score-x.score||x.a.durationMinutes-y.a.durationMinutes);const warm=activityLibraryV25.find(a=>a.phase==='Échauffement');const picks=[];if(warm)picks.push(warm);ranked.map(x=>x.a).filter(a=>a.id!==warm?.id).slice(0,4).forEach(a=>picks.push(a));lastAISessionProposal=picks.map(a=>a.id);document.getElementById('trainingAIBubble').innerHTML=`<strong>Coach IA simulé · proposition de séance complète</strong><br>Thème coach : <strong>${safeText(document.getElementById('trainingThemeInput').value.trim()||'à préciser')}</strong><br>Objectifs/besoins pris en compte : ${safeText([...weak.weakestIndividual,...weak.weakestCollective].join(' · '))}.<br><br>${picks.map((a,i)=>`${i===0&&a.phase==='Échauffement'?'Échauffement':i+'.'} ${safeText(a.name)} · ${a.durationMinutes} min`).join('<br>')}<br><br><strong>Total proposé : ${picks.reduce((s,a)=>s+a.durationMinutes,0)} min</strong>`}
+function applyFakeTrainingAI(){const s=getSelectedTrainingSession();if(!s)return alert('Sélectionne une séance.');if(!lastAISessionProposal.length)return alert('Génère d’abord une proposition.');s.blocks=[];lastAISessionProposal.forEach((id,i)=>{const a=activityLibraryV25.find(x=>x.id===id);if(a){const c=cloneActivity(a);c.isWarmup=i===0&&a.phase==='Échauffement';s.blocks.push(c);a.usage=(a.usage||0)+1}});s.warmupEnabled=true;s.status='prepared';saveActivityLibrary();saveTrainingSessionsStore();renderSessionWorkspace()}
+
+// Bibliothèque de séances + feedback
+const savedSessionLibrary=(()=>{try{return JSON.parse(localStorage.getItem('basketSavedSessionsV1')||'[]')}catch(e){return[]}})();
+function saveSavedSessionLibrary(){try{localStorage.setItem('basketSavedSessionsV1',JSON.stringify(savedSessionLibrary))}catch(e){}}
+function snapshotSession(s){return JSON.parse(JSON.stringify({...s,teamId:selectedTeamId,savedAt:new Date().toLocaleDateString('fr-FR')}))}
+function askSaveSessionToLibrary(s){if(!s)return;if(confirm('Voulez-vous sauvegarder cette séance dans la bibliothèque ?')){const ix=savedSessionLibrary.findIndex(x=>x.id===s.id);const snap=snapshotSession(s);if(ix>=0)savedSessionLibrary[ix]=snap;else savedSessionLibrary.unshift(snap);saveSavedSessionLibrary();renderSavedSessionLibrary()}}
+function saveTrainingSession(){const session=getSelectedTrainingSession();if(!session)return alert('Sélectionne une séance.');session.theme=document.getElementById('trainingThemeInput').value.trim();session.objective=document.getElementById('trainingObjectiveInput').value.trim();session.playerMessage=document.getElementById('trainingPlayerMessageInput').value.trim();session.duration=document.getElementById('trainingDurationInput').value.trim()||'1h15';session.intensity=document.getElementById('trainingIntensityInput').value;if(!session.published)session.status=(session.theme||sessionActivities(session).length)?'prepared':'open';saveTrainingSessionsStore();syncTrainingSessionsToLegacy(selectedTeamId);renderSessionWorkspace();document.getElementById('trainingSaveState').textContent='✓ Séance enregistrée.';askSaveSessionToLibrary(session)}
+function publishTrainingSession(){const session=getSelectedTrainingSession();if(!session)return alert('Sélectionne une séance.');session.theme=document.getElementById('trainingThemeInput').value.trim();session.objective=document.getElementById('trainingObjectiveInput').value.trim();session.playerMessage=document.getElementById('trainingPlayerMessageInput').value.trim();session.duration=document.getElementById('trainingDurationInput').value.trim()||'1h15';session.intensity=document.getElementById('trainingIntensityInput').value;session.status='prepared';session.published=true;saveTrainingSessionsStore();syncTrainingSessionsToLegacy(selectedTeamId);renderSessionWorkspace();document.getElementById('trainingSaveState').textContent='✓ Séance publiée : elle est visible côté joueur.';askSaveSessionToLibrary(session)}
+function renderSavedSessionLibrary(){const list=document.getElementById('savedSessionLibraryList'),count=document.getElementById('savedSessionLibraryCount');if(!list)return;if(count)count.textContent=`${savedSessionLibrary.length} séance${savedSessionLibrary.length>1?'s':''}`;list.innerHTML=savedSessionLibrary.length?savedSessionLibrary.map((s,i)=>`<div class="library-item"><div class="row"><div><strong>${formatDateFr(s.date)} · ${safeText(s.theme||'Séance')}</strong><div class="small">${sessionActivities(s).length} activité(s) · ${sessionTotalMinutes(s)} min · sauvegardée le ${safeText(s.savedAt||'—')}</div></div><span class="session-state ${sessionStatusClass(s)}">${sessionStatusLabel(s)}</span></div><div class="small" style="margin-top:8px"><strong>Feedback :</strong> ${safeText(s.feedback||'Aucun retour enregistré')}</div><div class="actions" style="margin-top:8px"><button class="btn btn-light" onclick="copySavedSessionToCurrent(${i})">Copier dans la séance active</button><button class="btn btn-primary" onclick="addSavedSessionFeedback(${i})">Ajouter / modifier le feedback</button></div></div>`).join(''):'<div class="muted">Aucune séance sauvegardée.</div>'}
+function copySavedSessionToCurrent(i){const target=getSelectedTrainingSession(),src=savedSessionLibrary[i];if(!target||!src)return alert('Sélectionne d’abord une séance à construire.');target.theme=src.theme;target.objective=src.objective;target.playerMessage=src.playerMessage;target.duration=src.duration;target.intensity=src.intensity;target.blocks=sessionActivities(src).map(cloneActivity);target.warmupEnabled=src.warmupEnabled!==false;target.status='prepared';target.published=false;saveTrainingSessionsStore();setTrainingPanel('trainingSessionsPanel')}
+function addSavedSessionFeedback(i){const s=savedSessionLibrary[i],v=prompt('Feedback sur cette séance :',s.feedback||'');if(v===null)return;s.feedback=v.trim();saveSavedSessionLibrary();coachNotificationsV26.unshift({id:Date.now(),type:'session',icon:'📝',title:'Feedback séance',text:`Feedback enregistré pour la séance du ${formatDateFr(s.date)}.`,time:'À l’instant',unread:true});renderSavedSessionLibrary();renderCoachNotificationsV26()}
+
+// Calendrier entraînement blanc + présence au survol
+function trainingPresenceSummaryHtml(){const d=teamData[selectedTeamId],states=sessionAttendance[selectedTeamId]||{},yes=d.players.filter(p=>states[p.id]==='yes'),no=d.players.filter(p=>states[p.id]==='no'),pending=d.players.filter(p=>!states[p.id]||states[p.id]==='pending');return `<strong>${yes.length}/${d.players.length} présents</strong><br>${yes.length?safeText(yes.map(p=>p.first).join(', ')):'Aucun présent confirmé'}<br><span style="color:#aebdca">${no.length} absent(s) · ${pending.length} sans réponse</span>`}
+function renderTrainingCalendar(){const holder=document.getElementById('trainingCalendarGrid');if(!holder)return;const monthSessions=getSessionsForMonth(selectedTeamId,trainingMonthCursor),settings=ensureTeamTrainingSettings(selectedTeamId);const monthLabel=trainingMonthCursor.toLocaleDateString('fr-FR',{month:'long',year:'numeric'});document.getElementById('trainingCalendarTitle').textContent=monthLabel.charAt(0).toUpperCase()+monthLabel.slice(1);document.getElementById('trainingCalendarFeed').innerHTML=`<strong>Jours d’entraînement</strong><br>${settings.schedule.map(s=>`${s.label} · ${s.time}`).join('<br>')}<br><br><strong>Salle</strong><br>${settings.hall}<br><br><strong>Référentiel</strong><br>${settings.referential}`;document.getElementById('trainingCalendarOpenList').innerHTML=monthSessions.slice(0,8).map(s=>`<div class="session-rect" onclick="openTrainingSession(${s.id})"><div class="row"><strong>${formatLongDateFr(s.date)}</strong><span class="session-state ${sessionStatusClass(s)}">${sessionStatusLabel(s)}</span></div><div class="small">${s.time} · ${s.theme||'Thème à définir'}</div></div>`).join('')||'<div class="muted">Aucune séance ouverte.</div>';const firstWeekday=(new Date(trainingMonthCursor.getFullYear(),trainingMonthCursor.getMonth(),1).getDay()+6)%7,daysInMonth=new Date(trainingMonthCursor.getFullYear(),trainingMonthCursor.getMonth()+1,0).getDate(),prevDays=new Date(trainingMonthCursor.getFullYear(),trainingMonthCursor.getMonth(),0).getDate();const headers=['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'].map(h=>`<div class="calendar-head">${h}</div>`).join('');let cells='';for(let i=0;i<firstWeekday;i++)cells+=`<div class="calendar-cell off"><div class="calendar-daynum">${prevDays-firstWeekday+1+i}</div></div>`;const todayKey=new Date().toISOString().slice(0,10);for(let day=1;day<=daysInMonth;day++){const key=`${trainingMonthCursor.getFullYear()}-${String(trainingMonthCursor.getMonth()+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`,sessions=monthSessions.filter(s=>s.date===key),cls=key===todayKey?'calendar-cell today':'calendar-cell';cells+=`<div class="${cls}" onclick="selectCalendarDay('${key}')"><div class="calendar-daynum"><span>${day}</span><span class="small">${sessions.length?sessions.length+' séance'+(sessions.length>1?'s':''):''}</span></div>${sessions.map(s=>`<div class="session-hover-wrap" onclick="event.stopPropagation();openTrainingSession(${s.id})"><span class="calendar-chip ${s.published?'published':s.status==='prepared'?'prepared':'open'}">${s.time} · ${safeText(s.theme||'À construire')}</span><div class="session-hover-card">${trainingPresenceSummaryHtml()}</div></div>`).join('')}</div>`}const totalCells=firstWeekday+daysInMonth,remaining=(7-(totalCells%7))%7;for(let i=1;i<=remaining;i++)cells+=`<div class="calendar-cell off"><div class="calendar-daynum">${i}</div></div>`;holder.innerHTML=`<div class="calendar-grid">${headers}${cells}</div>`}
+
+// Match : calendrier + prochain match issu du planning démo
+const teamMatchSchedule={u13:[{date:'2026-09-07',label:'ASSACS 64 – 58 Adversaire',status:'joué'},{date:'2026-09-14',label:'ASSACS 71 – 66 Adversaire',status:'joué'},{date:'2026-09-19',label:'ASSACS vs Gérardmer',time:'15:30',status:'à venir'}]};
+let matchMonthCursor=new Date(2026,8,1),currentMatchPanel='matchCalendarPanel';
+function setMatchPanel(id){currentMatchPanel=id;document.querySelectorAll('[data-match-panel]').forEach(b=>b.classList.toggle('active',b.dataset.matchPanel===id));document.querySelectorAll('.match-subpanel').forEach(p=>p.classList.toggle('active',p.id===id));if(id==='matchCalendarPanel')renderMatchCalendar()}
+function changeMatchMonth(d){matchMonthCursor=new Date(matchMonthCursor.getFullYear(),matchMonthCursor.getMonth()+d,1);renderMatchCalendar()}
+function matchSummaryHtml(){const d=teamData[selectedTeamId],av=matchAvailability[selectedTeamId]||{},vals=d.players.map(p=>av[p.id]||'pending'),available=vals.filter(x=>['yes','drive','ride'].includes(x)).length,pending=vals.filter(x=>x==='pending').length,drivers=vals.filter(x=>x==='drive').length,needs=vals.filter(x=>x==='ride').length;return `<strong>${available}/${d.players.length} disponibles</strong><br>${pending} sans réponse · ${drivers} voiture(s) · ${needs} besoin(s) de place`}
+function renderMatchCalendar(){const holder=document.getElementById('matchCalendarGrid');if(!holder)return;const schedule=teamMatchSchedule[selectedTeamId]||[];const title=matchMonthCursor.toLocaleDateString('fr-FR',{month:'long',year:'numeric'});document.getElementById('matchCalendarTitle').textContent=title.charAt(0).toUpperCase()+title.slice(1);const first=(new Date(matchMonthCursor.getFullYear(),matchMonthCursor.getMonth(),1).getDay()+6)%7,days=new Date(matchMonthCursor.getFullYear(),matchMonthCursor.getMonth()+1,0).getDate(),prev=new Date(matchMonthCursor.getFullYear(),matchMonthCursor.getMonth(),0).getDate();let cells=['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'].map(x=>`<div class="calendar-head">${x}</div>`).join('');for(let i=0;i<first;i++)cells+=`<div class="match-calendar-cell off">${prev-first+1+i}</div>`;for(let day=1;day<=days;day++){const key=`${matchMonthCursor.getFullYear()}-${String(matchMonthCursor.getMonth()+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`,events=schedule.filter(m=>m.date===key);cells+=`<div class="match-calendar-cell"><div class="calendar-daynum">${day}</div>${events.map(m=>`<div class="match-chip" onclick="setMatchPanel('matchNextPanel')">🏆 ${safeText(m.label)}${m.time?' · '+m.time:''}<div class="session-hover-card">${matchSummaryHtml()}</div></div>`).join('')}</div>`}const rem=(7-((first+days)%7))%7;for(let i=1;i<=rem;i++)cells+=`<div class="match-calendar-cell off">${i}</div>`;holder.innerHTML=`<div class="calendar-grid">${cells}</div>`;document.getElementById('matchCalendarSummary').innerHTML=matchSummaryHtml()}
+function renderMatchWorkspace(){const d=teamData[selectedTeamId],t=teams.find(x=>x.id===selectedTeamId),av=matchAvailability[selectedTeamId],upcoming=(teamMatchSchedule[selectedTeamId]||[]).find(m=>m.status==='à venir');document.getElementById('matchTitle').textContent=upcoming?.label||t.nextEvent;document.getElementById('matchDate').textContent=upcoming?`${formatLongDateFr(upcoming.date)} · ${upcoming.time||''}`:t.nextDate;document.getElementById('matchLocation').textContent=(upcoming?.label||t.nextEvent).toLowerCase().includes('déplacement')?'Extérieur':'Lieu selon planning';document.getElementById('matchAvailabilityList').innerHTML=d.players.map(p=>{const s=av[p.id];return `<div class="list-item"><div class="row"><strong>${safeText(p.first)} ${safeText(p.last)}</strong><span class="pill ${s==='pending'?'pill-amber':s==='no'?'pill-red':'pill-green'}">${s==='drive'?'🚗 dispo + voiture':s==='ride'?'🙋 dispo + besoin':s==='yes'?'✅ disponible':s==='no'?'❌ indisponible':'… sans réponse'}</span></div></div>`}).join('');const vals=Object.values(av);document.getElementById('matchAvailabilitySummary').textContent=`${vals.filter(x=>x!=='pending').length}/${d.players.length} réponses`;const drivers=d.players.filter(p=>av[p.id]==='drive'),needs=d.players.filter(p=>av[p.id]==='ride');document.getElementById('carDrivers').textContent=drivers.length;document.getElementById('carNeeds').textContent=needs.length;document.getElementById('carSeats').textContent=drivers.length*3;document.getElementById('carpoolList').innerHTML=`<div class="small"><strong>Voitures :</strong> ${drivers.map(p=>p.first).join(', ')||'—'}<br><strong>Besoin de place :</strong> ${needs.map(p=>p.first).join(', ')||'—'}</div>`;document.getElementById('matchConvocationList').innerHTML=d.players.map(p=>`<label style="display:flex;gap:8px;align-items:center"><input style="width:auto" type="checkbox" ${['yes','drive','ride'].includes(av[p.id])?'checked':''}> ${safeText(p.first)} ${safeText(p.last)}</label>`).join('');document.getElementById('matchIndividualGoals').innerHTML=d.players.slice(0,3).map(p=>`<div class="list-item"><strong>${safeText(p.first)}</strong><div class="small">${safeText(d.playerPedagogy[p.id]?.objectives?.[0]||'Aucun objectif défini')}</div></div>`).join('');document.getElementById('coachMatchList').innerHTML=d.matches.map(m=>`<div class="list-item"><div class="row"><div><strong>${safeText(m.label)}</strong><div class="small">${safeText(m.date)}</div></div><span class="pill ${m.result==='Victoire'?'pill-green':'pill-red'}">${safeText(m.result)}</span></div></div>`).join('');renderMatchCalendar();setMatchPanel(currentMatchPanel)}
+
+// Partage de la fiche séance : la date de la séance construite est toujours portée par la fiche.
+function printableTrainingHtml(session){const t=teams.find(x=>x.id===selectedTeamId),acts=sessionActivities(session).filter(a=>!(a.isWarmup&&session.warmupEnabled===false)),logo=typeof DEFAULT_ASSACS_LOGO!=='undefined'?DEFAULT_ASSACS_LOGO:'';const rows=acts.map((a,i)=>{normalizeActivity(a);const ds=(a.diagrams||[a.diagram||[]]).slice(0,2);return `<section class="act"><div><h2>${a.isWarmup?'Échauffement':i+'.'} ${safeText(a.name)} <small>${a.durationMinutes} min</small></h2><div class="meta">${safeText(a.type)} · ${safeText(a.phase)} · ${safeText(a.theme)} · ${a.players} joueurs</div><p><b>Objectif :</b> ${safeText(a.objective||'—')}</p><p><b>Critère de réalisation :</b> ${safeText(a.realisation||'—')}</p><p><b>Critère de réussite :</b> ${safeText(a.success||'—')}</p><p><b>Matériel :</b> ${safeText(a.equipment||'—')}</p></div><div class="schema">${ds.map(d=>buildDiagramSvg(d,'')).join('')}</div></section>`}).join('');return `<!doctype html><html><head><meta charset="utf-8"><title>Fiche séance ${safeText(formatDateFr(session.date))}</title><style>@page{size:A4;margin:10mm}*{box-sizing:border-box}body{font-family:Arial,sans-serif;color:#111;margin:0}.head{display:flex;justify-content:space-between;border-bottom:3px solid #f0a000;padding-bottom:8px}.brand{display:flex;gap:10px;align-items:center}.brand img{width:56px;height:56px;object-fit:contain}.head h1{margin:0;font-size:21px}.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:9px 0}.box{border:1px solid #bbb;border-radius:7px;padding:6px;font-size:10px}.box b{display:block;font-size:12px}.act{display:grid;grid-template-columns:1fr 44mm;gap:5mm;border-top:1px solid #bbb;padding:7px 0;page-break-inside:avoid}.act h2{font-size:14px;margin:0 0 4px;color:#c87300}.act h2 small{float:right;color:#111}.act p{font-size:10px;margin:3px 0}.meta{font-size:9px;color:#555}.schema{display:grid;grid-template-columns:repeat(2,1fr);gap:2mm}.schema svg{width:21mm;height:31mm}</style></head><body><header class="head"><div class="brand">${logo?`<img src="${logo}">`:''}<div><h1>Fiche séance · ${safeText(t?.name||selectedTeamId)}</h1><div><strong>${formatLongDateFr(session.date)}</strong> · ${safeText(session.time)} · ${safeText(ensureTeamTrainingSettings(selectedTeamId).hall)}</div></div></div><div><b>${sessionTotalMinutes(session)} min</b><br>${safeText(sessionStatusLabel(session))}</div></header><div class="summary"><div class="box"><b>Thème</b>${safeText(session.theme||'—')}</div><div class="box"><b>Objectif</b>${safeText(session.objective||'—')}</div><div class="box"><b>Durée cible</b>${safeText(session.duration||'—')}</div><div class="box"><b>Intensité</b>${safeText(session.intensity||'—')}</div></div>${rows||'<p>Aucune activité.</p>'}</body></html>`}
+function openTrainingShareMenu(){const s=getSelectedTrainingSession();if(!s)return alert('Sélectionne une séance.');document.getElementById('trainingShareDateLabel').textContent=`Séance du ${formatLongDateFr(s.date)} · ${s.time}`;document.getElementById('trainingShareState').textContent='';document.getElementById('trainingShareModal').classList.add('open')}
+function closeTrainingShareMenu(){document.getElementById('trainingShareModal').classList.remove('open')}
+function printTrainingSheet(){const s=getSelectedTrainingSession();if(!s)return;const w=window.open('','_blank');if(!w)return alert('Autorise les fenêtres pour imprimer.');w.document.write(printableTrainingHtml(s)+`<script>window.onload=()=>window.print()<\/script>`);w.document.close()}
+function downloadTrainingSheetFile(){const s=getSelectedTrainingSession();if(!s)return;const blob=new Blob([printableTrainingHtml(s)],{type:'text/html'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`fiche-seance-${s.date}.html`;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),5000);document.getElementById('trainingShareState').textContent='Fiche enregistrée dans les téléchargements / Fichiers.'}
+function shareTrainingByMail(){const s=getSelectedTrainingSession();if(!s)return;const subject=encodeURIComponent(`Fiche séance ${formatDateFr(s.date)} · ${teams.find(t=>t.id===selectedTeamId)?.name||''}`),body=encodeURIComponent(`Séance du ${formatLongDateFr(s.date)} à ${s.time}\nThème : ${s.theme||'—'}\nDurée : ${sessionTotalMinutes(s)} min\n\nLa fiche complète peut être imprimée ou enregistrée depuis l’application.`);location.href=`mailto:?subject=${subject}&body=${body}`}
+async function makeTrainingSheetPngBlob(){const s=getSelectedTrainingSession();if(!s)throw new Error('Aucune séance');const canvas=document.createElement('canvas');canvas.width=1400;canvas.height=1900;const c=canvas.getContext('2d');c.fillStyle='#fff';c.fillRect(0,0,canvas.width,canvas.height);c.fillStyle='#111';c.font='bold 44px Arial';c.fillText(`Fiche séance · ${teams.find(t=>t.id===selectedTeamId)?.name||''}`,70,85);c.font='bold 30px Arial';c.fillText(`${formatLongDateFr(s.date)} · ${s.time}`,70,135);c.font='24px Arial';c.fillText(`Thème : ${s.theme||'—'}`,70,190);c.fillText(`Durée : ${sessionTotalMinutes(s)} min`,70,230);let y=300;const acts=sessionActivities(s).filter(a=>!(a.isWarmup&&s.warmupEnabled===false));for(let i=0;i<acts.length&&y<1750;i++){const a=normalizeActivity(acts[i]);c.fillStyle='#f3f5f7';c.fillRect(60,y-35,1280,220);c.fillStyle='#b86500';c.font='bold 28px Arial';c.fillText(`${a.isWarmup?'Échauffement':i+'.'} ${a.name} · ${a.durationMinutes} min`,80,y);c.fillStyle='#111';c.font='20px Arial';wrapCanvasText(c,`Objectif : ${a.objective||'—'}`,80,y+40,850,26);wrapCanvasText(c,`Matériel : ${a.equipment||'—'} · ${a.players} joueurs`,80,y+105,850,26);y+=245}return await new Promise(resolve=>canvas.toBlob(resolve,'image/png',0.92))}
+function wrapCanvasText(ctx,text,x,y,maxWidth,lineHeight){const words=String(text).split(' ');let line='';for(const word of words){const test=line+word+' ';if(ctx.measureText(test).width>maxWidth&&line){ctx.fillText(line,x,y);line=word+' ';y+=lineHeight}else line=test}ctx.fillText(line,x,y);return y}
+async function saveTrainingSheetToPhotos(){try{const s=getSelectedTrainingSession(),blob=await makeTrainingSheetPngBlob(),file=new File([blob],`fiche-seance-${s.date}.png`,{type:'image/png'});if(navigator.canShare&&navigator.canShare({files:[file]})&&navigator.share){await navigator.share({files:[file],title:`Fiche séance ${formatDateFr(s.date)}`});document.getElementById('trainingShareState').textContent='Le partage du téléphone est ouvert : choisis Enregistrer l’image / Photos.'}else{const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=file.name;a.click();document.getElementById('trainingShareState').textContent='Image PNG créée. Sur téléphone, enregistre-la ensuite dans Photos.'}}catch(e){document.getElementById('trainingShareState').textContent='Partage Photos indisponible sur ce navigateur.'}}
+
+// Le calendrier joueur est blanc et lié aux séances publiées du coach.
+function renderPlayerCalendarV26(){const holder=document.getElementById('playerCalendarGrid');if(!holder)return;const sessions=getPublishedPlayerSessions('u13',playerCalendarCursorV26),t=teams.find(x=>x.id==='u13'),title=playerCalendarCursorV26.toLocaleDateString('fr-FR',{month:'long',year:'numeric'});document.getElementById('playerCalendarTitle').textContent=title.charAt(0).toUpperCase()+title.slice(1);const first=(new Date(playerCalendarCursorV26.getFullYear(),playerCalendarCursorV26.getMonth(),1).getDay()+6)%7,days=new Date(playerCalendarCursorV26.getFullYear(),playerCalendarCursorV26.getMonth()+1,0).getDate(),prev=new Date(playerCalendarCursorV26.getFullYear(),playerCalendarCursorV26.getMonth(),0).getDate(),headers=['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'].map(x=>`<div class="day-head">${x}</div>`).join('');let cells='';for(let i=0;i<first;i++)cells+=`<div class="day off"><div class="date">${prev-first+1+i}</div></div>`;const today=new Date().toISOString().slice(0,10);for(let day=1;day<=days;day++){const key=`${playerCalendarCursorV26.getFullYear()}-${String(playerCalendarCursorV26.getMonth()+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`,ss=sessions.filter(s=>s.date===key);cells+=`<div class="day ${key===today?'today':''}"><div class="date">${day}</div>${ss.map(s=>`<div class="player-event session">🏀 ${s.time} · ${safeText(s.theme||'Entraînement')}</div>`).join('')}</div>`}const rem=(7-((first+days)%7))%7;for(let i=1;i<=rem;i++)cells+=`<div class="day off"><div class="date">${i}</div></div>`;holder.innerHTML=`<div class="player-calendar">${headers}${cells}</div>`;const upcoming=[...sessions].filter(s=>s.date>=new Date().toISOString().slice(0,10)).slice(0,4);document.getElementById('playerUpcomingList').innerHTML=`${upcoming.length?upcoming.map(s=>`<div class="list-item"><strong>🏀 ${formatLongDateFr(s.date)}</strong><div class="small">${s.time} · ${safeText(s.theme||'Entraînement')}</div></div>`).join(''):'<div class="muted">Aucune séance publiée par le coach pour ce mois.</div>'}<div class="list-item"><strong>🏆 ${safeText(t.nextEvent)}</strong><div class="small">${safeText(t.nextDate)}</div></div>`}
+
+// Session workspace adds library/session/equipment renderers.
+const _renderSessionWorkspaceBase=renderSessionWorkspace;
+renderSessionWorkspace=function(){ensureTrainingSessionsForMonth(selectedTeamId,trainingMonthCursor);if(!selectedTrainingSessionId){const first=getSessionsForMonth(selectedTeamId,trainingMonthCursor)[0];if(first)selectedTrainingSessionId=first.id}renderTrainingCalendar();renderTrainingEditor();renderActivityLibrary();renderConstructionLibrary();renderKnowledgeBase();renderActivityDiagramEditor();renderEquipmentPicker();renderSavedSessionLibrary();document.querySelectorAll('.training-tab').forEach(btn=>btn.classList.toggle('active',btn.dataset.trainingPanel===currentTrainingPanel));document.querySelectorAll('.training-subpanel').forEach(panel=>panel.classList.toggle('active',panel.id===currentTrainingPanel));document.querySelectorAll('.activity-subtab').forEach(btn=>btn.classList.toggle('active',btn.dataset.activityPanel===currentActivityPanel));document.querySelectorAll('.activity-subpanel').forEach(panel=>panel.classList.toggle('active',panel.id===currentActivityPanel))};
+
+// Initialisation cohérente des 8 U13 dans les états démo.
+(function initU13DemoStates(){const d=teamData.u13;if(!d)return;teams.find(t=>t.id==='u13').players=d.players.length;document.getElementById('rosterDemoCount')&&(document.getElementById('rosterDemoCount').textContent=`${d.players.length} joueurs`);d.players.forEach((p,i)=>{sessionAttendance.u13[p.id]=i<3?'yes':i===3?'no':'pending';matchAvailability.u13[p.id]=['ride','drive','yes','pending','yes','pending','drive','ride'][i]||'pending'});selectedDemoPlayerId=d.players[0]?.id;rosterCompareIds=d.players.slice(0,2).map(p=>p.id);populateDemoPlayerAccounts();renderEquipmentPicker()})();
+</script>
+
 </body>
 </html>
