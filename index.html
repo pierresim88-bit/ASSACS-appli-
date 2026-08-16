@@ -373,6 +373,64 @@ input::placeholder,textarea::placeholder{color:#77879b}
 .notification-item strong{color:#f4f7fb}.notification-item .small{color:#aab7c5!important}
 @media(max-width:900px){.player-progress-visual-grid{grid-template-columns:1fr}.share-grid{grid-template-columns:1fr}.roster-table{min-width:950px}}
 
+
+/* ===== UX stabilisée · progression joueur + calendriers ===== */
+button,.btn,.coach-tab,.training-tab,.activity-subtab,.player-v26-btn,.nav-btn,.season-btn,.pedagogy-btn{transition:transform .08s ease,box-shadow .12s ease,filter .12s ease,border-color .12s ease}
+button:active,.btn:active,.coach-tab:active,.training-tab:active,.activity-subtab:active,.player-v26-btn:active,.nav-btn:active,.season-btn:active,.pedagogy-btn:active{transform:translateY(2px) scale(.985);filter:brightness(.96);box-shadow:inset 0 2px 5px rgba(0,0,0,.22)!important}
+
+/* Contraste : toutes les surfaces claires utilisent une encre foncée. */
+.step,.team-stat,.club-context-bar,.cosmos-card,.club-platform-card,.role-tile,.roster-table-card,.radar-card-light,.match-calendar-white,.player-calendar .day{color:#14202d!important}
+.step strong,.team-stat strong,.club-context-bar strong,.cosmos-card strong,.club-platform-card strong,.role-tile strong,.roster-table-card strong,.radar-card-light strong,.match-calendar-white strong,.player-calendar .day strong{color:#14202d!important}
+.step .small,.team-stat .small,.club-context-bar .small,.cosmos-card .small,.club-platform-card .small,.role-tile .small,.roster-table-card .small,.radar-card-light .small,.match-calendar-white .small,.player-calendar .day .small{color:#5a697b!important}
+th{color:#243346!important;background:#f3f6f9!important}
+.season-btn{background:#fff;color:#172536;border-color:#d7dfe7}.season-btn.active{background:linear-gradient(135deg,#f2c300,#ff9800)!important;color:#10161f!important}
+
+/* Menu joueur : l'onglet actif est visuellement relié à la page ouverte. */
+.player-v26-nav{overflow:visible;margin-bottom:24px}
+.player-v26-btn{position:relative;min-height:96px}
+.player-v26-btn.active{box-shadow:0 0 0 2px #ffd54d,0 10px 22px rgba(255,152,0,.18)!important;transform:translateY(-2px)}
+.player-v26-btn.active:after{content:"";position:absolute;left:50%;bottom:-13px;transform:translateX(-50%);border-left:13px solid transparent;border-right:13px solid transparent;border-top:13px solid #ff9800}
+.player-v26-panel.active{animation:panelIn .16s ease-out}
+@keyframes panelIn{from{opacity:.6;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+/* Calendrier mensuel : 7 colonnes toujours contenues dans la carte, sans défilement horizontal. */
+.player-calendar-wrap{overflow:visible!important;width:100%}
+.player-calendar{grid-template-columns:repeat(7,minmax(0,1fr))!important;min-width:0!important;width:100%;gap:6px!important}
+.player-calendar .day{min-width:0;min-height:clamp(72px,9vw,108px)!important;padding:6px!important;border-radius:11px!important;overflow:visible;position:relative}
+.player-calendar .day-head{min-width:0;text-align:center;padding:4px 0!important;font-size:10px!important}
+.player-calendar .date{font-size:13px}
+.player-event{font-size:9px!important;padding:5px!important;line-height:1.2;white-space:normal;overflow-wrap:anywhere;cursor:pointer;position:relative}
+.player-calendar .day.off{opacity:1!important;background:#f4f6f8!important;color:#9aa4af!important}
+.player-calendar .day.off .date{color:#9aa4af!important}
+.calendar-grid{grid-template-columns:repeat(7,minmax(0,1fr))!important;gap:6px!important}
+.calendar-cell{min-width:0;min-height:100px!important;padding:6px!important}
+@media(max-width:700px){.player-calendar{gap:3px!important}.player-calendar .day{min-height:68px!important;padding:4px!important}.player-event{font-size:8px!important;padding:4px 3px!important}.calendar-grid{gap:3px!important}.calendar-cell{min-height:76px!important;padding:4px!important}.calendar-chip{font-size:8px!important;padding:4px!important}.calendar-head{font-size:8px!important;letter-spacing:.04em!important}.player-v26-btn{min-height:82px}}
+
+.player-event-shell{position:relative}
+.player-session-info{display:none;position:absolute;z-index:80;left:50%;top:calc(100% + 6px);transform:translateX(-50%);width:min(260px,72vw);background:#101820;color:#f4f7fb;border:1px solid #3a4b5c;border-radius:12px;padding:10px;box-shadow:0 16px 32px rgba(0,0,0,.35);text-align:left}
+.player-event-shell:hover .player-session-info,.player-event-shell:focus-within .player-session-info,.player-event-shell.open .player-session-info{display:block}
+.player-session-info strong{color:#fff!important}.player-session-info .small{color:#b9c6d3!important}
+
+/* Progression joueur */
+.player-progress-subnav{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px}
+.player-progress-subbtn{border:1px solid #334455;background:#121b25;color:#eaf0f6;border-radius:999px;padding:9px 13px;font-weight:850}
+.player-progress-subbtn.active{background:#ffd54d;color:#10161f;border-color:#ffd54d}
+.player-progress-subpanel{display:none}.player-progress-subpanel.active{display:block}
+.player-figure-modern{filter:drop-shadow(0 18px 24px rgba(0,0,0,.32))}
+.body-skill-node{position:absolute;z-index:5;width:18px;height:18px;border-radius:50%;border:3px solid #fff;background:#ff9800;box-shadow:0 0 0 4px rgba(255,152,0,.24),0 5px 12px rgba(0,0,0,.35);padding:0}
+.body-skill-node:hover,.body-skill-node:focus{transform:scale(1.18);outline:none;background:#ffd54d}
+.node-head{left:50%;top:12%}.node-left-hand{left:26%;top:43%}.node-ball{right:17%;top:47%}.node-shoot{right:28%;top:31%}.node-torso{left:49%;top:47%}.node-feet{left:43%;bottom:9%}
+.body-skill-popover{position:absolute;z-index:6;left:5%;bottom:4%;width:min(300px,90%);background:#fff;color:#14202d;border-radius:13px;padding:10px 12px;box-shadow:0 14px 30px rgba(0,0,0,.28);border-left:4px solid #ff9800;pointer-events:none}
+.body-skill-popover strong{color:#14202d!important}.body-skill-popover .small{color:#526174!important}
+.radar-mode-switch{display:flex;gap:4px;background:#edf1f5;padding:4px;border-radius:999px}.radar-mode-btn{border:0;border-radius:999px;background:transparent;color:#34465a;padding:6px 9px;font-size:10px;font-weight:850}.radar-mode-btn.active{background:#14202d;color:#fff}.radar-help{margin-top:7px}
+.feedback-timeline{margin-top:12px}.feedback-timeline-item{border-left:3px solid #ff9800;padding:8px 10px;margin:10px 0;background:#121a24;border-radius:0 11px 11px 0}.feedback-timeline-item strong{color:#fff!important}
+.self-eval-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.self-eval-item{border:1px solid #314253;background:#101821;border-radius:12px;padding:10px}.self-eval-item label{margin:0 0 8px;color:#f4f7fb!important}.self-eval-control{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center}.self-eval-control input[type=range]{padding:0;background:transparent!important;border:0!important;box-shadow:none!important;accent-color:#ff9800}.self-eval-level{min-width:92px;text-align:center}
+@media(max-width:700px){.self-eval-grid{grid-template-columns:1fr}.radar-mode-switch{width:100%;justify-content:space-between}.radar-mode-btn{flex:1}}
+
+/* Suppression séance + feedback rapide */
+.session-chip-row{display:flex;align-items:center;gap:4px;margin-top:6px}.session-chip-row .calendar-chip{margin-top:0;min-width:0;flex:1}.session-delete-btn{flex:0 0 auto;width:24px;height:24px;border:0;border-radius:8px;background:#fff1f2;color:#9f1239;font-weight:900;padding:0;display:grid;place-items:center}
+.feedback-gauge{margin-top:10px;background:#111923;border:1px solid #2d3d4c;border-radius:12px;padding:10px}.feedback-gauge-head{display:flex;justify-content:space-between;gap:8px;align-items:center}.feedback-gauge input[type=range]{padding:0;background:transparent!important;border:0!important;box-shadow:none!important;accent-color:#ff9800}.feedback-gauge-label{color:#ffd54d;font-weight:900}
+
 </style>
 </head>
 <body>
@@ -884,20 +942,77 @@ input::placeholder,textarea::placeholder{color:#77879b}
     </div>
 
     <section id="playerV26Progress" class="player-v26-panel active">
-      <div class="player-progress-visual-grid">
-        <div class="card player-figure-card">
-          <div class="row"><div><div class="eyebrow">Mon profil</div><h3 id="playerProgressVisualTitle" style="margin-top:4px">Ma progression U13</h3></div><span class="pill pill-green" id="playerProgressOverall">—</span></div>
-          <div class="basket-player-stage" id="basketPlayerStage">
-            <div class="skill-pin pin-pass" id="playerPinPass">Passe</div><div class="skill-pin pin-dribble" id="playerPinDribble">Dribble</div><div class="skill-pin pin-shoot" id="playerPinShoot">Tir</div><div class="skill-pin pin-def" id="playerPinDef">Défense</div>
-            <svg class="basket-player-figure" viewBox="0 0 280 390" aria-label="Basketteur de progression"><circle cx="140" cy="58" r="35" fill="#f1b48a"/><path d="M110 98 Q140 82 170 98 L185 215 Q140 242 95 215 Z" fill="#f2c300"/><path d="M110 112 L66 188" stroke="#f1b48a" stroke-width="22" stroke-linecap="round"/><path d="M170 112 L214 178" stroke="#f1b48a" stroke-width="22" stroke-linecap="round"/><path d="M116 214 L92 344" stroke="#d9e1ea" stroke-width="28" stroke-linecap="round"/><path d="M165 214 L190 344" stroke="#d9e1ea" stroke-width="28" stroke-linecap="round"/><circle cx="225" cy="185" r="30" fill="#e9812c" stroke="#111" stroke-width="4"/><path d="M199 185h52M225 157v56M205 164q20 20 40 42M245 164q-20 20-40 42" stroke="#111" stroke-width="3" fill="none"/><text x="140" y="165" text-anchor="middle" font-size="38" font-weight="900" fill="#121820">U13</text></svg>
-          </div>
-          <div class="age-message" id="playerV26MainGoal">🎯 Objectif</div><div class="feedback-box" id="playerV26Feedback" style="margin-top:10px">Feedback</div>
-        </div>
-        <div class="card radar-card-light player-radar-card"><div class="eyebrow">Mes points clés</div><h3 style="margin-top:4px">Radar progression</h3><svg id="playerProgressRadar" class="radar-svg" viewBox="0 0 420 360"></svg><div id="playerProgressRadarLegend" class="small"></div></div>
+      <div class="player-progress-subnav" role="tablist" aria-label="Mes progressions">
+        <button class="player-progress-subbtn active" data-progress-panel="playerProgressOverview" onclick="setPlayerProgressSubpanel('playerProgressOverview',this)">Ma progression</button>
+        <button class="player-progress-subbtn" data-progress-panel="playerProgressFeedbackPanel" onclick="setPlayerProgressSubpanel('playerProgressFeedbackPanel',this)">Retours du coach</button>
+        <button class="player-progress-subbtn" data-progress-panel="playerProgressSelfEvalPanel" onclick="setPlayerProgressSubpanel('playerProgressSelfEvalPanel',this)">M’autoévaluer</button>
       </div>
-      <div class="grid" style="margin-top:14px"><div class="card s7"><h3>Mes objectifs</h3><div id="playerV26Objectives"></div></div><div class="card s5"><h3>Savoir-être</h3><div id="playerBehaviourSummary"></div></div></div>
-      <details class="card" style="margin-top:14px"><summary style="cursor:pointer;font-weight:850">Voir le détail de mes fondamentaux individuels</summary><div id="playerV26SkillGrid" class="skill-grid" style="margin-top:12px"></div></details>
-      <div id="playerV26ProgressBars" style="display:none"></div><div id="playerV26CollectiveGrid" style="display:none"></div>
+
+      <div id="playerProgressOverview" class="player-progress-subpanel active">
+        <div class="player-progress-visual-grid">
+          <div class="card player-figure-card">
+            <div class="row"><div><div class="eyebrow">Mon profil</div><h3 id="playerProgressVisualTitle" style="margin-top:4px">Ma progression U13</h3></div><span class="pill pill-green" id="playerProgressOverall">—</span></div>
+            <div class="basket-player-stage" id="basketPlayerStage">
+              <svg class="basket-player-figure player-figure-modern" viewBox="0 0 320 420" aria-label="Silhouette de progression basket">
+                <defs>
+                  <linearGradient id="jerseyGrad" x1="0" x2="1"><stop offset="0" stop-color="#f2c300"/><stop offset="1" stop-color="#ff9800"/></linearGradient>
+                  <linearGradient id="shortGrad" x1="0" x2="1"><stop offset="0" stop-color="#1a2430"/><stop offset="1" stop-color="#2c3d50"/></linearGradient>
+                </defs>
+                <circle cx="169" cy="59" r="31" fill="#d99b73" stroke="#f8c7a4" stroke-width="3"/>
+                <path d="M143 94 C119 105 106 132 109 169 L116 231 C135 245 179 247 199 231 L204 165 C205 130 195 105 173 94 Z" fill="url(#jerseyGrad)" stroke="#101820" stroke-width="4"/>
+                <path d="M118 225 L101 291 L139 301 L160 247 L184 303 L221 292 L198 226 Z" fill="url(#shortGrad)" stroke="#101820" stroke-width="4"/>
+                <path d="M121 119 C99 138 84 163 69 188" fill="none" stroke="#d99b73" stroke-width="20" stroke-linecap="round"/>
+                <path d="M194 116 C218 132 234 154 245 179" fill="none" stroke="#d99b73" stroke-width="20" stroke-linecap="round"/>
+                <path d="M121 294 L97 380" fill="none" stroke="#c9d1dc" stroke-width="25" stroke-linecap="round"/>
+                <path d="M202 294 L231 375" fill="none" stroke="#c9d1dc" stroke-width="25" stroke-linecap="round"/>
+                <path d="M78 382 L111 382" stroke="#111923" stroke-width="18" stroke-linecap="round"/>
+                <path d="M220 379 L251 379" stroke="#111923" stroke-width="18" stroke-linecap="round"/>
+                <circle cx="258" cy="190" r="34" fill="#e67e22" stroke="#101820" stroke-width="4"/>
+                <path d="M226 190h64M258 158v64M236 166q22 24 44 48M280 166q-22 24-44 48" stroke="#101820" stroke-width="3" fill="none"/>
+                <text x="157" y="179" text-anchor="middle" font-size="35" font-weight="950" fill="#101820">U13</text>
+              </svg>
+              <button class="body-skill-node node-head" aria-label="Démarquage" onmouseenter="showBodySkillPopup('demarquage',this)" onfocus="showBodySkillPopup('demarquage',this)" onclick="showBodySkillPopup('demarquage',this)"></button>
+              <button class="body-skill-node node-left-hand" aria-label="Passe" onmouseenter="showBodySkillPopup('pass',this)" onfocus="showBodySkillPopup('pass',this)" onclick="showBodySkillPopup('pass',this)"></button>
+              <button class="body-skill-node node-ball" aria-label="Dribble" onmouseenter="showBodySkillPopup('dribble',this)" onfocus="showBodySkillPopup('dribble',this)" onclick="showBodySkillPopup('dribble',this)"></button>
+              <button class="body-skill-node node-shoot" aria-label="Tir" onmouseenter="showBodySkillPopup('shoot',this)" onfocus="showBodySkillPopup('shoot',this)" onclick="showBodySkillPopup('shoot',this)"></button>
+              <button class="body-skill-node node-torso" aria-label="Défense individuelle" onmouseenter="showBodySkillPopup('def1c1',this)" onfocus="showBodySkillPopup('def1c1',this)" onclick="showBodySkillPopup('def1c1',this)"></button>
+              <button class="body-skill-node node-feet" aria-label="Appuis" onmouseenter="showBodySkillPopup('appuis',this)" onfocus="showBodySkillPopup('appuis',this)" onclick="showBodySkillPopup('appuis',this)"></button>
+              <div id="bodySkillPopover" class="body-skill-popover"><div class="small">Passe sur un point du joueur</div></div>
+            </div>
+            <div class="age-message" id="playerV26MainGoal">🎯 Objectif</div><div class="hidden" aria-hidden="true"><span id="playerPinPass"></span><span id="playerPinDribble"></span><span id="playerPinShoot"></span><span id="playerPinDef"></span></div>
+          </div>
+
+          <div class="card radar-card-light player-radar-card">
+            <div class="row"><div><div class="eyebrow">Mes points clés</div><h3 style="margin-top:4px">Radar progression</h3></div><div class="radar-mode-switch"><button class="radar-mode-btn active" data-radar-mode="self" onclick="setPlayerRadarMode('self',this)">Moi</button><button class="radar-mode-btn" data-radar-mode="team" onclick="setPlayerRadarMode('team',this)">Équipe</button><button class="radar-mode-btn" data-radar-mode="compare" onclick="setPlayerRadarMode('compare',this)">Comparer</button></div></div>
+            <svg id="playerProgressRadar" class="radar-svg" viewBox="0 0 420 360"></svg>
+            <div id="playerProgressRadarLegend" class="radar-legend"></div>
+            <div class="small radar-help">Le radar équipe correspond à la moyenne U13. Il ne s’agit pas d’un classement entre joueurs.</div>
+          </div>
+        </div>
+        <div class="grid" style="margin-top:14px"><div class="card s7"><h3>Mes objectifs</h3><div id="playerV26Objectives"></div></div><div class="card s5"><h3>Savoir-être</h3><div id="playerBehaviourSummary"></div></div></div>
+        <details class="card" style="margin-top:14px"><summary style="cursor:pointer;font-weight:850">Voir le détail de mes fondamentaux individuels</summary><div id="playerV26SkillGrid" class="skill-grid" style="margin-top:12px"></div></details>
+        <div id="playerV26ProgressBars" style="display:none"></div><div id="playerV26CollectiveGrid" style="display:none"></div>
+      </div>
+
+      <div id="playerProgressFeedbackPanel" class="player-progress-subpanel">
+        <div class="card">
+          <div class="eyebrow">Retours du coach</div><h3 style="margin-top:4px">Mes feedbacks</h3>
+          <p class="muted">Les retours du coach sont séparés de mes niveaux de progression.</p>
+          <div id="playerV26Feedback" class="feedback-box" style="margin-top:10px">Feedback</div>
+          <div id="playerCoachFeedbackTimeline" class="feedback-timeline"></div>
+        </div>
+      </div>
+
+      <div id="playerProgressSelfEvalPanel" class="player-progress-subpanel">
+        <div class="card">
+          <div class="row"><div><div class="eyebrow">Mon ressenti</div><h3 style="margin-top:4px">M’autoévaluer</h3></div><span id="playerSelfEvalStatus" class="pill pill-blue">Brouillon</span></div>
+          <p class="muted">Je m’évalue sur les mêmes fondamentaux individuels et les mêmes savoir-être que mon coach. Mon autoévaluation reste séparée de l’évaluation du coach.</p>
+          <h4>Fondamentaux individuels</h4><div id="playerSelfEvalSkills" class="self-eval-grid"></div>
+          <h4 style="margin-top:18px">Savoir-être</h4><div id="playerSelfEvalBehaviour" class="self-eval-grid"></div>
+          <div class="actions" style="margin-top:16px"><button class="btn btn-primary" onclick="submitPlayerSelfEvaluation()">Envoyer au coach</button><button class="btn btn-light" onclick="renderPlayerSelfEvaluation()">Réinitialiser l’affichage</button></div>
+          <div id="playerSelfEvalMessage" class="small" style="margin-top:10px"></div>
+        </div>
+      </div>
     </section>
 
     <section id="playerV26Calendar" class="player-v26-panel">
@@ -2562,6 +2677,136 @@ renderSessionWorkspace=function(){ensureTrainingSessionsForMonth(selectedTeamId,
 
 // Initialisation cohérente des 8 U13 dans les états démo.
 (function initU13DemoStates(){const d=teamData.u13;if(!d)return;teams.find(t=>t.id==='u13').players=d.players.length;document.getElementById('rosterDemoCount')&&(document.getElementById('rosterDemoCount').textContent=`${d.players.length} joueurs`);d.players.forEach((p,i)=>{sessionAttendance.u13[p.id]=i<3?'yes':i===3?'no':'pending';matchAvailability.u13[p.id]=['ride','drive','yes','pending','yes','pending','drive','ride'][i]||'pending'});selectedDemoPlayerId=d.players[0]?.id;rosterCompareIds=d.players.slice(0,2).map(p=>p.id);populateDemoPlayerAccounts();renderEquipmentPicker()})();
+</script>
+
+
+<script>
+/* ===== Correctifs UX demandés · 16/08/2026 ===== */
+
+// --- Sessions supprimables sans recréation automatique des créneaux supprimés ---
+let deletedTrainingSlots=[];
+try{deletedTrainingSlots=JSON.parse(localStorage.getItem('basketDeletedTrainingSlotsV1')||'[]')||[]}catch(e){deletedTrainingSlots=[]}
+function saveDeletedTrainingSlots(){try{localStorage.setItem('basketDeletedTrainingSlotsV1',JSON.stringify(deletedTrainingSlots))}catch(e){}}
+function deletedSlotKey(teamId,date,time){return `${teamId}|${date}|${time}`}
+ensureTrainingSessionsForMonth=function(teamId,dateRef){
+  const settings=ensureTeamTrainingSettings(teamId),list=getSessionsForTeam(teamId),year=dateRef.getFullYear(),month=dateRef.getMonth(),lastDay=new Date(year,month+1,0).getDate();let changed=false;
+  for(let day=1;day<=lastDay;day++){
+    const d=new Date(year,month,day),jsDay=d.getDay();
+    settings.schedule.forEach(slot=>{
+      if(jsDay!==slot.weekday)return;
+      const key=`${year}-${String(month+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`, tomb=deletedSlotKey(teamId,key,slot.time);
+      if(deletedTrainingSlots.includes(tomb))return;
+      if(!list.some(s=>s.date===key&&s.time===slot.time)){list.push({id:Date.now()+Math.floor(Math.random()*100000)+day,date:key,time:slot.time,theme:'',objective:'',playerMessage:'',duration:'1h15',intensity:'Moyenne',status:'open',blocks:[],source:'auto',published:false});changed=true}
+    })
+  }
+  list.sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time));if(changed)saveTrainingSessionsStore();
+};
+function deleteTrainingSession(id,event){
+  if(event){event.stopPropagation();event.preventDefault()}
+  const list=getSessionsForTeam(selectedTeamId),s=list.find(x=>x.id===Number(id));if(!s)return;
+  if(!confirm(`Supprimer la séance du ${formatDateFr(s.date)} à ${s.time} ?${s.published?' Elle disparaîtra aussi du calendrier joueur.':''}`))return;
+  if(s.source==='auto'){const key=deletedSlotKey(selectedTeamId,s.date,s.time);if(!deletedTrainingSlots.includes(key)){deletedTrainingSlots.push(key);saveDeletedTrainingSlots()}}
+  const idx=list.findIndex(x=>x.id===Number(id));if(idx>=0)list.splice(idx,1);if(selectedTrainingSessionId===Number(id))selectedTrainingSessionId=null;saveTrainingSessionsStore();renderSessionWorkspace();if(document.getElementById('playerView')?.classList.contains('active'))renderPlayerCalendarV26();
+}
+function trainingPresenceSummaryHtml(){
+  const d=teamData[selectedTeamId],state=sessionAttendance[selectedTeamId]||{},yes=d.players.filter(p=>state[p.id]==='yes'),no=d.players.filter(p=>state[p.id]==='no'),pending=d.players.filter(p=>!state[p.id]||state[p.id]==='pending');
+  return `<strong>${yes.length}/${d.players.length} présents</strong><div class="small" style="margin-top:5px">${yes.map(p=>safeText(p.first)).join(', ')||'Aucune réponse positive'}<br>${no.length} absent${no.length>1?'s':''} · ${pending.length} sans réponse</div>`
+}
+renderTrainingCalendar=function(){
+  const holder=document.getElementById('trainingCalendarGrid');if(!holder)return;const monthSessions=getSessionsForMonth(selectedTeamId,trainingMonthCursor),settings=ensureTeamTrainingSettings(selectedTeamId),monthLabel=trainingMonthCursor.toLocaleDateString('fr-FR',{month:'long',year:'numeric'});document.getElementById('trainingCalendarTitle').textContent=monthLabel.charAt(0).toUpperCase()+monthLabel.slice(1);document.getElementById('trainingCalendarFeed').innerHTML=`<strong>Jours d’entraînement</strong><br>${settings.schedule.map(s=>`${s.label} · ${s.time}`).join('<br>')}<br><br><strong>Salle</strong><br>${settings.hall}<br><br><strong>Référentiel</strong><br>${settings.referential}`;
+  document.getElementById('trainingCalendarOpenList').innerHTML=monthSessions.slice(0,8).map(s=>`<div class="session-rect" onclick="openTrainingSession(${s.id})"><div class="row"><strong>${formatLongDateFr(s.date)}</strong><div class="actions"><span class="session-state ${sessionStatusClass(s)}">${sessionStatusLabel(s)}</span><button class="session-delete-btn" title="Supprimer la séance" onclick="deleteTrainingSession(${s.id},event)">×</button></div></div><div class="small">${s.time} · ${safeText(s.theme||'Thème à définir')}</div></div>`).join('')||'<div class="muted">Aucune séance ouverte.</div>';
+  const first=(new Date(trainingMonthCursor.getFullYear(),trainingMonthCursor.getMonth(),1).getDay()+6)%7,days=new Date(trainingMonthCursor.getFullYear(),trainingMonthCursor.getMonth()+1,0).getDate(),prev=new Date(trainingMonthCursor.getFullYear(),trainingMonthCursor.getMonth(),0).getDate(),headers=['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'].map(h=>`<div class="calendar-head">${h}</div>`).join('');let cells='';
+  for(let i=0;i<first;i++)cells+=`<div class="calendar-cell off"><div class="calendar-daynum">${prev-first+1+i}</div></div>`;const today=new Date().toISOString().slice(0,10);
+  for(let day=1;day<=days;day++){
+    const key=`${trainingMonthCursor.getFullYear()}-${String(trainingMonthCursor.getMonth()+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`,sessions=monthSessions.filter(s=>s.date===key),cls=key===today?'calendar-cell today':'calendar-cell';
+    cells+=`<div class="${cls}" onclick="selectCalendarDay('${key}')"><div class="calendar-daynum"><span>${day}</span><span class="small">${sessions.length?sessions.length+' séance'+(sessions.length>1?'s':''):''}</span></div>${sessions.map(s=>`<div class="session-hover-wrap" onclick="event.stopPropagation();openTrainingSession(${s.id})"><div class="session-chip-row"><span class="calendar-chip ${s.published?'published':s.status==='prepared'?'prepared':'open'}">${s.time} · ${safeText(s.theme||'À construire')}</span><button class="session-delete-btn" title="Supprimer" onclick="deleteTrainingSession(${s.id},event)">×</button></div><div class="session-hover-card">${trainingPresenceSummaryHtml()}</div></div>`).join('')}</div>`
+  }
+  const rem=(7-((first+days)%7))%7;for(let i=1;i<=rem;i++)cells+=`<div class="calendar-cell off"><div class="calendar-daynum">${i}</div></div>`;holder.innerHTML=`<div class="calendar-grid">${headers}${cells}</div>`
+};
+
+// --- Sélecteur d'activités : fermé tant que le coach ne demande pas à ajouter une activité ---
+toggleConstructionLibrary=function(force=null,target='main'){
+  const d=document.getElementById('constructionLibraryDrawer');if(!d)return;constructionTarget=target||'main';
+  if(force===false){d.classList.remove('open');return}
+  const phase=document.getElementById('constructionActivityPhase');if(phase)phase.value=constructionTarget==='warmup'?'Échauffement':'';
+  d.classList.add('open');renderConstructionLibrary();
+};
+addActivityToCurrentSession=function(id){
+  const s=getSelectedTrainingSession(),a=activityLibraryV25.find(x=>x.id===Number(id));if(!s||!a)return;const c=cloneActivity(a);c.isWarmup=constructionTarget==='warmup';sessionActivities(s).push(c);a.usage=(a.usage||0)+1;if(s.warmupEnabled===undefined)s.warmupEnabled=true;saveActivityLibrary();if(!s.published)s.status='prepared';saveTrainingSessionsStore();document.getElementById('constructionLibraryDrawer')?.classList.remove('open');renderSessionWorkspace();
+};
+const _setTrainingPanelUx=setTrainingPanel;
+setTrainingPanel=function(panelId){document.getElementById('constructionLibraryDrawer')?.classList.remove('open');_setTrainingPanelUx(panelId)};
+
+// --- Feedback de séance : jauge simple dans la bibliothèque des séances passées ---
+function sessionFeedbackLabel(v){return ({1:'À revoir',2:'À adapter',3:'Correct',4:'Bien',5:'Très bien'})[Number(v)]||'Non évaluée'}
+function setSavedSessionFeedbackGauge(i,v){const s=savedSessionLibrary[i];if(!s)return;s.feedbackRating=Number(v);saveSavedSessionLibrary();coachNotificationsV26.unshift({id:Date.now(),type:'session',icon:'📝',title:'Feedback séance',text:`${formatDateFr(s.date)} · ${sessionFeedbackLabel(v)}`,time:'À l’instant',unread:true});renderSavedSessionLibrary();renderCoachNotificationsV26()}
+renderSavedSessionLibrary=function(){
+  const list=document.getElementById('savedSessionLibraryList'),count=document.getElementById('savedSessionLibraryCount');if(!list)return;if(count)count.textContent=`${savedSessionLibrary.length} séance${savedSessionLibrary.length>1?'s':''}`;
+  list.innerHTML=savedSessionLibrary.length?savedSessionLibrary.map((s,i)=>{const rating=Number(s.feedbackRating)||3,has=Boolean(s.feedbackRating);return `<div class="library-item"><div class="row"><div><strong>${formatDateFr(s.date)} · ${safeText(s.theme||'Séance')}</strong><div class="small">${sessionActivities(s).length} activité(s) · ${sessionTotalMinutes(s)} min · sauvegardée le ${safeText(s.savedAt||'—')}</div></div><span class="session-state ${sessionStatusClass(s)}">${sessionStatusLabel(s)}</span></div><div class="feedback-gauge"><div class="feedback-gauge-head"><strong>Retour rapide</strong><span class="feedback-gauge-label">${has?sessionFeedbackLabel(rating):'Non évaluée'}</span></div><input aria-label="Feedback séance" type="range" min="1" max="5" value="${rating}" onchange="setSavedSessionFeedbackGauge(${i},this.value)" oninput="this.previousElementSibling.querySelector('.feedback-gauge-label').textContent=sessionFeedbackLabel(this.value)"><div class="small">À revoir ← → Très bien</div></div>${s.feedback?`<div class="small" style="margin-top:8px"><strong>Note :</strong> ${safeText(s.feedback)}</div>`:''}<div class="actions" style="margin-top:8px"><button class="btn btn-light" onclick="copySavedSessionToCurrent(${i})">Copier dans la séance active</button><button class="btn btn-light" onclick="addSavedSessionFeedback(${i})">Ajouter une note</button></div></div>`}).join(''):'<div class="muted">Aucune séance sauvegardée.</div>'
+};
+
+// --- Progression joueur : silhouette, radar individuel / équipe / comparaison ---
+let playerRadarMode='self';
+function setPlayerProgressSubpanel(id,btn){document.querySelectorAll('.player-progress-subpanel').forEach(p=>p.classList.toggle('active',p.id===id));document.querySelectorAll('.player-progress-subbtn').forEach(b=>b.classList.toggle('active',b===btn));if(id==='playerProgressSelfEvalPanel')renderPlayerSelfEvaluation()}
+function setPlayerRadarMode(mode,btn){playerRadarMode=mode;document.querySelectorAll('.radar-mode-btn').forEach(b=>b.classList.toggle('active',b===btn));const {player,ped}=getDemoPlayer();renderPlayerProgressRadar(player,ped)}
+function drawRadarSeries(svgId,axes,series){
+  const svg=document.getElementById(svgId);if(!svg)return;const cx=210,cy=175,R=125,n=axes.length,pt=(i,r)=>{const a=-Math.PI/2+i*2*Math.PI/n;return[cx+Math.cos(a)*r,cy+Math.sin(a)*r]};let out='<rect width="420" height="360" rx="16" fill="#fff"/>';
+  [.25,.5,.75,1].forEach(fr=>out+=`<polygon points="${axes.map((_,i)=>pt(i,R*fr).join(',')).join(' ')}" fill="none" stroke="#d8e0e8" stroke-width="1"/>`);axes.forEach((a,i)=>{const[x,y]=pt(i,R);out+=`<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="#d8e0e8"/><text x="${x}" y="${y}" fill="#263648" font-size="10" font-weight="700" text-anchor="middle" dy="${y<cy?-8:16}">${safeText(a.short)}</text>`});
+  series.forEach(s=>{const ps=s.values.map((v,i)=>pt(i,R*(Math.max(0,Math.min(4,v))/4)).join(',')).join(' ');out+=`<polygon points="${ps}" fill="${s.color}22" stroke="${s.color}" stroke-width="3"/>`;s.values.forEach((v,i)=>{const[x,y]=pt(i,R*(v/4));out+=`<circle cx="${x}" cy="${y}" r="4" fill="${s.color}"/>`})});svg.innerHTML=out;
+}
+renderPlayerProgressRadar=function(player,ped){
+  const axes=[{id:'pass',short:'Passe'},{id:'dribble',short:'Dribble'},{id:'shoot',short:'Tir'},{id:'layup',short:'Tir course'},{id:'def1c1',short:'Défense'},{id:'motor',short:'Motricité'}],d=teamData.u13,self=axes.map(a=>ped.skills[a.id]||1),team=axes.map(a=>d.players.reduce((sum,p)=>sum+(d.playerPedagogy[p.id]?.skills[a.id]||1),0)/d.players.length);let series=[];
+  if(playerRadarMode==='self')series=[{label:'Moi',color:'#f59e0b',values:self}];else if(playerRadarMode==='team')series=[{label:'Équipe U13',color:'#2563eb',values:team}];else series=[{label:'Moi',color:'#f59e0b',values:self},{label:'Équipe U13',color:'#2563eb',values:team}];drawRadarSeries('playerProgressRadar',axes,series);const legend=document.getElementById('playerProgressRadarLegend');if(legend)legend.innerHTML=series.map(s=>`<span class="radar-key"><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${s.color};margin-right:5px"></span>${s.label}</span>`).join('')
+};
+function showBodySkillPopup(skillId,node){
+  const {ped}=getDemoPlayer(),ref=individualReference.find(r=>r.id===skillId);if(!ref)return;const level=ped.skills[skillId]||1,pop=document.getElementById('bodySkillPopover');if(!pop)return;pop.innerHTML=`<strong>${safeText(ref.label)} · ${levelLabel(level)}</strong><div class="small" style="margin-top:4px">${safeText(ref.detail||'')}</div><div class="small" style="margin-top:5px">Évaluation coach : ${level}/4</div>`;
+}
+
+// --- Autoévaluation joueur : mêmes items FI + savoir-être, validation coach via notifications ---
+let playerSelfEvaluationStore={};
+try{playerSelfEvaluationStore=JSON.parse(localStorage.getItem('basketPlayerSelfEvalV1')||'{}')||{}}catch(e){playerSelfEvaluationStore={}}
+function savePlayerSelfEvaluationStore(){try{localStorage.setItem('basketPlayerSelfEvalV1',JSON.stringify(playerSelfEvaluationStore))}catch(e){}}
+function selfLevelLabel(v){return ({1:'Je découvre',2:'J’y arrive parfois',3:'Je suis à l’aise',4:'Je maîtrise'})[Number(v)]||'—'}
+function renderSelfEvalItem(ref,val,kind){return `<div class="self-eval-item"><label>${safeText(ref.label)}</label><div class="self-eval-control"><input type="range" min="1" max="4" value="${val}" data-self-${kind}="${ref.id}" oninput="this.nextElementSibling.textContent=selfLevelLabel(this.value)"><span class="pill pill-blue self-eval-level">${selfLevelLabel(val)}</span></div></div>`}
+function renderPlayerSelfEvaluation(){
+  const {player,ped}=getDemoPlayer(),rec=playerSelfEvaluationStore[player.id]||{},skills=rec.skills||ped.skills||{},behaviour=rec.behaviour||ped.behaviour||{};const sg=document.getElementById('playerSelfEvalSkills'),bg=document.getElementById('playerSelfEvalBehaviour');if(!sg||!bg)return;sg.innerHTML=individualReference.map(r=>renderSelfEvalItem(r,skills[r.id]||1,'skill')).join('');bg.innerHTML=savoirEtreReference.map(r=>renderSelfEvalItem(r,behaviour[r.id]||1,'behaviour')).join('');const st=document.getElementById('playerSelfEvalStatus');if(st){const status=rec.status||'draft';st.textContent=status==='pending'?'En attente du coach':status==='validated'?'Validée par le coach':status==='rejected'?'À revoir':'Brouillon';st.className=`pill ${status==='validated'?'pill-green':status==='rejected'?'pill-red':status==='pending'?'pill-amber':'pill-blue'}`}
+}
+function submitPlayerSelfEvaluation(){
+  const {player}=getDemoPlayer(),skills={},behaviour={};document.querySelectorAll('[data-self-skill]').forEach(x=>skills[x.dataset.selfSkill]=Number(x.value));document.querySelectorAll('[data-self-behaviour]').forEach(x=>behaviour[x.dataset.selfBehaviour]=Number(x.value));playerSelfEvaluationStore[player.id]={skills,behaviour,status:'pending',submittedAt:new Date().toLocaleString('fr-FR')};savePlayerSelfEvaluationStore();const id=Date.now();coachNotificationsV26.unshift({id,type:'progress',icon:'🧭',title:`Autoévaluation · ${player.first}`,text:`${player.first} a envoyé son autoévaluation U13.`,time:'À l’instant',unread:true,action:'selfEval',playerId:player.id});document.getElementById('playerSelfEvalMessage').textContent='Autoévaluation envoyée au coach.';renderPlayerSelfEvaluation();renderCoachNotificationsV26();
+}
+function validatePlayerSelfEvaluation(notificationId,approved,event){if(event){event.stopPropagation();event.preventDefault()}const n=coachNotificationsV26.find(x=>Number(x.id)===Number(notificationId));if(!n||!n.playerId)return;const rec=playerSelfEvaluationStore[n.playerId];if(rec){rec.status=approved?'validated':'rejected';rec.reviewedAt=new Date().toLocaleString('fr-FR');savePlayerSelfEvaluationStore()}n.unread=false;n.actionResolved=approved?'Validée':'À revoir';const p=teamData.u13.players.find(x=>x.id===n.playerId);getPlayerNotificationsFor(n.playerId).unshift({id:Date.now()+11,type:'progress',icon:approved?'✅':'↩️',title:approved?'Autoévaluation validée':'Autoévaluation à revoir',text:approved?'Ton coach a pris en compte ton autoévaluation.':'Ton coach te demande de revoir ton autoévaluation.',time:'À l’instant',unread:true});renderCoachNotificationsV26();if(selectedDemoPlayerId===n.playerId){renderPlayerSelfEvaluation();renderPlayerNotificationsV26()}}
+renderCoachNotificationsV26=function(){
+  const list=document.getElementById('coachNotificationList');if(!list)return;list.innerHTML=coachNotificationsV26.map(n=>`<div class="notification-item ${n.unread?'unread':''}" onclick="readCoachNotification(${n.id})"><div class="notification-row"><div class="notification-icon">${n.icon}</div><div style="flex:1"><div class="row"><strong>${safeText(n.title)}${n.unread?'<span class="notification-dot"></span>':''}</strong><span class="small">${safeText(n.time)}</span></div><div class="small" style="margin-top:5px">${safeText(n.text)}</div>${n.action==='selfEval'&&!n.actionResolved?`<div class="actions" style="margin-top:9px"><button class="btn btn-green" onclick="validatePlayerSelfEvaluation(${n.id},true,event)">Valider</button><button class="btn btn-danger" onclick="validatePlayerSelfEvaluation(${n.id},false,event)">À revoir</button></div>`:n.actionResolved?`<div class="small" style="margin-top:7px"><strong>${safeText(n.actionResolved)}</strong></div>`:''}</div></div></div>`).join('');const unread=coachNotificationsV26.filter(n=>n.unread).length;document.getElementById('coachNotifUnreadCount').textContent=unread;document.getElementById('coachNotifSessionCount').textContent=coachNotificationsV26.filter(n=>n.type==='session').length;document.getElementById('coachNotifMatchCount').textContent=coachNotificationsV26.filter(n=>n.type==='match').length;const dot=document.getElementById('coachNotifBadge');if(dot)dot.style.display=unread?'inline-block':'none'
+};
+
+// --- Feedbacks séparés et rendu de la progression enrichi ---
+const _renderPlayerV26Ux=renderPlayerV26;
+renderPlayerV26=function(){
+  _renderPlayerV26Ux();const {player,ped}=getDemoPlayer();document.getElementById('playerProgressVisualTitle').textContent=`Ma progression U13 · ${player.first}`;const timeline=document.getElementById('playerCoachFeedbackTimeline');if(timeline)timeline.innerHTML=(ped.feedbacks||[]).length?(ped.feedbacks||[]).map(f=>`<div class="feedback-timeline-item"><strong>${safeText(f.date)}</strong><div class="small" style="margin-top:4px">${safeText(f.text)}</div></div>`).join(''):'<div class="muted">Aucun autre retour du coach pour le moment.</div>';renderPlayerSelfEvaluation();renderPlayerProgressRadar(player,ped)
+};
+
+// --- Calendrier joueur : informations au survol / toucher et grille fixe ---
+function currentPlayerAttendanceText(){const {player}=getDemoPlayer(),s=sessionAttendance.u13?.[player.id]||'pending';return s==='yes'?'✅ Présence confirmée':s==='no'?'❌ Absence signalée':'⏳ Présence à confirmer'}
+function togglePlayerSessionInfo(event,el){event.stopPropagation();document.querySelectorAll('.player-event-shell.open').forEach(x=>{if(x!==el)x.classList.remove('open')});el.classList.toggle('open')}
+renderPlayerCalendarV26=function(){
+  const holder=document.getElementById('playerCalendarGrid');if(!holder)return;const sessions=getPublishedPlayerSessions('u13',playerCalendarCursorV26),t=teams.find(x=>x.id==='u13'),title=playerCalendarCursorV26.toLocaleDateString('fr-FR',{month:'long',year:'numeric'});document.getElementById('playerCalendarTitle').textContent=title.charAt(0).toUpperCase()+title.slice(1);const first=(new Date(playerCalendarCursorV26.getFullYear(),playerCalendarCursorV26.getMonth(),1).getDay()+6)%7,days=new Date(playerCalendarCursorV26.getFullYear(),playerCalendarCursorV26.getMonth()+1,0).getDate(),prev=new Date(playerCalendarCursorV26.getFullYear(),playerCalendarCursorV26.getMonth(),0).getDate(),headers=['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'].map(x=>`<div class="day-head">${x}</div>`).join('');let cells='';
+  for(let i=0;i<first;i++)cells+=`<div class="day off"><div class="date">${prev-first+1+i}</div></div>`;const today=new Date().toISOString().slice(0,10);
+  for(let day=1;day<=days;day++){
+    const key=`${playerCalendarCursorV26.getFullYear()}-${String(playerCalendarCursorV26.getMonth()+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`,ss=sessions.filter(s=>s.date===key);cells+=`<div class="day ${key===today?'today':''}"><div class="date">${day}</div>${ss.map(s=>`<div class="player-event-shell" tabindex="0" onclick="togglePlayerSessionInfo(event,this)"><div class="player-event session">🏀 ${safeText(s.time)} · ${safeText(s.theme||'Entraînement')}</div><div class="player-session-info"><strong>${formatLongDateFr(s.date)} · ${safeText(s.time)}</strong><div class="small" style="margin-top:5px"><b>Thème :</b> ${safeText(s.theme||'Entraînement')}<br><b>Objectif :</b> ${safeText(s.objective||'À retrouver avec ton coach')}<br><b>Attendu :</b> ${safeText(s.playerMessage||'Informations publiées par le coach')}<br><b>Réponse :</b> ${currentPlayerAttendanceText()}</div></div></div>`).join('')}</div>`
+  }
+  const rem=(7-((first+days)%7))%7;for(let i=1;i<=rem;i++)cells+=`<div class="day off"><div class="date">${i}</div></div>`;holder.innerHTML=`<div class="player-calendar">${headers}${cells}</div>`;const upcoming=[...sessions].filter(s=>s.date>=new Date().toISOString().slice(0,10)).slice(0,4);document.getElementById('playerUpcomingList').innerHTML=`${upcoming.length?upcoming.map(s=>`<div class="list-item"><strong>🏀 ${formatLongDateFr(s.date)}</strong><div class="small">${safeText(s.time)} · ${safeText(s.theme||'Entraînement')}</div></div>`).join(''):'<div class="muted">Aucune séance publiée par le coach pour ce mois.</div>'}<div class="list-item"><strong>🏆 ${safeText(t.nextEvent)}</strong><div class="small">${safeText(t.nextDate)}</div></div>`
+};
+
+// Une réponse de présence / disponibilité traite immédiatement la notification correspondante.
+const _playerSessionResponseUx=playerSessionResponse;
+playerSessionResponse=function(v){_playerSessionResponseUx(v);const {player}=getDemoPlayer();const arr=getPlayerNotificationsFor(player.id);for(let i=arr.length-1;i>=0;i--)if(arr[i].type==='session')arr.splice(i,1);renderPlayerNotificationsV26()};
+const _playerMatchResponseUx=playerMatchResponse;
+playerMatchResponse=function(v){_playerMatchResponseUx(v);const {player}=getDemoPlayer();const arr=getPlayerNotificationsFor(player.id);for(let i=arr.length-1;i>=0;i--)if(arr[i].type==='match')arr.splice(i,1);renderPlayerNotificationsV26()};
+
+document.addEventListener('click',e=>{if(!e.target.closest('.player-event-shell'))document.querySelectorAll('.player-event-shell.open').forEach(x=>x.classList.remove('open'))});
+
+// Recalage initial sans toucher aux données fonctionnelles déjà en place.
+document.getElementById('constructionLibraryDrawer')?.classList.remove('open');
 </script>
 
 </body>
