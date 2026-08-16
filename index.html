@@ -319,6 +319,41 @@ input::placeholder,textarea::placeholder{color:#77879b}
 .feedback-box{border-left:4px solid #ff9800!important}
 .age-message strong,.feedback-box strong{color:#ffffff!important}
 
+
+/* Correctif global de contraste + construction de séance */
+.coach-tab,.pedagogy-btn{background:#131b25!important;color:#eef4fa!important;border-color:#314253!important}
+.coach-tab:hover,.pedagogy-btn:hover{background:#1a2531!important}
+.coach-tab.active,.pedagogy-btn.active{background:linear-gradient(135deg,#f2c300,#ff9800)!important;color:#10161f!important;border-color:transparent!important}
+.skill-card{background:#111923!important;color:#eef4fa!important;border-color:#2c3b4b!important}
+.skill-card h4{color:#ffd54d!important}
+.skill-card .small{color:#b8c5d3!important}
+.list-item strong,.card strong{color:#f3f7fb}
+.session-control-bar{display:grid;grid-template-columns:1.4fr .95fr auto;gap:12px;align-items:end}
+.session-live-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap}
+.session-live-total{font-size:25px;font-weight:950;color:#ffd54d}
+.activity-live-card{border:1px solid #2a3a4a;background:#0d131a;border-radius:16px;padding:14px;margin-top:12px}
+.activity-live-card h4{margin:0;color:#ffd54d;font-size:17px}
+.activity-live-grid{display:grid;grid-template-columns:1fr 180px;gap:14px;margin-top:10px;align-items:start}
+.activity-live-meta{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
+.activity-library-drawer{display:none;margin-top:14px;border:1px solid #344759;border-radius:16px;background:#0b1118;padding:14px}
+.activity-library-drawer.open{display:block}
+.filter-grid{display:grid;grid-template-columns:1.3fr repeat(3,.8fr);gap:8px;margin:10px 0}
+.library-pick-list{max-height:420px;overflow:auto;padding-right:3px}
+.library-pick-card{border:1px solid #263747;border-radius:13px;padding:11px;margin-top:8px;background:#101822}
+.diagram-shell{border:1px solid #314253;background:#0a1017;border-radius:16px;padding:12px}
+.diagram-toolbar{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.diagram-tool{border:1px solid #344759;background:#151f2a;color:#eef4fa;border-radius:10px;padding:8px 9px;font-weight:800;cursor:pointer}
+.diagram-tool.active{background:#ffd54d;color:#10161f;border-color:#ffd54d}
+.diagram-court{width:100%;max-width:430px;aspect-ratio:5/7;background:#f1eee7;border-radius:12px;border:1px solid #6f7780;display:block;margin:auto;touch-action:none;cursor:crosshair}
+.diagram-legend{display:flex;gap:8px;flex-wrap:wrap;margin-top:9px;font-size:11px;color:#bac7d4}
+.diagram-preview{width:100%;max-width:180px;background:#f2efe8;border-radius:10px;border:1px solid #59636e}
+.activity-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.activity-form-grid .span2{grid-column:1/-1}
+.session-copy-box{border-left:3px solid #ffd54d;padding-left:11px}
+.status-note{font-size:11px;color:#aebccc;margin-top:5px}
+@media(max-width:1000px){.session-control-bar{grid-template-columns:1fr}.activity-live-grid{grid-template-columns:1fr}.filter-grid{grid-template-columns:1fr 1fr}.activity-form-grid{grid-template-columns:1fr}.activity-form-grid .span2{grid-column:auto}}
+@media(max-width:650px){.filter-grid{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
@@ -459,7 +494,7 @@ input::placeholder,textarea::placeholder{color:#77879b}
     <div class="coach-tabs">
       <button class="coach-tab active" data-coach-panel="coachHome">Accueil</button>
       <button class="coach-tab" data-coach-panel="coachRoster">Effectif</button>
-      <button class="coach-tab" data-coach-panel="coachSessions">Séance</button>
+      <button class="coach-tab" data-coach-panel="coachSessions">Entraînement</button>
       <button class="coach-tab" data-coach-panel="coachMatches">Match</button>
       <button class="coach-tab" data-coach-panel="coachNotifications">🔔 Notifications <span id="coachNotifBadge" class="notification-dot"></span></button>
       <button class="coach-tab" data-coach-panel="coachReenroll">Réinscriptions</button>
@@ -578,14 +613,14 @@ input::placeholder,textarea::placeholder{color:#77879b}
     <section id="coachSessions" class="coach-panel">
       <div class="title">
         <div class="eyebrow">Module entraînement</div>
-        <h1 style="font-size:28px">Calendrier · Mes séances · Mes activités</h1>
-        <p>Le calendrier ouvre les séances, les séances se préparent par blocs d’activités, et les activités alimentent ensuite le Coach IA simulé.</p>
+        <h1 style="font-size:28px">Calendrier · Construction de séance · Mes activités</h1>
+        <p>Le coach choisit la séance, ajoute des activités depuis sa bibliothèque et voit la fiche se construire en direct avec le temps total.</p>
       </div>
 
       <div class="training-shell">
         <div class="training-tabs">
           <button class="training-tab active" data-training-panel="trainingCalendarPanel">📅 Calendrier</button>
-          <button class="training-tab" data-training-panel="trainingSessionsPanel">🧩 Mes séances</button>
+          <button class="training-tab" data-training-panel="trainingSessionsPanel">🧩 Construction de séance</button>
           <button class="training-tab" data-training-panel="trainingActivitiesPanel">🗂️ Mes activités</button>
         </div>
 
@@ -593,10 +628,7 @@ input::placeholder,textarea::placeholder{color:#77879b}
           <div class="grid">
             <div class="card s8">
               <div class="calendar-toolbar">
-                <div>
-                  <div class="eyebrow">Vue mensuelle</div>
-                  <h3 id="trainingCalendarTitle" style="margin:4px 0 0">Calendrier</h3>
-                </div>
+                <div><div class="eyebrow">Vue mensuelle</div><h3 id="trainingCalendarTitle" style="margin:4px 0 0">Calendrier</h3></div>
                 <div class="actions">
                   <button class="btn btn-light" onclick="changeTrainingMonth(-1)">← Mois précédent</button>
                   <button class="btn btn-light" onclick="changeTrainingMonth(1)">Mois suivant →</button>
@@ -604,63 +636,80 @@ input::placeholder,textarea::placeholder{color:#77879b}
                 </div>
               </div>
               <div class="mini-legend">
-                <div class="legend-item"><span class="legend-dot" style="background:#c0d0e0"></span> séance ouverte</div>
-                <div class="legend-item"><span class="legend-dot" style="background:#9cedc6"></span> séance préparée</div>
-                <div class="legend-item"><span class="legend-dot" style="background:#ffd699"></span> séance publiée</div>
+                <div class="legend-item"><span class="legend-dot" style="background:#c0d0e0"></span> à construire</div>
+                <div class="legend-item"><span class="legend-dot" style="background:#9cedc6"></span> enregistrée</div>
+                <div class="legend-item"><span class="legend-dot" style="background:#ffd699"></span> publiée</div>
               </div>
               <div id="trainingCalendarGrid"></div>
             </div>
-
             <div class="card s4">
-              <div class="eyebrow">Paramétrage équipe</div>
-              <h3 style="margin-top:4px">Ce qui alimente le calendrier</h3>
+              <div class="eyebrow">Paramétrage équipe</div><h3 style="margin-top:4px">Ce qui alimente le calendrier</h3>
               <div id="trainingCalendarFeed" class="dark-inline"></div>
-              <div class="notice" style="margin-top:12px">Dans le BO de l’équipe, on fixe les jours d’entraînement et le référentiel pédagogique. Ici, la maquette les utilise déjà pour ouvrir automatiquement les séances.</div>
+              <div class="notice" style="margin-top:12px">Les jours et horaires définis pour cette équipe ouvrent automatiquement les séances. Une séance publiée devient visible dans le calendrier joueur.</div>
               <div style="height:1px;background:var(--line);margin:14px 0"></div>
-              <h3>Séances ouvertes du mois</h3>
-              <div id="trainingCalendarOpenList"></div>
+              <h3>Séances du mois</h3><div id="trainingCalendarOpenList"></div>
             </div>
           </div>
         </div>
 
         <div id="trainingSessionsPanel" class="training-subpanel">
+          <div class="card" style="margin-bottom:14px">
+            <div class="session-control-bar">
+              <div>
+                <label>Séance à construire</label>
+                <select id="trainingSessionSelect" onchange="selectTrainingSessionFromDropdown()"></select>
+                <div id="trainingSessionSelectHint" class="status-note"></div>
+              </div>
+              <div class="session-copy-box">
+                <label>Reprendre une séance existante</label>
+                <select id="trainingCopySessionSelect"></select>
+                <button class="btn btn-light" style="margin-top:8px;width:100%" onclick="copyTrainingSessionIntoCurrent()">Copier dans la séance active</button>
+              </div>
+              <button class="btn btn-primary" onclick="openManualTrainingSession()">+ Nouvelle séance</button>
+            </div>
+          </div>
+
           <div class="grid">
             <div class="card s4">
-              <div class="row"><div><div class="eyebrow">Rectangles séance</div><h3 style="margin-top:4px">Mes séances ouvertes</h3></div><span class="pill pill-blue" id="trainingSessionsCount">0 séance</span></div>
-              <div id="trainingSessionRects"></div>
-            </div>
-
-            <div class="card s5">
-              <div class="row"><div><div class="eyebrow">Préparer</div><h3 id="trainingEditorTitle" style="margin-top:4px">Sélectionne une séance</h3></div><span id="trainingEditorState" class="session-state state-open">ouverte</span></div>
+              <div class="row"><div><div class="eyebrow">Construction</div><h3 id="trainingEditorTitle" style="margin-top:4px">Sélectionne une séance</h3></div><span id="trainingEditorState" class="session-state state-open">à construire</span></div>
               <label>Thème donné par le coach</label><input id="trainingThemeInput" placeholder="Ex. Jeu rapide + fixation passe">
               <label>Objectif pédagogique</label><textarea id="trainingObjectiveInput" rows="3" placeholder="Ce que l’équipe doit comprendre / réussir"></textarea>
-              <label>Message joueur</label><textarea id="trainingPlayerMessageInput" rows="3" placeholder="Consigne simple visible côté joueur"></textarea>
-              <label>Durée cible</label><input id="trainingDurationInput" placeholder="Ex. 1h20">
-              <label>Intensité</label><select id="trainingIntensityInput"><option>Faible</option><option selected>Moyenne</option><option>Élevée</option></select>
+              <label>Message joueur</label><textarea id="trainingPlayerMessageInput" rows="3" placeholder="Consigne simple visible côté joueur après publication"></textarea>
+              <div class="activity-form-grid">
+                <div><label>Durée cible</label><input id="trainingDurationInput" placeholder="Ex. 1h20"></div>
+                <div><label>Intensité</label><select id="trainingIntensityInput"><option>Faible</option><option selected>Moyenne</option><option>Élevée</option></select></div>
+              </div>
               <div class="actions" style="margin-top:12px">
-                <button class="btn btn-primary" onclick="saveTrainingSession()">Enregistrer la fiche</button>
+                <button class="btn btn-primary" onclick="saveTrainingSession()">Enregistrer</button>
                 <button class="btn btn-green" onclick="publishTrainingSession()">Publier</button>
                 <button class="btn btn-light" onclick="exportTrainingSheet()">Exporter / imprimer</button>
               </div>
               <div id="trainingSaveState" class="small" style="margin-top:10px"></div>
-
               <div style="height:1px;background:var(--line);margin:16px 0"></div>
-              <div class="row"><h3>Coach IA · simulation locale</h3><span class="pill pill-orange">Fausse IA pilotée par les données</span></div>
-              <div id="trainingAIBubble" class="ia-bubble">Le Coach IA simulé regardera le thème, les besoins de l’équipe, la progression et les activités déjà utilisées pour proposer un fil conducteur.</div>
-              <div class="actions" style="margin-top:12px">
-                <button class="btn btn-navy" onclick="generateFakeTrainingAI()">Proposer des activités</button>
-                <button class="btn btn-light" onclick="applyFakeTrainingAI()">Appliquer la proposition</button>
-              </div>
+              <div class="row"><h3>Coach IA · simulation</h3><span class="pill pill-orange">Suggestions</span></div>
+              <div id="trainingAIBubble" class="ia-bubble">Le Coach IA peut proposer des activités à partir du thème, de la progression et de la bibliothèque du coach.</div>
+              <div class="actions" style="margin-top:12px"><button class="btn btn-navy" onclick="generateFakeTrainingAI()">Proposer des activités</button><button class="btn btn-light" onclick="applyFakeTrainingAI()">Ajouter la proposition</button></div>
             </div>
 
-            <div class="card s3">
-              <div class="eyebrow">Séance</div>
-              <h3 style="margin-top:4px">Blocs d’activités</h3>
-              <div id="trainingSessionBlocks"></div>
-              <label style="margin-top:12px">Ajouter une activité</label>
-              <select id="trainingActivityPicker"></select>
-              <button class="btn btn-light" style="width:100%;margin-top:10px" onclick="addSelectedActivityToSession()">Ajouter à la séance</button>
-              <button class="btn btn-secondary" style="width:100%;margin-top:10px" onclick="addBlankActivityBlock()">Créer un bloc manuel</button>
+            <div class="card s8">
+              <div class="session-live-head">
+                <div><div class="eyebrow">Fiche séance en direct</div><h3 style="margin:4px 0 0" id="trainingLiveTitle">Séance</h3><div class="small" id="trainingLiveMeta"></div></div>
+                <div style="text-align:right"><div class="session-live-total" id="trainingLiveTotal">0 min</div><div class="small" id="trainingLiveCount">0 activité</div></div>
+              </div>
+              <div class="actions" style="margin-top:12px"><button class="btn btn-primary" onclick="toggleConstructionLibrary()">+ Ajouter une activité</button></div>
+
+              <div id="constructionLibraryDrawer" class="activity-library-drawer">
+                <div class="row"><div><div class="eyebrow">Bibliothèque</div><h3 style="margin:3px 0">Choisir une activité</h3></div><button class="btn btn-light" onclick="toggleConstructionLibrary(false)">Fermer</button></div>
+                <div class="filter-grid">
+                  <input id="constructionActivitySearch" placeholder="Rechercher : défense, dribble…" oninput="renderConstructionLibrary()">
+                  <select id="constructionActivityType" onchange="renderConstructionLibrary()"><option value="">Individuel + collectif</option><option>Individuelle</option><option>Collective</option></select>
+                  <select id="constructionActivityPhase" onchange="renderConstructionLibrary()"><option value="">Attaque + défense</option><option>Attaque</option><option>Défense</option><option>Mixte</option></select>
+                  <select id="constructionActivityTheme" onchange="renderConstructionLibrary()"><option value="">Tous les fondamentaux</option></select>
+                </div>
+                <div id="constructionLibraryList" class="library-pick-list"></div>
+              </div>
+
+              <div id="trainingSessionActivities"></div>
             </div>
           </div>
         </div>
@@ -675,59 +724,68 @@ input::placeholder,textarea::placeholder{color:#77879b}
           <div id="activityCreatePanel" class="activity-subpanel active">
             <div class="grid">
               <div class="card s5">
-                <div class="eyebrow">Créer</div>
-                <h3 style="margin-top:4px">Nouvelle activité</h3>
-                <label>Nom</label><input id="activityNameInput" placeholder="Ex. 3 couloirs + finition">
-                <label>Objectif</label><input id="activityObjectiveInput" placeholder="Ex. attaquer vite les espaces libres">
-                <label>Critère de réalisation</label><input id="activityRealisationInput" placeholder="Ex. le porteur fixe avant de passer">
-                <label>Critère de réussite</label><input id="activitySuccessInput" placeholder="Ex. tir ouvert ou lay-up dans le bon tempo">
-                <label>Durée estimée</label><input id="activityDurationInput" placeholder="10 min">
-                <label>Tags</label><input id="activityTagsInput" placeholder="jeu rapide, fixation, U13">
-                <div class="actions" style="margin-top:12px">
-                  <button class="btn btn-primary" onclick="createTrainingActivity()">Enregistrer l’activité</button>
-                  <button class="btn btn-navy" onclick="generateActivityDraft()">Coach IA : proposer un brouillon</button>
+                <div class="eyebrow">Créer / modifier</div><h3 style="margin-top:4px">Fiche activité</h3>
+                <div class="activity-form-grid">
+                  <div class="span2"><label>Nom</label><input id="activityNameInput" placeholder="Ex. 3 couloirs + finition"></div>
+                  <div><label>Type</label><select id="activityTypeInput"><option>Collective</option><option>Individuelle</option></select></div>
+                  <div><label>Phase</label><select id="activityPhaseInput"><option>Attaque</option><option>Défense</option><option>Mixte</option></select></div>
+                  <div class="span2"><label>Fondamental / thème</label><select id="activityThemeSelect"></select></div>
+                  <div class="span2"><label>Objectif</label><input id="activityObjectiveInput" placeholder="Ce que l’activité fait progresser"></div>
+                  <div class="span2"><label>Critère de réalisation</label><input id="activityRealisationInput" placeholder="Ce que le joueur doit faire"></div>
+                  <div class="span2"><label>Critère de réussite</label><input id="activitySuccessInput" placeholder="Comment savoir si c’est réussi"></div>
+                  <div><label>Temps estimé (min)</label><input id="activityDurationInput" type="number" min="1" value="10"></div>
+                  <div><label>Nombre de joueurs</label><input id="activityPlayersInput" type="number" min="1" value="8"></div>
+                  <div class="span2"><label>Matériel</label><input id="activityEquipmentInput" placeholder="Ex. 6 ballons, 8 plots"></div>
+                  <div><label>Intensité</label><select id="activityIntensityInput"><option>Faible</option><option selected>Moyenne</option><option>Élevée</option></select></div>
+                  <div><label>Tags complémentaires</label><input id="activityTagsInput" placeholder="lecture, transition…"></div>
                 </div>
+                <div class="actions" style="margin-top:12px"><button class="btn btn-primary" onclick="createTrainingActivity()">Enregistrer l’activité</button><button class="btn btn-navy" onclick="generateActivityDraft()">IA : proposer l’activité</button></div>
                 <div id="activityCreateState" class="small" style="margin-top:10px"></div>
               </div>
+
               <div class="card s7">
-                <div class="row"><h3>Brouillon Coach IA</h3><span class="pill pill-blue">Simulation locale</span></div>
-                <div id="activityDraftBubble" class="ia-bubble">Le Coach IA peut transformer le thème de séance en proposition d’activité standardisée, puis tu la modifies librement.</div>
-                <div style="height:1px;background:var(--line);margin:16px 0"></div>
-                <h3>Feedbacks d’activité</h3>
-                <div id="activityFeedbackPreview" class="dark-inline">Les futures évaluations des coachs aideront l’IA à mieux choisir les activités les plus utiles par équipe et par catégorie.</div>
+                <div class="row"><div><div class="eyebrow">Schéma de l’activité</div><h3 style="margin-top:4px">Construire directement sur le terrain</h3></div><button class="btn btn-navy" onclick="generateAIDiagram()">IA : créer le schéma</button></div>
+                <div class="diagram-shell">
+                  <div class="diagram-toolbar" id="diagramToolbar">
+                    <button class="diagram-tool active" data-tool="attacker" onclick="setDiagramTool('attacker')">① Attaquant</button>
+                    <button class="diagram-tool" data-tool="defender" onclick="setDiagramTool('defender')">△ Défenseur</button>
+                    <button class="diagram-tool" data-tool="coach" onclick="setDiagramTool('coach')">E Éducateur</button>
+                    <button class="diagram-tool" data-tool="ball" onclick="setDiagramTool('ball')">● Ballon</button>
+                    <button class="diagram-tool" data-tool="cone" onclick="setDiagramTool('cone')">▲ Plot</button>
+                    <button class="diagram-tool" data-tool="run" onclick="setDiagramTool('run')">→ Course</button>
+                    <button class="diagram-tool" data-tool="dribble" onclick="setDiagramTool('dribble')">〰 Dribble</button>
+                    <button class="diagram-tool" data-tool="pass" onclick="setDiagramTool('pass')">⇢ Passe</button>
+                    <button class="diagram-tool" data-tool="delete" onclick="setDiagramTool('delete')">⌫ Supprimer</button>
+                    <button class="diagram-tool" onclick="clearActivityDiagram()">Effacer tout</button>
+                  </div>
+                  <svg id="activityDiagramCourt" class="diagram-court" viewBox="0 0 500 700" onclick="handleDiagramCourtClick(event)"></svg>
+                  <div class="diagram-legend">Course : trait + flèche · Dribble : ligne ondulée · Passe : pointillés · Les joueurs, ballons et plots se posent librement sur le terrain.</div>
+                </div>
+                <div id="activityDraftBubble" class="ia-bubble" style="margin-top:12px">Le Coach IA simulé peut remplir la fiche et proposer un premier schéma. Le coach garde la main et peut tout modifier.</div>
               </div>
             </div>
           </div>
 
           <div id="activityLibraryPanel" class="activity-subpanel">
-            <div class="row"><div><div class="eyebrow">Bibliothèque</div><h3 style="margin-top:4px">Base de données des activités</h3></div><span class="pill pill-blue" id="activityLibraryCount">0 activité</span></div>
+            <div class="row"><div><div class="eyebrow">Bibliothèque</div><h3 style="margin-top:4px">Activités du coach</h3></div><span class="pill pill-blue" id="activityLibraryCount">0 activité</span></div>
+            <div class="filter-grid">
+              <input id="libraryActivitySearch" placeholder="Rechercher une activité" oninput="renderActivityLibrary()">
+              <select id="libraryActivityType" onchange="renderActivityLibrary()"><option value="">Tous types</option><option>Individuelle</option><option>Collective</option></select>
+              <select id="libraryActivityPhase" onchange="renderActivityLibrary()"><option value="">Toutes phases</option><option>Attaque</option><option>Défense</option><option>Mixte</option></select>
+              <select id="libraryActivityTheme" onchange="renderActivityLibrary()"><option value="">Tous fondamentaux</option></select>
+            </div>
             <div id="activityLibraryList"></div>
           </div>
 
           <div id="activityKnowledgePanel" class="activity-subpanel">
             <div class="grid">
-              <div class="card s5">
-                <div class="eyebrow">Base IA sécurisée</div>
-                <h3 style="margin-top:4px">Ajouter une ressource validée</h3>
-                <label>Titre</label><input id="knowledgeTitleInput" placeholder="Ex. Playlist jeu rapide U13">
-                <label>Type</label><select id="knowledgeTypeInput"><option>Référentiel</option><option>Vidéo / playlist</option><option>Document club</option><option>Consigne joueur</option></select>
-                <label>Lien ou note</label><textarea id="knowledgeLinkInput" rows="4" placeholder="Lien YouTube, note interne, ressource validée…"></textarea>
-                <button class="btn btn-primary" style="margin-top:12px" onclick="addKnowledgeResource()">Ajouter à la base IA</button>
-                <div class="notice" style="margin-top:12px">Le Coach IA ne propose que des contenus présents ici : cela sécurise ce qu’il peut envoyer ou reformuler.</div>
-              </div>
-              <div class="card s7">
-                <div class="row"><h3>Base de données IA</h3><span class="pill pill-green">Sources autorisées</span></div>
-                <div id="knowledgeResourceList"></div>
-              </div>
+              <div class="card s5"><div class="eyebrow">Base IA sécurisée</div><h3 style="margin-top:4px">Ajouter une ressource validée</h3><label>Titre</label><input id="knowledgeTitleInput" placeholder="Ex. Playlist jeu rapide U13"><label>Type</label><select id="knowledgeTypeInput"><option>Référentiel</option><option>Vidéo / playlist</option><option>Document club</option><option>Consigne joueur</option></select><label>Lien ou note</label><textarea id="knowledgeLinkInput" rows="4" placeholder="Lien YouTube, note interne, ressource validée…"></textarea><button class="btn btn-primary" style="margin-top:12px" onclick="addKnowledgeResource()">Ajouter à la base IA</button><div class="notice" style="margin-top:12px">Le Coach IA ne propose que des contenus validés ici.</div></div>
+              <div class="card s7"><div class="row"><h3>Base de données IA</h3><span class="pill pill-green">Sources autorisées</span></div><div id="knowledgeResourceList"></div></div>
             </div>
           </div>
         </div>
       </div>
     </section>
-
-
-    <section id="coachMatches" class="coach-panel">
-
 
     <section id="coachMatches" class="coach-panel">
       <div class="title">
@@ -1880,105 +1938,106 @@ function syncTrainingSessionsToLegacy(teamId){
   const list=[...getSessionsForTeam(teamId)].filter(s=>s.theme||s.blocks.length).sort((a,b)=>(b.date+b.time).localeCompare(a.date+a.time));
   teamData[teamId].sessions=list.slice(0,20).map(s=>({id:s.id,theme:s.theme||"Séance ouverte",objective:s.objective||"Séance à compléter.",intensity:s.intensity||"Moyenne",date:formatDateFr(s.date)}));
 }
-function setTrainingPanel(panelId){ currentTrainingPanel=panelId; document.querySelectorAll('.training-tab').forEach(btn=>btn.classList.toggle('active',btn.dataset.trainingPanel===panelId)); document.querySelectorAll('.training-subpanel').forEach(p=>p.classList.toggle('active',p.id===panelId)); if(panelId==="trainingSessionsPanel" && !selectedTrainingSessionId){ const first=getSessionsForMonth(selectedTeamId,trainingMonthCursor)[0]; if(first) selectedTrainingSessionId=first.id; } renderSessionWorkspace(); }
-function setActivityPanel(panelId){ currentActivityPanel=panelId; document.querySelectorAll('.activity-subtab').forEach(btn=>btn.classList.toggle('active',btn.dataset.activityPanel===panelId)); document.querySelectorAll('.activity-subpanel').forEach(p=>p.classList.toggle('active',p.id===panelId)); renderSessionWorkspace(); }
-function changeTrainingMonth(delta){ trainingMonthCursor=new Date(trainingMonthCursor.getFullYear(),trainingMonthCursor.getMonth()+delta,1); renderSessionWorkspace(); }
-function openManualTrainingSession(dateKey=null){
-  const settings=ensureTeamTrainingSettings(selectedTeamId); const list=getSessionsForTeam(selectedTeamId);
-  const date=dateKey || `${trainingMonthCursor.getFullYear()}-${String(trainingMonthCursor.getMonth()+1).padStart(2,'0')}-01`;
-  const session={id:Date.now(),date,time:settings.schedule[0]?.time||"18:30",theme:"",objective:"",playerMessage:"",duration:"1h15",intensity:"Moyenne",status:"open",blocks:[],source:"manual",published:false};
-  list.push(session); list.sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time)); saveTrainingSessionsStore(); selectedTrainingSessionId=session.id; setTrainingPanel('trainingSessionsPanel');
+
+const activityThemesV3=["Passe","Dribble","Démarquage","Arrêts / départs","Tir extérieur","Tir en course","Défense individuelle","Motricité / coordination","Jeu rapide / contre-attaque","Surnombre / 2c1","Espaces","Passe-et-va / continuité","Fixation-passe","Repli défensif","Défense collective"];
+let editingActivityId=null;
+let activityDiagramDraft=[];
+let diagramTool='attacker';
+let diagramPendingPoint=null;
+
+function safeText(v){return String(v??'').replace(/[&<>\"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',"'":'&#39;'}[c]));}
+function parseMinutes(v){if(typeof v==='number')return v;const s=String(v||'').toLowerCase().trim();let m=0;const h=s.match(/(\d+)\s*h/);if(h)m+=Number(h[1])*60;const mm=s.match(/(?:h\s*)?(\d+)\s*(?:min|mn)/);if(mm)m+=Number(mm[1]);if(!m&&/^\d+$/.test(s))m=Number(s);return m||10;}
+function sessionStatusLabel(s){return s?.published?'publiée':s?.status==='prepared'?'enregistrée':'à construire';}
+function sessionStatusClass(s){return s?.published?'state-published':s?.status==='prepared'?'state-prepared':'state-open';}
+function normalizeActivity(a){
+  const tags=(a.tags||[]).map(x=>String(x)); const low=tags.join(' ').toLowerCase();
+  if(!a.type)a.type=low.includes('individ')?'Individuelle':'Collective';
+  if(!a.phase)a.phase=low.includes('déf')||low.includes('repli')?'Défense':'Attaque';
+  if(!a.theme){const found=activityThemesV3.find(t=>low.includes(t.toLowerCase().split(' / ')[0]));a.theme=found||tags[0]||'Jeu rapide / contre-attaque';}
+  a.durationMinutes=Number(a.durationMinutes)||parseMinutes(a.duration);
+  a.duration=`${a.durationMinutes} min`;
+  a.players=Number(a.players)||8;
+  a.equipment=a.equipment||'Ballons, plots';
+  a.intensity=a.intensity||'Moyenne';
+  a.diagram=Array.isArray(a.diagram)?a.diagram:[];
+  a.source=a.source||'Coach'; a.usage=Number(a.usage)||0;
+  a.tags=[...new Set([a.type,a.phase,a.theme,teams.find(t=>t.id===selectedTeamId)?.category||'',...tags].filter(Boolean))];
+  return a;
 }
-function openTrainingSession(id){ selectedTrainingSessionId=id; setTrainingPanel('trainingSessionsPanel'); }
-function selectCalendarDay(dateKey){ const list=getSessionsForTeam(selectedTeamId).filter(s=>s.date===dateKey); if(list.length){ selectedTrainingSessionId=list[0].id; setTrainingPanel('trainingSessionsPanel'); } else { openManualTrainingSession(dateKey); } }
+activityLibraryV25.forEach(normalizeActivity);
+try{const savedActs=JSON.parse(localStorage.getItem('basketActivityLibraryV3')||'null');if(Array.isArray(savedActs)&&savedActs.length){activityLibraryV25=savedActs.map(normalizeActivity);}}catch(e){}
+function saveActivityLibrary(){try{localStorage.setItem('basketActivityLibraryV3',JSON.stringify(activityLibraryV25));}catch(e){}}
+function cloneActivity(a){return JSON.parse(JSON.stringify(normalizeActivity({...a})));}
+function sessionActivities(s){if(!s.blocks)s.blocks=[];return s.blocks;}
+function sessionTotalMinutes(s){return sessionActivities(s).reduce((sum,a)=>sum+(Number(a.durationMinutes)||parseMinutes(a.duration)),0);}
+
+function setTrainingPanel(panelId){currentTrainingPanel=panelId;document.querySelectorAll('.training-tab').forEach(btn=>btn.classList.toggle('active',btn.dataset.trainingPanel===panelId));document.querySelectorAll('.training-subpanel').forEach(p=>p.classList.toggle('active',p.id===panelId));if(panelId==='trainingSessionsPanel'&&!selectedTrainingSessionId){const first=getSessionsForMonth(selectedTeamId,trainingMonthCursor)[0];if(first)selectedTrainingSessionId=first.id;}renderSessionWorkspace();}
+function setActivityPanel(panelId){currentActivityPanel=panelId;document.querySelectorAll('.activity-subtab').forEach(btn=>btn.classList.toggle('active',btn.dataset.activityPanel===panelId));document.querySelectorAll('.activity-subpanel').forEach(p=>p.classList.toggle('active',p.id===panelId));renderSessionWorkspace();}
+function changeTrainingMonth(delta){trainingMonthCursor=new Date(trainingMonthCursor.getFullYear(),trainingMonthCursor.getMonth()+delta,1);renderSessionWorkspace();}
+function openManualTrainingSession(dateKey=null){const settings=ensureTeamTrainingSettings(selectedTeamId),list=getSessionsForTeam(selectedTeamId);const date=dateKey||`${trainingMonthCursor.getFullYear()}-${String(trainingMonthCursor.getMonth()+1).padStart(2,'0')}-01`;const session={id:Date.now(),date,time:settings.schedule[0]?.time||'18:30',theme:'',objective:'',playerMessage:'',duration:'1h15',intensity:'Moyenne',status:'open',blocks:[],source:'manual',published:false};list.push(session);list.sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time));saveTrainingSessionsStore();selectedTrainingSessionId=session.id;setTrainingPanel('trainingSessionsPanel');}
+function openTrainingSession(id){selectedTrainingSessionId=Number(id);setTrainingPanel('trainingSessionsPanel');}
+function selectCalendarDay(dateKey){const list=getSessionsForTeam(selectedTeamId).filter(s=>s.date===dateKey);if(list.length){selectedTrainingSessionId=list[0].id;setTrainingPanel('trainingSessionsPanel');}else openManualTrainingSession(dateKey);}
+
 function renderTrainingCalendar(){
-  const holder=document.getElementById('trainingCalendarGrid'); if(!holder) return;
-  const monthSessions=getSessionsForMonth(selectedTeamId,trainingMonthCursor); const settings=ensureTeamTrainingSettings(selectedTeamId);
-  const monthLabel=trainingMonthCursor.toLocaleDateString('fr-FR',{month:'long',year:'numeric'});
-  document.getElementById('trainingCalendarTitle').textContent=monthLabel.charAt(0).toUpperCase()+monthLabel.slice(1);
-  document.getElementById('trainingCalendarFeed').innerHTML=`<strong>Jours d’entraînement</strong><br>${settings.schedule.map(s=>`${s.label} · ${s.time}`).join('<br>')}<br><br><strong>Salle</strong><br>${settings.hall}<br><br><strong>Référentiel</strong><br>${settings.referential}`;
-  document.getElementById('trainingCalendarOpenList').innerHTML=monthSessions.slice(0,8).map(s=>`<div class="session-rect" onclick="openTrainingSession(${s.id})"><div class="row"><strong>${formatLongDateFr(s.date)}</strong><span class="session-state ${s.published?'state-published':s.status==='prepared'?'state-prepared':'state-open'}">${s.published?'publiée':s.status==='prepared'?'préparée':'ouverte'}</span></div><div class="small">${s.time} · ${s.theme||'Thème à définir'}</div></div>`).join('') || '<div class="muted">Aucune séance ouverte.</div>';
-  const firstWeekday=(new Date(trainingMonthCursor.getFullYear(),trainingMonthCursor.getMonth(),1).getDay()+6)%7; const daysInMonth=new Date(trainingMonthCursor.getFullYear(),trainingMonthCursor.getMonth()+1,0).getDate(); const prevDays=new Date(trainingMonthCursor.getFullYear(),trainingMonthCursor.getMonth(),0).getDate();
-  const headers=['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'].map(h=>`<div class="calendar-head">${h}</div>`).join('');
-  let cells='';
-  for(let i=0;i<firstWeekday;i++){ const n=prevDays-firstWeekday+1+i; cells+=`<div class="calendar-cell off"><div class="calendar-daynum">${n}</div></div>`; }
-  const todayKey=new Date().toISOString().slice(0,10);
-  for(let day=1;day<=daysInMonth;day++){
-    const key=`${trainingMonthCursor.getFullYear()}-${String(trainingMonthCursor.getMonth()+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
-    const sessions=monthSessions.filter(s=>s.date===key); const cls=key===todayKey?'calendar-cell today':'calendar-cell';
-    cells+=`<div class="${cls}" onclick="selectCalendarDay('${key}')"><div class="calendar-daynum"><span>${day}</span><span class="small">${sessions.length? sessions.length+' séance'+(sessions.length>1?'s':'') : ''}</span></div>${sessions.map(s=>`<span class="calendar-chip ${s.published?'published':s.status==='prepared'?'prepared':'open'}">${s.time} · ${s.theme||'Séance ouverte'}</span>`).join('')}</div>`;
-  }
-  const totalCells=firstWeekday+daysInMonth; const remaining=(7-(totalCells%7))%7; for(let i=1;i<=remaining;i++){ cells+=`<div class="calendar-cell off"><div class="calendar-daynum">${i}</div></div>`; }
-  holder.innerHTML=`<div class="calendar-grid">${headers}${cells}</div>`;
+ const holder=document.getElementById('trainingCalendarGrid');if(!holder)return;const monthSessions=getSessionsForMonth(selectedTeamId,trainingMonthCursor),settings=ensureTeamTrainingSettings(selectedTeamId);const monthLabel=trainingMonthCursor.toLocaleDateString('fr-FR',{month:'long',year:'numeric'});document.getElementById('trainingCalendarTitle').textContent=monthLabel.charAt(0).toUpperCase()+monthLabel.slice(1);document.getElementById('trainingCalendarFeed').innerHTML=`<strong>Jours d’entraînement</strong><br>${settings.schedule.map(s=>`${s.label} · ${s.time}`).join('<br>')}<br><br><strong>Salle</strong><br>${settings.hall}<br><br><strong>Référentiel</strong><br>${settings.referential}`;
+ document.getElementById('trainingCalendarOpenList').innerHTML=monthSessions.slice(0,8).map(s=>`<div class="session-rect" onclick="openTrainingSession(${s.id})"><div class="row"><strong>${formatLongDateFr(s.date)}</strong><span class="session-state ${sessionStatusClass(s)}">${sessionStatusLabel(s)}</span></div><div class="small">${s.time} · ${s.theme||'Thème à définir'}</div></div>`).join('')||'<div class="muted">Aucune séance ouverte.</div>';
+ const firstWeekday=(new Date(trainingMonthCursor.getFullYear(),trainingMonthCursor.getMonth(),1).getDay()+6)%7,daysInMonth=new Date(trainingMonthCursor.getFullYear(),trainingMonthCursor.getMonth()+1,0).getDate(),prevDays=new Date(trainingMonthCursor.getFullYear(),trainingMonthCursor.getMonth(),0).getDate();const headers=['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'].map(h=>`<div class="calendar-head">${h}</div>`).join('');let cells='';for(let i=0;i<firstWeekday;i++){cells+=`<div class="calendar-cell off"><div class="calendar-daynum">${prevDays-firstWeekday+1+i}</div></div>`;}const todayKey=new Date().toISOString().slice(0,10);for(let day=1;day<=daysInMonth;day++){const key=`${trainingMonthCursor.getFullYear()}-${String(trainingMonthCursor.getMonth()+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`,sessions=monthSessions.filter(s=>s.date===key),cls=key===todayKey?'calendar-cell today':'calendar-cell';cells+=`<div class="${cls}" onclick="selectCalendarDay('${key}')"><div class="calendar-daynum"><span>${day}</span><span class="small">${sessions.length?sessions.length+' séance'+(sessions.length>1?'s':''):''}</span></div>${sessions.map(s=>`<span class="calendar-chip ${s.published?'published':s.status==='prepared'?'prepared':'open'}">${s.time} · ${s.theme||'À construire'}</span>`).join('')}</div>`;}const totalCells=firstWeekday+daysInMonth,remaining=(7-(totalCells%7))%7;for(let i=1;i<=remaining;i++)cells+=`<div class="calendar-cell off"><div class="calendar-daynum">${i}</div></div>`;holder.innerHTML=`<div class="calendar-grid">${headers}${cells}</div>`;
 }
-function renderTrainingSessionRects(){
-  const listEl=document.getElementById('trainingSessionRects'); if(!listEl) return; const sessions=getSessionsForMonth(selectedTeamId,trainingMonthCursor);
-  document.getElementById('trainingSessionsCount').textContent=`${sessions.length} séance${sessions.length>1?'s':''}`;
-  listEl.innerHTML=sessions.map(s=>`<div class="session-rect ${selectedTrainingSessionId===s.id?'active':''}" onclick="openTrainingSession(${s.id})"><div class="row"><strong>${formatLongDateFr(s.date)}</strong><span class="session-state ${s.published?'state-published':s.status==='prepared'?'state-prepared':'state-open'}">${s.published?'publiée':s.status==='prepared'?'préparée':'ouverte'}</span></div><div class="small">${s.time} · ${s.theme||'Thème à définir'}</div><div class="small">${s.blocks.length} activité${s.blocks.length>1?'s':''}</div></div>`).join('') || '<div class="muted">Aucune séance.</div>';
+
+function renderTrainingSessionSelectors(){
+ const sel=document.getElementById('trainingSessionSelect');if(!sel)return;const sessions=[...getSessionsForTeam(selectedTeamId)].sort((a,b)=>(b.date+b.time).localeCompare(a.date+a.time));
+ sel.innerHTML=sessions.map(s=>`<option value="${s.id}" ${s.id===selectedTrainingSessionId?'selected':''}>${formatDateFr(s.date)} · ${s.time} · ${sessionStatusLabel(s)} · ${safeText(s.theme||'sans thème')}</option>`).join('');
+ const copy=document.getElementById('trainingCopySessionSelect');if(copy){const candidates=sessions.filter(s=>s.id!==selectedTrainingSessionId&&(s.theme||sessionActivities(s).length));copy.innerHTML='<option value="">Choisir une séance modèle…</option>'+candidates.map(s=>`<option value="${s.id}">${formatDateFr(s.date)} · ${safeText(s.theme||'Séance')} · ${sessionActivities(s).length} activité(s)</option>`).join('');}
+ const cur=getSelectedTrainingSession();document.getElementById('trainingSessionSelectHint').textContent=cur?`${sessionStatusLabel(cur)} · ${sessionActivities(cur).length} activité(s) · ${sessionTotalMinutes(cur)} min construits`:'';
 }
+function selectTrainingSessionFromDropdown(){const v=Number(document.getElementById('trainingSessionSelect').value);if(v){selectedTrainingSessionId=v;renderSessionWorkspace();}}
+function copyTrainingSessionIntoCurrent(){const target=getSelectedTrainingSession(),sourceId=Number(document.getElementById('trainingCopySessionSelect').value),source=getSessionsForTeam(selectedTeamId).find(s=>s.id===sourceId);if(!target||!source)return alert('Choisis une séance modèle.');target.theme=source.theme;target.objective=source.objective;target.playerMessage=source.playerMessage;target.duration=source.duration;target.intensity=source.intensity;target.blocks=sessionActivities(source).map(cloneActivity);target.status='prepared';target.published=false;saveTrainingSessionsStore();syncTrainingSessionsToLegacy(selectedTeamId);renderSessionWorkspace();document.getElementById('trainingSaveState').textContent='✓ Contenu copié. Tu peux maintenant l’adapter.';}
+
+function populateThemeSelects(){['activityThemeSelect','constructionActivityTheme','libraryActivityTheme'].forEach(id=>{const el=document.getElementById(id);if(!el)return;const current=el.value;const first=id==='activityThemeSelect'?'':'<option value="">Tous les fondamentaux</option>';el.innerHTML=first+activityThemesV3.map(t=>`<option value="${safeText(t)}">${safeText(t)}</option>`).join('');if(current&&activityThemesV3.includes(current))el.value=current;});}
 function renderTrainingEditor(){
-  const session=getSelectedTrainingSession();
-  const titleEl=document.getElementById('trainingEditorTitle'); if(!titleEl) return;
-  if(!session){ titleEl.textContent='Sélectionne une séance'; document.getElementById('trainingEditorState').textContent='ouverte'; ['trainingThemeInput','trainingObjectiveInput','trainingPlayerMessageInput','trainingDurationInput'].forEach(id=>document.getElementById(id).value=''); document.getElementById('trainingSessionBlocks').innerHTML='<div class="muted">Aucune séance sélectionnée.</div>'; return; }
-  titleEl.textContent=`${formatLongDateFr(session.date)} · ${session.time}`;
-  const stateEl=document.getElementById('trainingEditorState'); stateEl.textContent=session.published?'publiée':session.status==='prepared'?'préparée':'ouverte'; stateEl.className=`session-state ${session.published?'state-published':session.status==='prepared'?'state-prepared':'state-open'}`;
-  document.getElementById('trainingThemeInput').value=session.theme||''; document.getElementById('trainingObjectiveInput').value=session.objective||''; document.getElementById('trainingPlayerMessageInput').value=session.playerMessage||''; document.getElementById('trainingDurationInput').value=session.duration||''; document.getElementById('trainingIntensityInput').value=session.intensity||'Moyenne';
-  document.getElementById('trainingSessionBlocks').innerHTML=session.blocks.length ? session.blocks.map((b,idx)=>`<div class="activity-block"><div class="row"><strong>${b.name||'Bloc manuel'}</strong><span class="pill pill-blue">${b.duration||'10 min'}</span></div><div class="small">Objectif : ${b.objective||'—'}</div><div class="small">Source : ${b.source||'Coach'} · utilisée ${b.usage||0} fois</div><div class="actions" style="margin-top:8px"><button class="btn btn-light" onclick="moveTrainingBlock(${idx},-1)">↑</button><button class="btn btn-light" onclick="moveTrainingBlock(${idx},1)">↓</button><button class="btn btn-danger" onclick="removeTrainingBlock(${idx})">Supprimer</button></div></div>`).join('') : '<div class="muted">Aucune activité dans la séance pour le moment.</div>';
-  const picker=document.getElementById('trainingActivityPicker'); picker.innerHTML=activityLibraryV25.map(a=>`<option value="${a.id}">${a.name} · ${a.duration}</option>`).join('');
+ const session=getSelectedTrainingSession(),titleEl=document.getElementById('trainingEditorTitle');if(!titleEl)return;renderTrainingSessionSelectors();populateThemeSelects();
+ if(!session){titleEl.textContent='Sélectionne une séance';return;}
+ titleEl.textContent=`${formatLongDateFr(session.date)} · ${session.time}`;const stateEl=document.getElementById('trainingEditorState');stateEl.textContent=sessionStatusLabel(session);stateEl.className=`session-state ${sessionStatusClass(session)}`;
+ document.getElementById('trainingThemeInput').value=session.theme||'';document.getElementById('trainingObjectiveInput').value=session.objective||'';document.getElementById('trainingPlayerMessageInput').value=session.playerMessage||'';document.getElementById('trainingDurationInput').value=session.duration||'';document.getElementById('trainingIntensityInput').value=session.intensity||'Moyenne';
+ document.getElementById('trainingLiveTitle').textContent=session.theme||'Séance à construire';document.getElementById('trainingLiveMeta').textContent=`${formatLongDateFr(session.date)} · ${session.time} · ${sessionStatusLabel(session)}`;document.getElementById('trainingLiveTotal').textContent=`${sessionTotalMinutes(session)} min`;document.getElementById('trainingLiveCount').textContent=`${sessionActivities(session).length} activité${sessionActivities(session).length>1?'s':''}`;
+ const holder=document.getElementById('trainingSessionActivities');holder.innerHTML=sessionActivities(session).length?sessionActivities(session).map((a,idx)=>{normalizeActivity(a);return `<article class="activity-live-card"><div class="row"><div><span class="eyebrow">Activité ${idx+1}</span><h4>${safeText(a.name)}</h4></div><span class="pill pill-blue">${a.durationMinutes} min</span></div><div class="activity-live-grid"><div><div class="activity-live-meta"><span class="pill pill-amber">${safeText(a.type)}</span><span class="pill pill-blue">${safeText(a.phase)}</span><span class="pill pill-green">${safeText(a.theme)}</span><span class="pill pill-blue">👥 ${a.players}</span></div><div class="small"><strong>Objectif :</strong> ${safeText(a.objective||'—')}</div><div class="small" style="margin-top:5px"><strong>Réalisation :</strong> ${safeText(a.realisation||'—')}</div><div class="small" style="margin-top:5px"><strong>Réussite :</strong> ${safeText(a.success||'—')}</div><div class="small" style="margin-top:5px"><strong>Matériel :</strong> ${safeText(a.equipment||'—')} · <strong>Intensité :</strong> ${safeText(a.intensity)}</div><div class="actions" style="margin-top:10px"><button class="btn btn-light" onclick="moveTrainingActivity(${idx},-1)">↑</button><button class="btn btn-light" onclick="moveTrainingActivity(${idx},1)">↓</button><button class="btn btn-danger" onclick="removeTrainingActivity(${idx})">Retirer</button></div></div><div>${buildDiagramSvg(a.diagram,'diagram-preview')}</div></div></article>`}).join(''):'<div class="dark-inline" style="margin-top:12px">Aucune activité pour l’instant. Clique sur <strong>Ajouter une activité</strong> : la fiche se construira ici en direct.</div>';
 }
-function saveTrainingSession(){
-  const session=getSelectedTrainingSession(); if(!session) return alert('Sélectionne une séance.');
-  session.theme=document.getElementById('trainingThemeInput').value.trim(); session.objective=document.getElementById('trainingObjectiveInput').value.trim(); session.playerMessage=document.getElementById('trainingPlayerMessageInput').value.trim(); session.duration=document.getElementById('trainingDurationInput').value.trim()||'1h15'; session.intensity=document.getElementById('trainingIntensityInput').value; session.status=(session.theme||session.blocks.length)?'prepared':'open';
-  saveTrainingSessionsStore(); syncTrainingSessionsToLegacy(selectedTeamId); renderCoachWorkspace(); document.getElementById('trainingSaveState').textContent='✓ Fiche séance enregistrée.';
-}
-function publishTrainingSession(){ const session=getSelectedTrainingSession(); if(!session) return alert('Sélectionne une séance.'); saveTrainingSession(); session.published=true; session.status='prepared'; saveTrainingSessionsStore(); syncTrainingSessionsToLegacy(selectedTeamId); renderCoachWorkspace(); document.getElementById('trainingSaveState').textContent='✓ Séance publiée aux joueurs (simulation).'; }
-function exportTrainingSheet(){ const session=getSelectedTrainingSession(); if(!session) return; alert(`Simulation export : ${session.theme||'Séance'} · ${formatLongDateFr(session.date)}`); }
-function addSelectedActivityToSession(){ const session=getSelectedTrainingSession(); if(!session) return alert('Sélectionne une séance.'); const id=Number(document.getElementById('trainingActivityPicker').value); const a=activityLibraryV25.find(x=>x.id===id); if(!a) return; session.blocks.push({...a}); a.usage=(a.usage||0)+1; saveTrainingSession(); renderSessionWorkspace(); }
-function addBlankActivityBlock(){ const session=getSelectedTrainingSession(); if(!session) return alert('Sélectionne une séance.'); session.blocks.push({name:'Bloc manuel',objective:'À compléter',duration:'10 min',source:'Coach',usage:0}); saveTrainingSession(); renderSessionWorkspace(); }
-function removeTrainingBlock(idx){ const session=getSelectedTrainingSession(); if(!session) return; session.blocks.splice(idx,1); saveTrainingSession(); renderSessionWorkspace(); }
-function moveTrainingBlock(idx,delta){ const session=getSelectedTrainingSession(); if(!session) return; const n=idx+delta; if(n<0||n>=session.blocks.length) return; const [item]=session.blocks.splice(idx,1); session.blocks.splice(n,0,item); renderSessionWorkspace(); }
-function generateFakeTrainingAI(){
-  const session=getSelectedTrainingSession(); if(!session) return alert('Sélectionne une séance.');
-  const theme=(document.getElementById('trainingThemeInput').value.trim()||session.theme||'jeu rapide').toLowerCase();
-  const weak=getWeaknessSummary(selectedTeamId); const tagNeed=[...weak.weakestCollective,...weak.weakestIndividual].join(' ').toLowerCase();
-  let picks=activityLibraryV25.filter(a=> theme.split(/[ ,;+]+/).some(w=>w && (a.tags||[]).join(' ').toLowerCase().includes(w)));
-  if(picks.length<3) picks=[...new Set([...picks, ...activityLibraryV25.filter(a=>(a.tags||[]).join(' ').toLowerCase().includes('u13') || (a.tags||[]).join(' ').toLowerCase().includes(teams.find(t=>t.id===selectedTeamId).category.toLowerCase()))])];
-  if(picks.length<3) picks=activityLibraryV25;
-  picks=picks.slice(0,3); lastAISessionProposal=picks.map(a=>a.id);
-  const objective=session.objective || `Faire progresser l’équipe sur ${weak.weakestCollective[0]} tout en consolidant ${weak.weakestIndividual[0]}.`;
-  const message=`<strong>Coach IA simulé</strong><br>Thème repéré : <strong>${theme}</strong>.<br>Besoins lus : ${weak.weakestIndividual.join(' · ')} / ${weak.weakestCollective.join(' · ')}.<br><br><strong>Fil conducteur proposé</strong><br>1. ${picks[0]?.name||'Échauffement ciblé'}<br>2. ${picks[1]?.name||'Situation cœur de séance'}<br>3. ${picks[2]?.name||'Jeu finalisé'}<br><br><strong>Objectif conseillé</strong><br>${objective}<br><br><strong>Message joueur</strong><br>"Aujourd’hui, on apprend à jouer vite ensemble, à lever la tête et à faire le bon choix plus tôt."`;
-  document.getElementById('trainingAIBubble').innerHTML=message;
-}
-function applyFakeTrainingAI(){
-  const session=getSelectedTrainingSession(); if(!session) return alert('Sélectionne une séance.'); if(!lastAISessionProposal.length) return alert('Génère d’abord une proposition.');
-  session.blocks=lastAISessionProposal.map(id=>({...activityLibraryV25.find(a=>a.id===id)})).filter(Boolean);
-  if(!session.objective) session.objective=`Améliorer les prises de décision et l’occupation des espaces dans le thème travaillé.`;
-  if(!session.playerMessage) session.playerMessage="On va avancer vite ensemble, regarder le défenseur et choisir entre dribbler, passer ou finir.";
-  session.status='prepared'; saveTrainingSession(); renderSessionWorkspace();
-}
-function createTrainingActivity(){
-  const name=document.getElementById('activityNameInput').value.trim(); if(!name) return alert('Ajoute un nom.');
-  activityLibraryV25.unshift({id:Date.now(),name,objective:document.getElementById('activityObjectiveInput').value.trim(),realisation:document.getElementById('activityRealisationInput').value.trim(),success:document.getElementById('activitySuccessInput').value.trim(),duration:document.getElementById('activityDurationInput').value.trim()||'10 min',tags:document.getElementById('activityTagsInput').value.split(',').map(s=>s.trim()).filter(Boolean),source:'Coach',usage:0});
-  ['activityNameInput','activityObjectiveInput','activityRealisationInput','activitySuccessInput','activityDurationInput','activityTagsInput'].forEach(id=>document.getElementById(id).value='');
-  document.getElementById('activityCreateState').textContent='✓ Activité enregistrée dans la bibliothèque.'; renderSessionWorkspace();
-}
-function generateActivityDraft(){
-  const session=getSelectedTrainingSession(); const weak=getWeaknessSummary(selectedTeamId); const theme=(session?.theme || document.getElementById('trainingThemeInput')?.value || 'jeu rapide').trim() || 'jeu rapide';
-  document.getElementById('activityDraftBubble').innerHTML=`<strong>Coach IA simulé</strong><br>À partir du thème <strong>${theme}</strong> et des besoins <strong>${weak.weakestCollective[0]}</strong> / <strong>${weak.weakestIndividual[0]}</strong>, je te propose une activité courte :<br><br><strong>Nom</strong> : ${theme} en continuité<br><strong>Objectif</strong> : décider plus vite tout en conservant les bons espaces.<br><strong>Critère de réalisation</strong> : le porteur fixe avant de transmettre, les partenaires se déplacent tôt.<br><strong>Critère de réussite</strong> : finir par un tir ouvert ou un lay-up équilibré.`;
-  document.getElementById('activityNameInput').value=`${theme} en continuité`; document.getElementById('activityObjectiveInput').value='Décider plus vite tout en conservant les bons espaces'; document.getElementById('activityRealisationInput').value='Le porteur fixe avant de transmettre, les partenaires se déplacent tôt'; document.getElementById('activitySuccessInput').value='Finir par un tir ouvert ou un lay-up équilibré'; document.getElementById('activityDurationInput').value='10 min'; document.getElementById('activityTagsInput').value=`${theme}, ${teams.find(t=>t.id===selectedTeamId).category}`;
-}
-function renderActivityLibrary(){
-  const list=document.getElementById('activityLibraryList'); if(!list) return; document.getElementById('activityLibraryCount').textContent=`${activityLibraryV25.length} activité${activityLibraryV25.length>1?'s':''}`;
-  list.innerHTML=activityLibraryV25.map(a=>`<div class="library-item"><div class="row"><div><strong>${a.name}</strong><div class="small">${a.objective||'Sans objectif'}</div></div><span class="pill ${a.source==='IA'?'pill-orange':'pill-blue'}">${a.source}</span></div><div class="library-meta"><span class="pill pill-blue">${a.duration}</span><span class="pill pill-green">utilisée ${a.usage||0} fois</span><span class="pill pill-amber">${(a.tags||[]).join(' · ')||'sans tag'}</span></div><div class="actions" style="margin-top:9px"><button class="btn btn-light" onclick="addLibraryActivityDirect(${a.id})">Ajouter à la séance sélectionnée</button></div></div>`).join('');
-}
-function addLibraryActivityDirect(id){ if(!selectedTrainingSessionId) { setTrainingPanel('trainingSessionsPanel'); return alert('Sélectionne d’abord une séance.'); } document.getElementById('trainingActivityPicker').value=id; addSelectedActivityToSession(); }
-function renderKnowledgeBase(){ const list=document.getElementById('knowledgeResourceList'); if(!list) return; list.innerHTML=knowledgeBaseV25.map(r=>`<div class="resource-item"><div class="row"><strong>${r.title}</strong><span class="pill pill-blue">${r.type}</span></div><div class="small" style="margin-top:6px">${r.content}</div></div>`).join(''); }
-function addKnowledgeResource(){ const title=document.getElementById('knowledgeTitleInput').value.trim(); if(!title) return alert('Ajoute un titre.'); knowledgeBaseV25.unshift({id:Date.now(),title,type:document.getElementById('knowledgeTypeInput').value,content:document.getElementById('knowledgeLinkInput').value.trim()}); document.getElementById('knowledgeTitleInput').value=''; document.getElementById('knowledgeLinkInput').value=''; renderKnowledgeBase(); }
-function renderSessionWorkspace(){
-  ensureTrainingSessionsForMonth(selectedTeamId,trainingMonthCursor); if(!selectedTrainingSessionId){ const first=getSessionsForMonth(selectedTeamId,trainingMonthCursor)[0]; if(first) selectedTrainingSessionId=first.id; }
-  renderTrainingCalendar(); renderTrainingSessionRects(); renderTrainingEditor(); renderActivityLibrary(); renderKnowledgeBase();
-  document.querySelectorAll('.training-tab').forEach(btn=>btn.classList.toggle('active',btn.dataset.trainingPanel===currentTrainingPanel)); document.querySelectorAll('.training-subpanel').forEach(panel=>panel.classList.toggle('active',panel.id===currentTrainingPanel)); document.querySelectorAll('.activity-subtab').forEach(btn=>btn.classList.toggle('active',btn.dataset.activityPanel===currentActivityPanel)); document.querySelectorAll('.activity-subpanel').forEach(panel=>panel.classList.toggle('active',panel.id===currentActivityPanel));
-}
+function saveTrainingSession(){const session=getSelectedTrainingSession();if(!session)return alert('Sélectionne une séance.');session.theme=document.getElementById('trainingThemeInput').value.trim();session.objective=document.getElementById('trainingObjectiveInput').value.trim();session.playerMessage=document.getElementById('trainingPlayerMessageInput').value.trim();session.duration=document.getElementById('trainingDurationInput').value.trim()||'1h15';session.intensity=document.getElementById('trainingIntensityInput').value;if(!session.published)session.status=(session.theme||sessionActivities(session).length)?'prepared':'open';saveTrainingSessionsStore();syncTrainingSessionsToLegacy(selectedTeamId);renderSessionWorkspace();document.getElementById('trainingSaveState').textContent='✓ Séance enregistrée.';}
+function publishTrainingSession(){const session=getSelectedTrainingSession();if(!session)return alert('Sélectionne une séance.');session.theme=document.getElementById('trainingThemeInput').value.trim();session.objective=document.getElementById('trainingObjectiveInput').value.trim();session.playerMessage=document.getElementById('trainingPlayerMessageInput').value.trim();session.duration=document.getElementById('trainingDurationInput').value.trim()||'1h15';session.intensity=document.getElementById('trainingIntensityInput').value;session.status='prepared';session.published=true;saveTrainingSessionsStore();syncTrainingSessionsToLegacy(selectedTeamId);renderSessionWorkspace();document.getElementById('trainingSaveState').textContent='✓ Séance publiée : elle est maintenant visible côté joueur.';}
+function removeTrainingActivity(idx){const s=getSelectedTrainingSession();if(!s)return;sessionActivities(s).splice(idx,1);saveTrainingSessionsStore();renderSessionWorkspace();}
+function moveTrainingActivity(idx,delta){const s=getSelectedTrainingSession();if(!s)return;const arr=sessionActivities(s),n=idx+delta;if(n<0||n>=arr.length)return;const [a]=arr.splice(idx,1);arr.splice(n,0,a);saveTrainingSessionsStore();renderSessionWorkspace();}
+
+function toggleConstructionLibrary(force){const d=document.getElementById('constructionLibraryDrawer');if(!d)return;const open=typeof force==='boolean'?force:!d.classList.contains('open');d.classList.toggle('open',open);if(open)renderConstructionLibrary();}
+function activityMatchesFilters(a,prefix){normalizeActivity(a);const q=(document.getElementById(prefix+'ActivitySearch')?.value||'').trim().toLowerCase(),type=document.getElementById(prefix+'ActivityType')?.value||'',phase=document.getElementById(prefix+'ActivityPhase')?.value||'',theme=document.getElementById(prefix+'ActivityTheme')?.value||'';const hay=[a.name,a.objective,a.realisation,a.success,a.type,a.phase,a.theme,a.equipment,...(a.tags||[])].join(' ').toLowerCase();return(!q||hay.includes(q))&&(!type||a.type===type)&&(!phase||a.phase===phase)&&(!theme||a.theme===theme);}
+function renderConstructionLibrary(){populateThemeSelects();const list=document.getElementById('constructionLibraryList');if(!list)return;const filtered=activityLibraryV25.filter(a=>activityMatchesFilters(a,'construction'));list.innerHTML=filtered.length?filtered.map(a=>`<div class="library-pick-card"><div class="row"><div><strong>${safeText(a.name)}</strong><div class="small">${safeText(a.objective||'Sans objectif')}</div></div><button class="btn btn-primary" onclick="addActivityToCurrentSession(${a.id})">Ajouter</button></div><div class="library-meta"><span class="pill pill-amber">${safeText(a.type)}</span><span class="pill pill-blue">${safeText(a.phase)}</span><span class="pill pill-green">${safeText(a.theme)}</span><span class="pill pill-blue">${a.durationMinutes} min</span><span class="pill pill-blue">👥 ${a.players}</span></div></div>`).join(''):'<div class="muted">Aucune activité avec ces filtres.</div>';}
+function addActivityToCurrentSession(id){const s=getSelectedTrainingSession(),a=activityLibraryV25.find(x=>x.id===Number(id));if(!s||!a)return;sessionActivities(s).push(cloneActivity(a));a.usage=(a.usage||0)+1;saveActivityLibrary();if(!s.published)s.status='prepared';saveTrainingSessionsStore();renderSessionWorkspace();}
+function addLibraryActivityDirect(id){if(!selectedTrainingSessionId){setTrainingPanel('trainingSessionsPanel');return alert('Sélectionne d’abord une séance.');}addActivityToCurrentSession(id);setTrainingPanel('trainingSessionsPanel');}
+
+function generateFakeTrainingAI(){const session=getSelectedTrainingSession();if(!session)return alert('Sélectionne une séance.');const theme=(document.getElementById('trainingThemeInput').value.trim()||session.theme||'jeu rapide').toLowerCase(),weak=getWeaknessSummary(selectedTeamId);let picks=activityLibraryV25.filter(a=>(a.tags||[]).join(' ').toLowerCase().includes(theme.split(' ')[0]));if(picks.length<3)picks=activityLibraryV25;picks=picks.slice(0,3);lastAISessionProposal=picks.map(a=>a.id);document.getElementById('trainingAIBubble').innerHTML=`<strong>Coach IA simulé</strong><br>Thème : <strong>${safeText(theme)}</strong>.<br>Besoins repérés : ${safeText(weak.weakestIndividual.join(' · '))} / ${safeText(weak.weakestCollective.join(' · '))}.<br><br>Proposition : ${picks.map((a,i)=>`${i+1}. ${safeText(a.name)} (${a.durationMinutes} min)`).join('<br>')}`;}
+function applyFakeTrainingAI(){const s=getSelectedTrainingSession();if(!s)return alert('Sélectionne une séance.');if(!lastAISessionProposal.length)return alert('Génère d’abord une proposition.');lastAISessionProposal.forEach(id=>{const a=activityLibraryV25.find(x=>x.id===id);if(a){sessionActivities(s).push(cloneActivity(a));a.usage=(a.usage||0)+1;}});s.status='prepared';saveActivityLibrary();saveTrainingSessionsStore();renderSessionWorkspace();}
+
+function resetActivityForm(){editingActivityId=null;['activityNameInput','activityObjectiveInput','activityRealisationInput','activitySuccessInput','activityEquipmentInput','activityTagsInput'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});document.getElementById('activityDurationInput').value=10;document.getElementById('activityPlayersInput').value=8;document.getElementById('activityTypeInput').value='Collective';document.getElementById('activityPhaseInput').value='Attaque';document.getElementById('activityIntensityInput').value='Moyenne';document.getElementById('activityThemeSelect').value=activityThemesV3[0];activityDiagramDraft=[];renderActivityDiagramEditor();}
+function createTrainingActivity(){const name=document.getElementById('activityNameInput').value.trim();if(!name)return alert('Ajoute un nom.');const type=document.getElementById('activityTypeInput').value,phase=document.getElementById('activityPhaseInput').value,theme=document.getElementById('activityThemeSelect').value,durationMinutes=Math.max(1,Number(document.getElementById('activityDurationInput').value)||10),tagsFree=document.getElementById('activityTagsInput').value.split(',').map(s=>s.trim()).filter(Boolean),obj={id:editingActivityId||Date.now(),name,type,phase,theme,objective:document.getElementById('activityObjectiveInput').value.trim(),realisation:document.getElementById('activityRealisationInput').value.trim(),success:document.getElementById('activitySuccessInput').value.trim(),durationMinutes,duration:`${durationMinutes} min`,players:Math.max(1,Number(document.getElementById('activityPlayersInput').value)||1),equipment:document.getElementById('activityEquipmentInput').value.trim(),intensity:document.getElementById('activityIntensityInput').value,tags:[...new Set([type,phase,theme,teams.find(t=>t.id===selectedTeamId)?.category||'',...tagsFree].filter(Boolean))],diagram:JSON.parse(JSON.stringify(activityDiagramDraft)),source:'Coach',usage:editingActivityId?(activityLibraryV25.find(a=>a.id===editingActivityId)?.usage||0):0};if(editingActivityId){const idx=activityLibraryV25.findIndex(a=>a.id===editingActivityId);if(idx>=0)activityLibraryV25[idx]=obj;}else activityLibraryV25.unshift(obj);saveActivityLibrary();document.getElementById('activityCreateState').textContent=editingActivityId?'✓ Activité modifiée.':'✓ Activité enregistrée dans la bibliothèque.';editingActivityId=null;renderActivityLibrary();renderConstructionLibrary();}
+function editActivityFromLibrary(id){const a=activityLibraryV25.find(x=>x.id===Number(id));if(!a)return;normalizeActivity(a);editingActivityId=a.id;setActivityPanel('activityCreatePanel');document.getElementById('activityNameInput').value=a.name;document.getElementById('activityTypeInput').value=a.type;document.getElementById('activityPhaseInput').value=a.phase;populateThemeSelects();document.getElementById('activityThemeSelect').value=a.theme;document.getElementById('activityObjectiveInput').value=a.objective||'';document.getElementById('activityRealisationInput').value=a.realisation||'';document.getElementById('activitySuccessInput').value=a.success||'';document.getElementById('activityDurationInput').value=a.durationMinutes;document.getElementById('activityPlayersInput').value=a.players;document.getElementById('activityEquipmentInput').value=a.equipment||'';document.getElementById('activityIntensityInput').value=a.intensity;document.getElementById('activityTagsInput').value=(a.tags||[]).filter(t=>![a.type,a.phase,a.theme,teams.find(t=>t.id===selectedTeamId)?.category].includes(t)).join(', ');activityDiagramDraft=JSON.parse(JSON.stringify(a.diagram||[]));renderActivityDiagramEditor();document.getElementById('activityCreateState').textContent='Modification de l’activité existante.';}
+function generateActivityDraft(){const session=getSelectedTrainingSession(),weak=getWeaknessSummary(selectedTeamId),theme=(session?.theme||document.getElementById('activityThemeSelect').value||'Jeu rapide / contre-attaque');document.getElementById('activityDraftBubble').innerHTML=`<strong>Coach IA simulé</strong><br>Proposition construite à partir du thème <strong>${safeText(theme)}</strong> et des besoins ${safeText(weak.weakestCollective[0])} / ${safeText(weak.weakestIndividual[0])}. Le schéma ci-dessous est également généré puis reste entièrement modifiable.`;document.getElementById('activityNameInput').value=`${theme} · situation guidée`;document.getElementById('activityObjectiveInput').value='Décider plus vite tout en conservant les bons espaces';document.getElementById('activityRealisationInput').value='Observer, fixer puis transmettre ou finir au bon moment';document.getElementById('activitySuccessInput').value='Créer un avantage clair et terminer par un tir équilibré';document.getElementById('activityDurationInput').value=10;document.getElementById('activityPlayersInput').value=8;generateAIDiagram();}
+function renderActivityLibrary(){populateThemeSelects();const list=document.getElementById('activityLibraryList');if(!list)return;document.getElementById('activityLibraryCount').textContent=`${activityLibraryV25.length} activité${activityLibraryV25.length>1?'s':''}`;const filtered=activityLibraryV25.filter(a=>activityMatchesFilters(a,'library'));list.innerHTML=filtered.map(a=>{normalizeActivity(a);return `<div class="library-item"><div class="row"><div><strong>${safeText(a.name)}</strong><div class="small">${safeText(a.objective||'Sans objectif')}</div></div><span class="pill ${a.source==='IA'?'pill-orange':'pill-blue'}">${safeText(a.source)}</span></div><div class="library-meta"><span class="pill pill-amber">${safeText(a.type)}</span><span class="pill pill-blue">${safeText(a.phase)}</span><span class="pill pill-green">${safeText(a.theme)}</span><span class="pill pill-blue">${a.durationMinutes} min</span><span class="pill pill-blue">👥 ${a.players}</span><span class="pill pill-green">utilisée ${a.usage||0} fois</span></div><div class="small" style="margin-top:8px">Matériel : ${safeText(a.equipment||'—')}</div><div class="actions" style="margin-top:9px"><button class="btn btn-primary" onclick="addLibraryActivityDirect(${a.id})">Ajouter à la séance</button><button class="btn btn-light" onclick="editActivityFromLibrary(${a.id})">Modifier</button></div></div>`}).join('')||'<div class="muted">Aucune activité avec ces filtres.</div>';}
+
+function baseCourtSvg(){return `<rect x="18" y="18" width="464" height="664" rx="4" fill="#f1eee7" stroke="#d7763d" stroke-width="4"/><line x1="18" y1="350" x2="482" y2="350" stroke="#d7763d" stroke-width="3"/><circle cx="250" cy="350" r="55" fill="none" stroke="#d7763d" stroke-width="3"/><rect x="155" y="18" width="190" height="165" fill="none" stroke="#d7763d" stroke-width="3"/><path d="M155 183 A160 160 0 0 0 345 183" fill="none" stroke="#d7763d" stroke-width="3"/><circle cx="250" cy="125" r="55" fill="none" stroke="#d7763d" stroke-width="3"/><line x1="225" y1="58" x2="275" y2="58" stroke="#111" stroke-width="4"/><circle cx="250" cy="72" r="16" fill="none" stroke="#111" stroke-width="3"/><rect x="155" y="517" width="190" height="165" fill="none" stroke="#d7763d" stroke-width="3"/><path d="M155 517 A160 160 0 0 1 345 517" fill="none" stroke="#d7763d" stroke-width="3"/><circle cx="250" cy="575" r="55" fill="none" stroke="#d7763d" stroke-width="3"/><line x1="225" y1="642" x2="275" y2="642" stroke="#111" stroke-width="4"/><circle cx="250" cy="628" r="16" fill="none" stroke="#111" stroke-width="3"/>`;}
+function pathSvg(e){const marker='url(#arrow)';if(e.type==='pass')return `<line data-diagram-index="${e.i}" x1="${e.x}" y1="${e.y}" x2="${e.x2}" y2="${e.y2}" stroke="#111" stroke-width="3" stroke-dasharray="9 8" marker-end="${marker}"/>`;if(e.type==='run')return `<line data-diagram-index="${e.i}" x1="${e.x}" y1="${e.y}" x2="${e.x2}" y2="${e.y2}" stroke="#111" stroke-width="3" marker-end="${marker}"/>`;const dx=e.x2-e.x,dy=e.y2-e.y,len=Math.hypot(dx,dy)||1,nx=-dy/len,ny=dx/len;let d=`M ${e.x} ${e.y}`;for(let k=1;k<=10;k++){const t=k/10,amp=(k%2?7:-7);d+=` L ${e.x+dx*t+nx*amp} ${e.y+dy*t+ny*amp}`;}return `<path data-diagram-index="${e.i}" d="${d}" fill="none" stroke="#111" stroke-width="3" marker-end="${marker}"/>`;}
+function elementSvg(e,i){e.i=i;if(['run','pass','dribble'].includes(e.type))return pathSvg(e);if(e.type==='attacker')return `<g data-diagram-index="${i}"><circle cx="${e.x}" cy="${e.y}" r="18" fill="#111820" stroke="#d7763d" stroke-width="4"/><text x="${e.x}" y="${e.y+6}" text-anchor="middle" font-size="18" font-weight="900" fill="#fff">${e.label||i+1}</text></g>`;if(e.type==='defender')return `<g data-diagram-index="${i}"><path d="M ${e.x} ${e.y-21} L ${e.x-20} ${e.y+18} L ${e.x+20} ${e.y+18} Z" fill="#d7763d" stroke="#9f4e27" stroke-width="2"/><text x="${e.x}" y="${e.y+8}" text-anchor="middle" font-size="18" font-weight="900" fill="#111">D</text></g>`;if(e.type==='coach')return `<g data-diagram-index="${i}"><circle cx="${e.x}" cy="${e.y}" r="18" fill="#9ca3af" stroke="#111" stroke-width="3"/><text x="${e.x}" y="${e.y+6}" text-anchor="middle" font-size="17" font-weight="900" fill="#111">E</text></g>`;if(e.type==='ball')return `<circle data-diagram-index="${i}" cx="${e.x}" cy="${e.y}" r="11" fill="#d7763d" stroke="#111" stroke-width="3"/>`;return `<path data-diagram-index="${i}" d="M ${e.x} ${e.y-17} L ${e.x-12} ${e.y+16} L ${e.x+12} ${e.y+16} Z" fill="#e88b4e" stroke="#111" stroke-width="3"/>`;}
+function buildDiagramSvg(diagram,cls=''){const arr=Array.isArray(diagram)?diagram:[];return `<svg class="${cls}" viewBox="0 0 500 700" xmlns="http://www.w3.org/2000/svg"><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#111"/></marker></defs>${baseCourtSvg()}${arr.map((e,i)=>elementSvg({...e},i)).join('')}</svg>`;}
+function renderActivityDiagramEditor(){const svg=document.getElementById('activityDiagramCourt');if(!svg)return;svg.innerHTML=`<defs><marker id="arrowEditor" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#111"/></marker></defs>${baseCourtSvg()}${activityDiagramDraft.map((e,i)=>elementSvg({...e},i).replaceAll('url(#arrow)','url(#arrowEditor)')).join('')}`;}
+function setDiagramTool(tool){diagramTool=tool;diagramPendingPoint=null;document.querySelectorAll('.diagram-tool[data-tool]').forEach(b=>b.classList.toggle('active',b.dataset.tool===tool));}
+function diagramCoords(ev){const svg=document.getElementById('activityDiagramCourt'),pt=svg.createSVGPoint();pt.x=ev.clientX;pt.y=ev.clientY;const p=pt.matrixTransform(svg.getScreenCTM().inverse());return{x:Math.max(20,Math.min(480,Math.round(p.x))),y:Math.max(20,Math.min(680,Math.round(p.y)))};}
+function handleDiagramCourtClick(ev){const indexed=ev.target.closest?.('[data-diagram-index]');if(diagramTool==='delete'&&indexed){activityDiagramDraft.splice(Number(indexed.getAttribute('data-diagram-index')),1);renderActivityDiagramEditor();return;}const p=diagramCoords(ev);if(['run','dribble','pass'].includes(diagramTool)){if(!diagramPendingPoint){diagramPendingPoint=p;return;}activityDiagramDraft.push({type:diagramTool,x:diagramPendingPoint.x,y:diagramPendingPoint.y,x2:p.x,y2:p.y});diagramPendingPoint=null;}else if(diagramTool!=='delete'){const label=diagramTool==='attacker'?String(activityDiagramDraft.filter(x=>x.type==='attacker').length+1):'';activityDiagramDraft.push({type:diagramTool,x:p.x,y:p.y,label});}renderActivityDiagramEditor();}
+function clearActivityDiagram(){activityDiagramDraft=[];diagramPendingPoint=null;renderActivityDiagramEditor();}
+function generateAIDiagram(){const phase=document.getElementById('activityPhaseInput')?.value||'Attaque';activityDiagramDraft=[{type:'attacker',x:135,y:610,label:'1'},{type:'attacker',x:215,y:610,label:'2'},{type:'attacker',x:295,y:610,label:'3'},{type:'ball',x:112,y:590},{type:'run',x:135,y:585,x2:170,y2:170},{type:'dribble',x:112,y:570,x2:245,y2:180},{type:'pass',x:215,y:580,x2:330,y2:260}];if(phase==='Défense'||phase==='Mixte')activityDiagramDraft.push({type:'defender',x:250,y:260},{type:'defender',x:330,y:330});renderActivityDiagramEditor();}
+
+function exportTrainingSheet(){const session=getSelectedTrainingSession();if(!session)return;const t=teams.find(x=>x.id===selectedTeamId),activities=sessionActivities(session),logo=(typeof DEFAULT_ASSACS_LOGO!=='undefined'?DEFAULT_ASSACS_LOGO:'');const rows=activities.map((a,i)=>{normalizeActivity(a);return `<section class="act"><div><h2>${i+1}. ${safeText(a.name)} <small>${a.durationMinutes} min</small></h2><div class="meta">${safeText(a.type)} · ${safeText(a.phase)} · ${safeText(a.theme)} · ${a.players} joueurs · ${safeText(a.intensity)}</div><p><b>Objectif :</b> ${safeText(a.objective||'—')}</p><p><b>Critère de réalisation :</b> ${safeText(a.realisation||'—')}</p><p><b>Critère de réussite :</b> ${safeText(a.success||'—')}</p><p><b>Matériel :</b> ${safeText(a.equipment||'—')}</p></div><div class="schema">${buildDiagramSvg(a.diagram,'')}</div></section>`}).join('');const w=window.open('','_blank');if(!w)return alert('Autorise les fenêtres pour exporter.');w.document.write(`<!doctype html><html><head><meta charset="utf-8"><title>Fiche séance</title><style>@page{size:A4;margin:11mm}*{box-sizing:border-box}body{font-family:Arial,sans-serif;color:#111;margin:0}.head{display:flex;justify-content:space-between;gap:12px;border-bottom:3px solid #f0a000;padding-bottom:8px}.brand{display:flex;gap:10px;align-items:center}.brand img{width:58px;height:58px;object-fit:contain}.head h1{margin:0;font-size:22px}.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin:10px 0}.box{border:1px solid #bbb;border-radius:7px;padding:7px;font-size:11px}.box b{display:block;font-size:13px}.act{display:grid;grid-template-columns:1fr 36mm;gap:8mm;border-top:1px solid #bbb;padding:8px 0;page-break-inside:avoid;min-height:48mm}.act h2{font-size:15px;margin:0 0 4px;color:#c87300}.act h2 small{float:right;color:#111}.act p{font-size:10.5px;margin:4px 0;line-height:1.25}.meta{font-size:9.5px;color:#555;margin-bottom:5px}.schema svg{width:36mm;height:50mm}.foot{margin-top:8px;font-size:9px;color:#666}@media print{button{display:none}}</style></head><body><header class="head"><div class="brand">${logo?`<img src="${logo}">`:''}<div><h1>Fiche séance · ${safeText(t?.name||selectedTeamId)}</h1><div>${formatLongDateFr(session.date)} · ${safeText(session.time)} · ${safeText(ensureTeamTrainingSettings(selectedTeamId).hall)}</div></div></div><div><b>${sessionTotalMinutes(session)} min construits</b><br>${safeText(sessionStatusLabel(session))}</div></header><div class="summary"><div class="box"><b>Thème</b>${safeText(session.theme||'—')}</div><div class="box"><b>Objectif</b>${safeText(session.objective||'—')}</div><div class="box"><b>Durée cible</b>${safeText(session.duration||'—')}</div><div class="box"><b>Intensité</b>${safeText(session.intensity||'—')}</div></div>${rows||'<p>Aucune activité.</p>'}<div class="foot">Schémas : course = flèche · déplacement en dribble = ligne ondulée · passe = pointillés. Le schéma occupe environ 1/8 de la page par activité.</div><script>window.onload=()=>window.print()<\/script></body></html>`);w.document.close();}
+
+function renderKnowledgeBase(){const list=document.getElementById('knowledgeResourceList');if(!list)return;list.innerHTML=knowledgeBaseV25.map(r=>`<div class="resource-item"><div class="row"><strong>${safeText(r.title)}</strong><span class="pill pill-blue">${safeText(r.type)}</span></div><div class="small" style="margin-top:6px">${safeText(r.content)}</div></div>`).join('');}
+function addKnowledgeResource(){const title=document.getElementById('knowledgeTitleInput').value.trim();if(!title)return alert('Ajoute un titre.');knowledgeBaseV25.unshift({id:Date.now(),title,type:document.getElementById('knowledgeTypeInput').value,content:document.getElementById('knowledgeLinkInput').value.trim()});document.getElementById('knowledgeTitleInput').value='';document.getElementById('knowledgeLinkInput').value='';renderKnowledgeBase();}
+function renderSessionWorkspace(){ensureTrainingSessionsForMonth(selectedTeamId,trainingMonthCursor);if(!selectedTrainingSessionId){const first=getSessionsForMonth(selectedTeamId,trainingMonthCursor)[0];if(first)selectedTrainingSessionId=first.id;}renderTrainingCalendar();renderTrainingEditor();renderActivityLibrary();renderConstructionLibrary();renderKnowledgeBase();renderActivityDiagramEditor();document.querySelectorAll('.training-tab').forEach(btn=>btn.classList.toggle('active',btn.dataset.trainingPanel===currentTrainingPanel));document.querySelectorAll('.training-subpanel').forEach(panel=>panel.classList.toggle('active',panel.id===currentTrainingPanel));document.querySelectorAll('.activity-subtab').forEach(btn=>btn.classList.toggle('active',btn.dataset.activityPanel===currentActivityPanel));document.querySelectorAll('.activity-subpanel').forEach(panel=>panel.classList.toggle('active',panel.id===currentActivityPanel));}
 document.querySelectorAll('.training-tab').forEach(btn=>btn.addEventListener('click',()=>setTrainingPanel(btn.dataset.trainingPanel)));
 document.querySelectorAll('.activity-subtab').forEach(btn=>btn.addEventListener('click',()=>setActivityPanel(btn.dataset.activityPanel)));
 
